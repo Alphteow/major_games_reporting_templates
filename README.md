@@ -1,4 +1,3 @@
-# major_games_reporting_templates
 # MAJOR GAMES REPORTING TEMPLATES
 
 ## OVERVIEW
