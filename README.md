@@ -1,0 +1,1 @@
+# major_games_reporting_templates
