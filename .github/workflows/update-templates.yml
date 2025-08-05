@@ -4,7 +4,7 @@ name: Update Templates
 on:
   push:
     paths:
-      - 'sports_templates.xlsx'
+      - './sports_templates.xlsx'
   workflow_dispatch:
 
 jobs:
@@ -28,8 +28,6 @@ jobs:
           
       - name: Commit updated JSON
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add data/templates.json
           git commit -m "Auto-update templates from Excel" || exit 0
           git push
