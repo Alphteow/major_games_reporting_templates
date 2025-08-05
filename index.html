@@ -455,7 +455,15 @@
         function updatePreview() {
             let previewTemplate = currentTemplate;
             
-            currentFields.forEach(field => {
+            // Extract ALL fields from the template dynamically
+            const templateFields = currentTemplate.match(/\{([^}]+)\}/g) || [];
+            const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
+            
+            // Remove duplicates
+            const uniqueFields = [...new Set(allFields)];
+            
+            // Replace each field with input value or placeholder
+            uniqueFields.forEach(field => {
                 const input = document.getElementById(field);
                 const value = input ? input.value : '';
                 const placeholder = value || `{${field}}`;
