@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sports Template Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        select, input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        textarea { height: 200px; resize: vertical; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .template-output { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 20px; }
+        .variable-inputs { display: none; margin-top: 20px; padding: 20px; background: #f0f8ff; border-radius: 4px; }
+        .variable-field { margin-bottom: 10px; }
+        .template-preview { background: #fff3cd; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Sports Template Generator</h1>
+    
+    <div class="form-group">
+        <label for="sport">Sport:</label>
+        <select id="sport" onchange="updateGenders()">
+            <option value="">Select Sport</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" onchange="updateEventNames()">
+            <option value="">Select Gender</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="eventName">Event Name:</label>
+        <select id="eventName" onchange="updateEventTypes()">
+            <option value="">Select Event Name</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="eventType">Event Type:</label>
+        <select id="eventType" onchange="loadTemplate()">
+            <option value="">Select Event Type</option>
+        </select>
+    </div>
+    
+    <div id="templatePreview" class="template-preview hidden">
+        <h3>Template Preview:</h3>
+        <div id="templateText"></div>
+    </div>
+
+    <div id="nextEventInfo" class="next-event-info" style="display: none;">
+        <h4>Next Event Information Available:</h4>
+        <p id="nextEventDetails"></p>
+    </div>
+    
+    <div id="variableInputs" class="variable-inputs">
+        <h3>Fill in Template Variables:</h3>
+        <div id="variableFields"></div>
+        <button onclick="generateOutput()">Generate Template</button>
+        <button onclick="clearFields()">Clear All Fields</button>
+    </div>
+    
+    <div id="templateOutput" class="template-output hidden">
+        <h3>Generated Template:</h3>
+        <textarea id="outputText" readonly></textarea>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    </div>
+
+    <script>
+        // Load templates from JSON instead of hardcoded data
+        async function loadTemplatesData() {
+            try {
+                const response = await fetch('data/templates.json');
+                const sportsData = await response.json();
+                return sportsData;
+            } catch (error) {
+                console.error('Error loading templates:', error);
+                return [];
+            }
+        }
+
+        // Initialize the app
+        async function initializeApp() {
+            window.sportsData = await loadTemplatesData();
+            initializeDropdowns();
+        }
+
+        // Call on page load
+        window.onload = initializeApp;
+
+
+        // Load your competition schedule data
+        const scheduleData = [
+            // SEPAK TAKRAW - Multiple rounds for the same sport
+            {
+                date: "2025-08-06",
+                sport: "Sepak Takraw",
+                event: "Men Doubles",
+                stage: "Round Robin (SGP VS MYA)",
+                timeStart: "0900",
+                timeEnd: "1000",
+                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
+                opponents: "SGP vs MYA"
+            },
+            {
+                date: "2025-08-06",
+                sport: "Sepak Takraw", 
+                event: "Men Doubles",
+                stage: "Round Robin (SGP VS CAM)",
+                timeStart: "1300",
+                timeEnd: "1400",
+                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
+                opponents: "SGP vs CAM"
+            },
+            {
+                date: "2025-08-07",
+                sport: "Sepak Takraw",
+                event: "Men Doubles", 
+                stage: "Semi Finals (SGP VS THA)",
+                timeStart: "1500",
+                timeEnd: "1600",
+                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
+                opponents: "SGP vs THA"
+            },
+            {
+                date: "2025-08-08",
+                sport: "Sepak Takraw",
+                event: "Men Doubles",
+                stage: "Final (SGP VS INA)",
+                timeStart: "0900",
+                timeEnd: "1000",
+                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
+                opponents: "SGP vs INA"
+            },
+
+            // SWIMMING - Multiple events for progression
+            {
+                date: "2025-08-06",
+                sport: "Swimming",
+                event: "Men 200M Individual Medley",
+                stage: "Heat",
+                timeStart: "0900",
+                timeEnd: "1000",
+                venue: "Aquatic Centre Pool A",
+                opponents: "Individual Event"
+            },
+            {
+                date: "2025-08-06",
+                sport: "Swimming",
+                event: "Men 200M Individual Medley", 
+                stage: "Final",
+                timeStart: "1800",
+                timeEnd: "1900",
+                venue: "Aquatic Centre Pool A",
+                opponents: "Individual Event"
+            },
+            {
+                date: "2025-08-07",
+                sport: "Swimming",
+                event: "Men 4 X 100M Freestyle Relay",
+                stage: "Final",
+                timeStart: "1830",
+                timeEnd: "1900",
+                venue: "Aquatic Centre Pool A",
+                opponents: "Relay Event"
+            },
+
+            // FOOTBALL - Tournament progression
+            {
+                date: "2025-08-06",
+                sport: "Football",
+                event: "Men Team",
+                stage: "Group Stage (SGP VS THA)",
+                timeStart: "1600",
+                timeEnd: "1800",
+                venue: "National Stadium",
+                opponents: "SGP vs THA"
+            },
+            {
+                date: "2025-08-08",
+                sport: "Football",
+                event: "Men Team",
+                stage: "Quarter Finals (SGP VS MAS)",
+                timeStart: "1900",
+                timeEnd: "2100",
+                venue: "National Stadium", 
+                opponents: "SGP vs MAS"
+            },
+            {
+                date: "2025-08-10",
+                sport: "Football",
+                event: "Men Team",
+                stage: "Semi Finals (SGP VS VIE)",
+                timeStart: "1600",
+                timeEnd: "1800",
+                venue: "National Stadium",
+                opponents: "SGP vs VIE"
+            },
+            {
+                date: "2025-08-12",
+                sport: "Football",
+                event: "Men Team",
+                stage: "Final (SGP VS INA)",
+                timeStart: "2000",
+                timeEnd: "2200",
+                venue: "National Stadium",
+                opponents: "SGP vs INA"
+            },
+
+            // BADMINTON - Tournament rounds
+            {
+                date: "2025-08-07",
+                sport: "Badminton",
+                event: "Men Singles",
+                stage: "Round of 32 (SGP VS TLS)",
+                timeStart: "0900",
+                timeEnd: "1000",
+                venue: "Badminton Hall",
+                opponents: "SGP vs TLS"
+            },
+            {
+                date: "2025-08-08",
+                sport: "Badminton",
+                event: "Men Singles",
+                stage: "Round of 16 (SGP VS THA)",
+                timeStart: "1400",
+                timeEnd: "1500",
+                venue: "Badminton Hall",
+                opponents: "SGP vs THA"
+            },
+            {
+                date: "2025-08-09",
+                sport: "Badminton",
+                event: "Men Singles",
+                stage: "Quarter Finals (SGP VS MAS)",
+                timeStart: "1600",
+                timeEnd: "1700",
+                venue: "Badminton Hall",
+                opponents: "SGP vs MAS"
+            },
+            {
+                date: "2025-08-10",
+                sport: "Badminton",
+                event: "Men Singles",
+                stage: "Semi Finals (SGP VS INA)",
+                timeStart: "1500",
+                timeEnd: "1600",
+                venue: "Badminton Hall",
+                opponents: "SGP vs INA"
+            },
+            {
+                date: "2025-08-11",
+                sport: "Badminton",
+                event: "Men Singles",
+                stage: "Final (SGP VS PHI)",
+                timeStart: "1800",
+                timeEnd: "1900",
+                venue: "Badminton Hall",
+                opponents: "SGP vs PHI"
+            },
+
+            // BASKETBALL - Multiple rounds
+            {
+                date: "2025-08-06",
+                sport: "Basketball",
+                event: "Men 3X3",
+                stage: "Preliminary Round (SGP VS MAS)",
+                timeStart: "1400",
+                timeEnd: "1430",
+                venue: "Basketball Court 1",
+                opponents: "SGP vs MAS"
+            },
+            {
+                date: "2025-08-07",
+                sport: "Basketball",
+                event: "Men 3X3",
+                stage: "Quarter Finals (SGP VS THA)",
+                timeStart: "1600",
+                timeEnd: "1630",
+                venue: "Basketball Court 1",
+                opponents: "SGP vs THA"
+            },
+            {
+                date: "2025-08-08",
+                sport: "Basketball",
+                event: "Men 3X3",
+                stage: "Semi Finals (SGP VS VIE)",
+                timeStart: "1800",
+                timeEnd: "1830",
+                venue: "Basketball Court 1",
+                opponents: "SGP vs VIE"
+            },
+            {
+                date: "2025-08-09",
+                sport: "Basketball",
+                event: "Men 3X3",
+                stage: "Final (SGP VS PHI)",
+                timeStart: "1900",
+                timeEnd: "1930",
+                venue: "Basketball Court 1",
+                opponents: "SGP vs PHI"
+            }
+        ];
+
+        function generateVariableInputs() {
+            const variableFieldsDiv = document.getElementById('variableFields');
+            variableFieldsDiv.innerHTML = '';
+            
+            currentFields.forEach(field => {
+                const fieldDiv = document.createElement('div');
+                fieldDiv.className = 'variable-field';
+                
+                const label = document.createElement('label');
+                label.textContent = formatFieldLabel(field);
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = field;
+                input.name = field;
+                
+                // Auto-populate if it's a next event field
+                const autoPopulatedValue = getAutoPopulatedValue(field);
+                if (autoPopulatedValue) {
+                    input.value = autoPopulatedValue;
+                    input.className = 'auto-populated';
+                    input.title = 'Auto-populated from schedule data';
+                }
+                
+                input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
+                input.addEventListener('input', updatePreview);
+                
+                fieldDiv.appendChild(label);
+                fieldDiv.appendChild(input);
+                variableFieldsDiv.appendChild(fieldDiv);
+            });
+            
+            document.getElementById('variableInputs').style.display = 'block';
+            showNextEventInfo();
+        }
+
+        function getAutoPopulatedValue(field) {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const selectedEventName = document.getElementById('eventName').value;
+            
+            // Find next event for this sport/athlete
+            const nextEvent = findNextEvent(selectedSport, selectedGender, selectedEventName);
+            
+            switch(field) {
+                case 'NEXT_OPPONENT_COUNTRY_CODE':
+                case 'NEXT_OPPONENT':
+                    return extractOpponent(nextEvent);
+                    
+                case 'NEXT_MATCH_DATE':
+                case 'NEXT_DATE':
+                    return nextEvent ? formatDate(nextEvent.date) : '';
+                    
+                case 'NEXT_MATCH_TIME':
+                case 'NEXT_TIME':
+                case 'TIME':
+                    return nextEvent ? formatTime(nextEvent.timeStart) : '';
+                    
+                case 'TIME_ZONE':
+                    return 'CAM time'; // Default timezone
+                    
+                case 'NEXT_STAGE':
+                case 'NEXT_ROUND':
+                case 'NEXT_EVENT':
+                    return nextEvent ? nextEvent.stage : '';
+                    
+                case 'VENUE':
+                    return nextEvent ? nextEvent.venue : '';
+                    
+                default:
+                    return null;
+            }
+        }
+
+        function findNextEvent(sport, gender, eventName) {
+            const today = new Date();
+            const currentSportEvents = scheduleData.filter(event => 
+                event.sport.toLowerCase().includes(sport.toLowerCase()) &&
+                event.event.toLowerCase().includes(eventName.toLowerCase()) &&
+                new Date(event.date) >= today
+            );
+            
+            // Sort by date and return the next upcoming event
+            currentSportEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+            return currentSportEvents[0] || null;
+        }
+
+        function extractOpponent(event) {
+            if (!event || !event.stage) return '';
+            
+            // Extract opponent from stage description like "SGP VS MAS"
+            const vsMatch = event.stage.match(/SGP VS (\w+)/i);
+            if (vsMatch) {
+                return vsMatch[1];
+            }
+            
+            // Extract from other patterns in your data
+            const roundRobinMatch = event.stage.match(/\(SGP VS (\w+)\)/i);
+            if (roundRobinMatch) {
+                return roundRobinMatch[1];
+            }
+            
+            return '';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { day: 'numeric', month: 'long' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function formatTime(timeString) {
+            // Convert "1430" to "1430hr" or "2:30 PM" format
+            if (timeString && timeString.length === 4) {
+                return timeString + 'hr';
+            }
+            return timeString;
+        }
+
+        function showNextEventInfo() {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const selectedEventName = document.getElementById('eventName').value;
+            
+            const nextEvent = findNextEvent(selectedSport, selectedGender, selectedEventName);
+            const nextEventDiv = document.getElementById('nextEventInfo');
+            const nextEventDetails = document.getElementById('nextEventDetails');
+            
+            if (nextEvent) {
+                nextEventDetails.innerHTML = `
+                    <strong>Next ${selectedSport} Event:</strong><br>
+                    Date: ${formatDate(nextEvent.date)}<br>
+                    Time: ${formatTime(nextEvent.timeStart)} (CAM time)<br>
+                    Stage: ${nextEvent.stage}<br>
+                    Venue: ${nextEvent.venue}
+                `;
+                nextEventDiv.style.display = 'block';
+            } else {
+                nextEventDiv.style.display = 'none';
+            }
+        }
+
+        function formatFieldLabel(field) {
+            return field.replace(/_/g, ' ')
+                       .toLowerCase()
+                       .replace(/\b\w/g, l => l.toUpperCase()) + ':';
+        }
+
+        // Your Excel data loaded as JavaScript object
+        const sportsData = [
+            {
+                sport: "Swimming",
+                gender: "Men",
+                event_name: "100M Freestyle",
+                event_type: "Heat",
+                template: "*SWIMMING – {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}.",
+                fields: ["GENDER", "EVENT", "TYPE", "NAME", "TIME", "PLACEMENT", "TOTAL", "ADVANCEMENT_STATUS"]
+            },
+            {
+                sport: "Swimming",
+                gender: "Men", 
+                event_name: "100M Freestyle",
+                event_type: "Final",
+                template: "*SWIMMING – {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+                fields: ["GENDER", "EVENT", "TYPE", "NAME", "TIME", "PLACEMENT", "TOTAL", "MEDAL"]
+            },
+            {
+                sport: "Swimming",
+                gender: "Women",
+                event_name: "200M Butterfly", 
+                event_type: "Final",
+                template: "*SWIMMING – {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. She finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+                fields: ["GENDER", "EVENT", "TYPE", "NAME", "TIME", "PLACEMENT", "TOTAL", "MEDAL"]
+            },
+            {
+                sport: "Football",
+                gender: "Men",
+                event_name: "Team",
+                event_type: "Group Stage",
+                template: "*FOOTBALL – {GENDER} TEAM {EVENT_TYPE}*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} – {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+                fields: ["GENDER", "EVENT_TYPE", "TEAM1", "TEAM2", "WINNER", "LOSER", "SCORE_WINNER", "SCORE_LOSER", "NEXT_OPPONENT", "NEXT_MATCH_DATE", "NEXT_MATCH_TIME"]
+            },
+            {
+                sport: "Football",
+                gender: "Women",
+                event_name: "Team", 
+                event_type: "Semi Finals",
+                template: "*FOOTBALL – {GENDER} TEAM {EVENT_TYPE}*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} – {SCORE_LOSER}. {WINNER} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+                fields: ["GENDER", "EVENT_TYPE", "TEAM1", "TEAM2", "WINNER", "LOSER", "SCORE_WINNER", "SCORE_LOSER", "NEXT_OPPONENT", "NEXT_MATCH_TYPE", "NEXT_MATCH_DATE", "NEXT_MATCH_TIME"]
+            },
+            {
+                sport: "Basketball",
+                gender: "Men",
+                event_name: "3X3",
+                event_type: "Preliminary Round",
+                template: "*BASKETBALL – {GENDER} 3X3 {EVENT_TYPE}*\nTEAM OF {PLAYER_NAMES} (SGP)\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {OPPONENT_SCORE} – {SGP_SCORE}. SGP will play against {NEXT_OPPONENT} today at {TIME} (CAM time).",
+                fields: ["GENDER", "EVENT_TYPE", "PLAYER_NAMES", "OPPONENT", "OPPONENT_SCORE", "SGP_SCORE", "NEXT_OPPONENT", "TIME"]
+            },
+            {
+                sport: "Tennis",
+                gender: "Women",
+                event_name: "Singles",
+                event_type: "Quarter Finals",
+                template: "*TENNIS – {GENDER} SINGLES {EVENT_TYPE}*\n{PLAYER_NAME} (SGP) VS {OPPONENT_NAME} ({OPPONENT_COUNTRY})\n{OPPONENT_COUNTRY} beat SGP {SCORE} and did not advance to the {NEXT_ROUND}.",
+                fields: ["GENDER", "EVENT_TYPE", "PLAYER_NAME", "OPPONENT_NAME", "OPPONENT_COUNTRY", "SCORE", "NEXT_ROUND"]
+            },
+            {
+                sport: "Badminton",
+                gender: "Mixed",
+                event_name: "Team",
+                event_type: "Final",
+                template: "*BADMINTON – {GENDER} TEAM {EVENT_TYPE}*\nSGP VS {OPPONENTS}\nSGP beat {WINNER} 3 – 0 and won the Gold medal.",
+                fields: ["GENDER", "EVENT_TYPE", "OPPONENTS", "WINNER"]
+            }
+        ];
+        
+        let currentTemplate = null;
+        let currentFields = [];
+        
+        // Initialize dropdowns
+        function initializeDropdowns() {
+            const sports = [...new Set(sportsData.map(item => item.sport))].sort();
+            const sportSelect = document.getElementById('sport');
+            
+            sports.forEach(sport => {
+                const option = document.createElement('option');
+                option.value = sport;
+                option.textContent = sport;
+                sportSelect.appendChild(option);
+            });
+        }
+        
+        function updateGenders() {
+            const selectedSport = document.getElementById('sport').value;
+            const genderSelect = document.getElementById('gender');
+            
+            // Clear subsequent dropdowns
+            clearDropdown('gender');
+            clearDropdown('eventName');
+            clearDropdown('eventType');
+            hideElements();
+            
+            if (!selectedSport) return;
+            
+            const genders = [...new Set(sportsData
+                .filter(item => item.sport === selectedSport)
+                .map(item => item.gender))].sort();
+            
+            genders.forEach(gender => {
+                const option = document.createElement('option');
+                option.value = gender;
+                option.textContent = gender;
+                genderSelect.appendChild(option);
+            });
+        }
+        
+        function updateEventNames() {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const eventNameSelect = document.getElementById('eventName');
+            
+            clearDropdown('eventName');
+            clearDropdown('eventType');
+            hideElements();
+            
+            if (!selectedSport || !selectedGender) return;
+            
+            const eventNames = [...new Set(sportsData
+                .filter(item => item.sport === selectedSport && item.gender === selectedGender)
+                .map(item => item.event_name))].sort();
+            
+            eventNames.forEach(eventName => {
+                const option = document.createElement('option');
+                option.value = eventName;
+                option.textContent = eventName;
+                eventNameSelect.appendChild(option);
+            });
+        }
+        
+        function updateEventTypes() {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const selectedEventName = document.getElementById('eventName').value;
+            const eventTypeSelect = document.getElementById('eventType');
+            
+            clearDropdown('eventType');
+            hideElements();
+            
+            if (!selectedSport || !selectedGender || !selectedEventName) return;
+            
+            const eventTypes = [...new Set(sportsData
+                .filter(item => 
+                    item.sport === selectedSport && 
+                    item.gender === selectedGender && 
+                    item.event_name === selectedEventName)
+                .map(item => item.event_type))].sort();
+            
+            eventTypes.forEach(eventType => {
+                const option = document.createElement('option');
+                option.value = eventType;
+                option.textContent = eventType;
+                eventTypeSelect.appendChild(option);
+            });
+        }
+        
+        function loadTemplate() {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const selectedEventName = document.getElementById('eventName').value;
+            const selectedEventType = document.getElementById('eventType').value;
+            
+            if (!selectedSport || !selectedGender || !selectedEventName || !selectedEventType) {
+                hideElements();
+                return;
+            }
+            
+            // Find the matching template
+            const templateData = sportsData.find(item => 
+                item.sport === selectedSport && 
+                item.gender === selectedGender && 
+                item.event_name === selectedEventName && 
+                item.event_type === selectedEventType
+            );
+            
+            if (templateData) {
+                currentTemplate = templateData.template;
+                currentFields = templateData.fields;
+                
+                // Show template preview
+                showTemplatePreview();
+                
+                // Generate dynamic input fields
+                generateVariableInputs();
+            }
+        }
+        
+        function showTemplatePreview() {
+            const previewDiv = document.getElementById('templatePreview');
+            const templateTextDiv = document.getElementById('templateText');
+            
+            templateTextDiv.innerHTML = `<pre>${currentTemplate}</pre>`;
+            previewDiv.classList.remove('hidden');
+        }
+        
+        function generateVariableInputs() {
+            const variableFieldsDiv = document.getElementById('variableFields');
+            const variableInputsDiv = document.getElementById('variableInputs');
+            
+            // Clear existing fields
+            variableFieldsDiv.innerHTML = '';
+            
+            // Create input field for each variable
+            currentFields.forEach(field => {
+                const fieldDiv = document.createElement('div');
+                fieldDiv.className = 'variable-field';
+                
+                const label = document.createElement('label');
+                label.textContent = field.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, l => l.toUpperCase()) + ':';
+                label.setAttribute('for', field);
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = field;
+                input.name = field;
+                input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
+                
+                // Add real-time preview update
+                input.addEventListener('input', updatePreview);
+                
+                fieldDiv.appendChild(label);
+                fieldDiv.appendChild(input);
+                variableFieldsDiv.appendChild(fieldDiv);
+            });
+            
+            variableInputsDiv.style.display = 'block';
+        }
+        
+        function updatePreview() {
+            // Real-time preview update as user types
+            let previewTemplate = currentTemplate;
+            
+            currentFields.forEach(field => {
+                const input = document.getElementById(field);
+                const value = input ? input.value : '';
+                const placeholder = value || `{${field}}`;
+                previewTemplate = previewTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), placeholder);
+            });
+            
+            document.getElementById('templateText').innerHTML = `<pre>${previewTemplate}</pre>`;
+        }
+        
+        function generateOutput() {
+            let outputTemplate = currentTemplate;
+            let missingFields = [];
+            
+            // Replace all variables with user input
+            currentFields.forEach(field => {
+                const input = document.getElementById(field);
+                const value = input ? input.value.trim() : '';
+                
+                if (!value) {
+                    missingFields.push(field);
+                }
+                
+                outputTemplate = outputTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), value);
+            });
+            
+            if (missingFields.length > 0) {
+                alert(`Please fill in the following fields: ${missingFields.join(', ')}`);
+                return;
+            }
+            
+            // Show output
+            document.getElementById('outputText').value = outputTemplate;
+            document.getElementById('templateOutput').classList.remove('hidden');
+        }
+        
+        function clearFields() {
+            currentFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (input) input.value = '';
+            });
+            updatePreview();
+            document.getElementById('templateOutput').classList.add('hidden');
+        }
+        
+        function copyToClipboard() {
+            const outputText = document.getElementById('outputText');
+            outputText.select();
+            document.execCommand('copy');
+            alert('Template copied to clipboard!');
+        }
+        
+        function clearDropdown(selectId) {
+            const select = document.getElementById(selectId);
+            while (select.children.length > 1) {
+                select.removeChild(select.lastChild);
+            }
+            select.selectedIndex = 0;
+        }
+        
+        function hideElements() {
+            document.getElementById('templatePreview').classList.add('hidden');
+            document.getElementById('variableInputs').style.display = 'none';
+            document.getElementById('templateOutput').classList.add('hidden');
+        }
+        
+        // Initialize on page load
+        window.onload = function() {
+            initializeDropdowns();
+        };
+    </script>
+</body>
+</html>

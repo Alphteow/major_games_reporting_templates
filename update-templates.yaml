@@ -1,0 +1,35 @@
+
+# .github/workflows/update-templates.yml
+name: Update Templates
+on:
+  push:
+    paths:
+      - 'sports_templates.xlsx'
+  workflow_dispatch:
+
+jobs:
+  update-templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl
+          
+      - name: Convert Excel to JSON
+        run: |
+          python scripts/excel_to_json.py
+          
+      - name: Commit updated JSON
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/templates.json
+          git commit -m "Auto-update templates from Excel" || exit 0
+          git push

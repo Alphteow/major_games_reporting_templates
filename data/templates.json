@@ -1,0 +1,3740 @@
+[
+  {
+    "sport": "Gymnastics",
+    "event_category": "MEN ARTISTIC GYMNASTICS QUALIFICATION",
+    "gender": "Men",
+    "event_name": "Artistic Gymnastics",
+    "event_type": "Qualification",
+    "template": "*GYMNASTICS - MEN (ARTISTIC) {EVENT_NAME} QUALIFICATION*\n{NAME} (SGP)\nScore: {SCORE}. He finished {PLACEMENT} out of {TOTAL}. {ADVANCEMENT_INFO}.",
+    "fields": [
+      "EVENT_NAME",
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_INFO"
+    ],
+    "sample_data": "*GYMNASTICS - MEN (ARTISTIC) FLOOR EXERCISE QUALIFICATION*\nLIEW JUN YI ZAC (SGP)\nScore: 13.10. He finished 9th out of 27."
+  },
+  {
+    "sport": "Gymnastics",
+    "event_category": "MEN ARTISTIC GYMNASTICS FINAL",
+    "gender": "Men",
+    "event_name": "Artistic Gymnastics",
+    "event_type": "Final",
+    "template": "*GYMNASTICS - MEN (ARTISTIC) {EVENT_NAME} FINAL*\n{NAME} (SGP)\nScore: {SCORE}. He finished {PLACEMENT} out of {TOTAL}. {MEDAL_INFO}.",
+    "fields": [
+      "EVENT_NAME",
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL_INFO"
+    ],
+    "sample_data": "*GYMNASTICS - MEN (ARTISTIC) FLOOR EXERCISE FINAL*\nTAY WEI-AN TERRY (SGP)\nScore: 12.95. He finished 4th out of 7."
+  },
+  {
+    "sport": "Gymnastics",
+    "event_category": "MEN ARTISTIC GYMNASTICS TEAM FINAL",
+    "gender": "Men",
+    "event_name": "Artistic Gymnastics",
+    "event_type": "Team Final",
+    "template": "*GYMNASTICS - MEN (ARTISTIC) TEAM FINAL*\nTEAM OF {TEAM_MEMBERS} (SGP)\nScore: {SCORE}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*GYMNASTICS - MEN (ARTISTIC) TEAM FINAL*\nTEAM OF CHONG JER RONG, KHO TONG-YU, LIEW JUN YI ZAC, LIM JUNYI KAESON & TAY WEI-AN TERRY (SGP)\nScore: 288.00. SGP finished 4th out of 5."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN DOUBLES ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "Round Robin",
+    "template": "*SEPAK TAKRAW - MEN DOUBLES ROUND ROBIN*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE}. {COUNTRY_CODE} will play against {NEXT_OPPONENT_COUNTRY_CODE} today at {TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_OPPONENT_COUNTRY_CODE",
+      "TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN DOUBLES ROUND ROBIN*\nTEAM OF KHAIRUL FAHMI BIN YAZID, MUHAMMAD A'FIF BIN SAFIEE & MUHAMMAD RAMLI BIN SA'ARI (SGP)\nSGP VS MYA\nMYA beat SGP 2 - 0. SGP will play against CAM today at 1300hr (CAM time)."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN DOUBLES SEMI FINALS",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "3rd/4th Placing Match",
+    "template": "*SEPAK TAKRAW - MEN DOUBLES SEMI FINALS*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE}. {ADDITIONAL COMMENTS}. ",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "DATE",
+      "TIME",
+      "TIME_ZONE",
+      "ADDITIONAL COMMENTS"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN DOUBLES SEMI FINALS*\nTEAM OF KHAIRUL FAHMI BIN YAZID, MUHAMMAD A'FIF BIN SAFIEE & MUHAMMAD RAMLI BIN SA'ARI (SGP)\nSGP VS XXX\nSGP beat XXX ?? - ?? and has advanced to the Final which will be held on 15 May at 0900hr (CAM time). / XXX beat SGP ?? - ??. SGP has won the Joint Bronze medal."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN DOUBLES SEMI FINALS",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "Semi Finals",
+    "template": "*SEPAK TAKRAW - MEN DOUBLES SEMI FINALS*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY_CODE} {SCORE} and has advanced to the Final which will be held on {DATE} at {TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "DATE",
+      "TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN DOUBLES SEMI FINALS*\nTEAM OF KHAIRUL FAHMI BIN YAZID, MUHAMMAD A'FIF BIN SAFIEE & MUHAMMAD RAMLI BIN SA'ARI (SGP)\nSGP VS XXX\nSGP beat XXX ?? - ?? and has advanced to the Final which will be held on 15 May at 0900hr (CAM time). / XXX beat SGP ?? - ??. SGP has won the Joint Bronze medal."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN DOUBLES FINAL",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "Final",
+    "template": "*SEPAK TAKRAW - MEN DOUBLES FINAL*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY_CODE} {SCORE} and has won the {MEDAL} medal.",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN DOUBLES FINAL*\nTEAM OF KHAIRUL FAHMI BIN YAZID, MUHAMMAD A'FIF BIN SAFIEE & MUHAMMAD RAMLI BIN SA'ARI (SGP)\nSGP VS XXX\nSGP beat XXX 2 - 1 and has won the Gold medal. / XXX beat SGP 2 - 0. SGP has won the Silver medal"
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN QUADRANT ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Quadrant",
+    "event_type": "Round Robin",
+    "template": "*SEPAK TAKRAW - MEN QUADRANT ROUND ROBIN*\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE}. {COUNTRY_CODE} will play against {NEXT_OPPONENT_COUNTRY_CODE} today at {TIME} ({TIME_ZONE}).",
+    "fields": [
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_OPPONENT_COUNTRY_CODE",
+      "TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN QUADRANT ROUND ROBIN*\nSGP VS LAO\nLAO beat SGP 2 - 0. SGP will play against VIE today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN REGU ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Regu",
+    "event_type": "Round Robin",
+    "template": "*SEPAK TAKRAW - MEN REGU ROUND ROBIN*\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE}. {COUNTRY_CODE} will play against {NEXT_OPPONENT_COUNTRY_CODE} today at {TIME} ({TIME_ZONE}).",
+    "fields": [
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_OPPONENT_COUNTRY_CODE",
+      "TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN REGU ROUND ROBIN*\nSGP VS CAM\nSGP beat CAM 2 - 0. SGP will play against THA today at 1200hr (CAM time)."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN QUADRANT FINAL",
+    "gender": "Men",
+    "event_name": "Quadrant",
+    "event_type": "Final",
+    "template": "*SEPAK TAKRAW - MEN QUADRANT FINAL*\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY_CODE} {SCORE} and has won the Gold medal. / {OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE}. {COUNTRY_CODE} has won the Silver medal.",
+    "fields": [
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN QUADRANT FINAL*\nSGP VS XXX\nSGP beat XXX 2 - 1 and has won the Gold medal. / XXX beat SGP 2 - 0. SGP has won the Silver medal."
+  },
+  {
+    "sport": "Sepak Takraw",
+    "event_category": "SEPAK TAKRAW - MEN QUADRANT FINAL",
+    "gender": "Men",
+    "event_name": "Quadrant",
+    "event_type": "Final",
+    "template": "*SEPAK TAKRAW - MEN QUADRANT FINAL*\n{COUNTRY_CODE} VS {OPPONENT_COUNTRY_CODE}\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY_CODE} {SCORE} and has won the {MEDAL} medal.",
+    "fields": [
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE"
+    ],
+    "sample_data": "*SEPAK TAKRAW - MEN QUADRANT FINAL*\nSGP VS XXX\nSGP beat XXX 2 - 1 and has won the Gold medal. / XXX beat SGP 2 - 0. SGP has won the Silver medal."
+  },
+  {
+    "sport": "E-Sports",
+    "event_category": "ESPORTS MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM UPPER BRACKET",
+    "gender": "Mixed",
+    "event_name": "LEAGUE OF LEGENDS: WILD RIFT (MOBILE)",
+    "event_type": "Upper Bracket",
+    "template": "*ESPORTS - MIXED {EVENT_NAME}: {EVENT_TYPE}*\nSGP VS {TEAM1}\n{WINNER} beat {LOSER} {WINNER_SCORE} - {LOSER_SCORE}. {TEAM2} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "EVENT_NAME",
+      "EVENT_TYPE",
+      "TEAM1",
+      "WINNER",
+      "LOSER",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TEAM2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*ESPORTS - MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM UPPER BRACKET*\nSGP VS PHI\nPHI beat SGP 3 - 0. SGP will play against CAM in the Lower Bracket on 7 May at 1300hr (CAM time)."
+  },
+  {
+    "sport": "E-Sports",
+    "event_category": "ESPORTS MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM GROUP STAGE",
+    "gender": "Mixed",
+    "event_name": "LEAGUE OF LEGENDS: WILD RIFT (MOBILE)",
+    "event_type": "Group Stage",
+    "template": "*ESPORTS - MIXED {EVENT_NAME}: {EVENT_TYPE}*\nSGP VS {TEAM1}\n{WINNER} beat {LOSER} {WINNER_SCORE} - {LOSER_SCORE}. \n{TEAM2} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "EVENT_NAME",
+      "EVENT_TYPE",
+      "TEAM1",
+      "WINNER",
+      "LOSER",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TEAM2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*ESPORTS - MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM GROUP STAGE*\nSGP VS CAM\nSGP beat CAM 13 - 0.\nSGP will play against IND in the FINALS on 9/5 at 0900hr (CAM time)."
+  },
+  {
+    "sport": "E-Sports",
+    "event_category": "ESPORTS MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM SEMI FINAL",
+    "gender": "Mixed",
+    "event_name": "LEAGUE OF LEGENDS: WILD RIFT (MOBILE)",
+    "event_type": "Semi Final",
+    "template": "*ESPORTS - MIXED {EVENT_NAME}: {EVENT_TYPE}*\nSGP VS {TEAM1}\n{WINNER} beat {LOSER} {WINNER_SCORE} - {LOSER_SCORE}. \n{TEAM2} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}). ",
+    "fields": [
+      "EVENT_NAME",
+      "EVENT_TYPE",
+      "TEAM1",
+      "WINNER",
+      "LOSER",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TEAM2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*ESPORTS - MIXED LEAGUE OF LEGENDS: WILD RIFT (MOBILE) TEAM SEMI FINAL*\nSGP VS XXX\nSGP beat xxx ? - ?. / XXX beat SGP ? - ?.\nSGP has advanced to the Final and will play against xxx on 7 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "E-Sports",
+    "event_category": "ESPORTS MIXED VALORANT (PC) TEAM GROUP STAGE",
+    "gender": "Mixed",
+    "event_name": "VALORANT (PC)",
+    "event_type": "Group Stage",
+    "template": "*ESPORTS - MIXED {EVENT_NAME}: {EVENT_TYPE}*\nSGP VS {TEAM1}\n{WINNER} beat {LOSER} {WINNER_SCORE} - {LOSER_SCORE}. \n{TEAM2} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}). ",
+    "fields": [
+      "EVENT_NAME",
+      "EVENT_TYPE",
+      "TEAM1",
+      "WINNER",
+      "LOSER",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TEAM2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*ESPORTS - MIXED VALORANT (PC) TEAM GROUP STAGE*\nSGP VS VIE\nVIE beat SGP 14 - 12. SGP will play against INA today at 1700hr (CAM time)."
+  },
+  {
+    "sport": "E-Sports",
+    "event_category": "ESPORTS MEN MOBILE LEGENDS BANG BANG TEAM GROUP STAGE",
+    "gender": "Men",
+    "event_name": "MOBILE LEGENDS BANG BANG",
+    "event_type": "Group Stage",
+    "template": "*ESPORTS - MIXED {EVENT_NAME}: {EVENT_TYPE}*\nSGP VS {TEAM1}\n{WINNER} beat {LOSER} {WINNER_SCORE} - {LOSER_SCORE}. \n{TEAM2} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}). ",
+    "fields": [
+      "EVENT_NAME",
+      "EVENT_TYPE",
+      "TEAM1",
+      "WINNER",
+      "LOSER",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TEAM2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*ESPORTS - MEN MOBILE LEGENDS BANG BANG TEAM GROUP STAGE*\nSGP VS MYA\nMYA beat SGP 1 - 0.\nSGP will play against INA on 13 May at 1425hr (CAM time)."
+  },
+  {
+    "sport": "Billiards Sports",
+    "event_category": "MEN 6-RED SNOOKER SINGLES PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "6-RED SNOOKER SINGLES",
+    "event_type": "Preliminary Round",
+    "template": "*BILLIARDS SPORTS - MEN 6-RED SNOOKER SINGLES PRELIMINARY ROUND*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\n{WINNER} beat {LOSER} {SCORE}. SGP {will/will not} advance to the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "WILL_OR_WILL_NOT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*BILLIARDS SPORTS - MEN 6-RED SNOOKER SINGLES PRELIMINARY ROUND*\nONG JIA JUN (SGP) VS NAY MIN TUN (MYA)\nMYA beat SGP 5-2. SGP did not advance to the Pre-Quarter Round."
+  },
+  {
+    "sport": "Billiards Sports",
+    "event_category": "MEN ENGLISH BILLARD SINGLES PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "ENGLISH BILLARD SINGLES",
+    "event_type": "Preliminary Round",
+    "template": "*BILLIARDS SPORTS - MEN ENGLISH BILLARD SINGLES PRELIMINARY ROUND*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\n{WINNER} beat {LOSER} {SCORE}. SGP {will/will not} advance to the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "WILL_OR_WILL_NOT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*BILLIARDS SPORTS - MEN ENGLISH BILLARD SINGLES PRELIMINARY ROUND*\nPETER EDWARD GILCHRIST (SGP) VS XXX (XXX)\nSGP beat XXX ? - ? and has advanced to the Quarter Finals, which will be played on 8 May at 1600hr (CAM time). / XXX beat SGP ? - ?. SGP did not advance to the Quarter Finals."
+  },
+  {
+    "sport": "Billiards Sports",
+    "event_category": "MEN ENGLISH BILLARD SINGLES QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "ENGLISH BILLARD SINGLES",
+    "event_type": "Quarter Finals",
+    "template": "*BILLIARDS SPORTS - MEN ENGLISH BILLARD SINGLES QUARTER FINALS*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\n{WINNER} beat {LOSER} {SCORE}. SGP {will/will not} advance to the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "WILL_OR_WILL_NOT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*BILLIARDS SPORTS - MEN ENGLISH BILLARD SINGLES QUARTER FINALS*\nKARTHIK RAMASWAMY (SGP) VS YUTTAPOP PAKPOJ (THA)\nTHA beat SGP 3 - 0. SGP did not advance to the Quarter Finals."
+  },
+  {
+    "sport": "Billiards Sports",
+    "event_category": "MEN 6-RED SNOOKER SINGLES SEMI FINALS",
+    "gender": "Men",
+    "event_name": "6-RED SNOOKER SINGLES",
+    "event_type": "Semi Finals",
+    "template": "*BILLIARDS SPORTS - MEN 6-RED SNOOKER SINGLES SEMI FINALS*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\n{WINNER} beat {LOSER} {SCORE}. SGP {will/will not} advance to the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "WILL_OR_WILL_NOT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*BILLIARDS SPORTS - MEN 6-RED SNOOKER SINGLES SEMI FINALS*\nCHAN KENG KWANG (SGP) VS XXX (XXX)\nSGP beat XXX ? - ? and has advanced to the Final, which will be played on 9 May at 1300hr (CAM time). / XXX beat SGP ? - ?. SGP did not advance to the Final."
+  },
+  {
+    "sport": "Billiards Sports",
+    "event_category": "MEN ENGLISH BILLARD SINGLES FINAL",
+    "gender": "Men",
+    "event_name": "ENGLISH BILLARD SINGLES",
+    "event_type": "Final",
+    "template": "*BILLIARDS SPORTS - MEN 6-RED SNOOKER SINGLES FINALS*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\n{WINNER} beat {LOSER} {SCORE}. SGP won the {MEDAL} medal.",
+    "fields": [
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*BILLIARDS SPORTS - MEN ENGLISH BILLARD SINGLES FINAL*\nPETER EDWARD GILCHRIST (SGP) VS PAUK SA (MYA)\nMYA beat SGP 3 - 0 and SGP won the Silver medal."
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - MEN TEAM PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Preliminary Round",
+    "template": "*BEACH VOLLEYBALL - MEN TEAM PRELIMINARY ROUND*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - MEN TEAM PRELIMINARY ROUND*\nSGP VS THA\nTHA beat SGP 2 - 0. SGP will play against MAS on 12 May at 0940hr (CAM Time)"
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - WOMEN TEAM PRELIMINARY ROUND",
+    "gender": "Women",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Preliminary Round",
+    "template": "*BEACH VOLLEYBALL - WOMEN TEAM PRELIMINARY ROUND*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - WOMEN TEAM PRELIMINARY ROUND*\nSGP VS CAM\nSGP beat CAM 2 - 0. SGP will play against INA on 12 May at 1300hr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - MEN TEAM ROUND OF 12",
+    "gender": "Men",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Round of 12",
+    "template": "*BEACH VOLLEYBALL - MEN TEAM ROUND OF 12*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - MEN TEAM ROUND OF 12*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?. SGP will play against XXX on XX May at XXXXhr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - WOMEN TEAM SEMI FINALS",
+    "gender": "Women",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Semi Finals",
+    "template": "*BEACH VOLLEYBALL - WOMEN TEAM SEMI FINALS*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} in the {NEXT_STAGE} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_STAGE",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - WOMEN TEAM SEMI FINALS*\nSGP VS THA\nTHA beat SGP 2 - 0. SGP will play against VIE in the Bronze Medal Playoff on 16 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - MEN TEAM FINAL",
+    "gender": "Men",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Final",
+    "template": "*BEACH VOLLEYBALL - MEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {WINNER} has won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - MEN TEAM FINAL*\nSGP VS XXX\nSGP beat XXX ? - ? SGP has won the Gold medal/ XXX beat SGP ? - ?. SGP has won the Silver medal."
+  },
+  {
+    "sport": "Volleyball Beach",
+    "event_category": "BEACH VOLLEYBALL - WOMEN TEAM BRONZE MEDAL PLAYOFF",
+    "gender": "Women",
+    "event_name": "BEACH VOLLEYBALL",
+    "event_type": "Bronze Medal Playoff",
+    "template": "*BEACH VOLLEYBALL - WOMEN TEAM BRONZE MEDAL PLAYOFF*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*BEACH VOLLEYBALL - WOMEN TEAM BRONZE MEDAL PLAYOFF*\nSGP VS VIE\nVIE beat SGP 2 - 0. SGP finished 4th out of 7."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "MEN 250M GRAND FINAL",
+    "gender": "Men",
+    "event_name": "250M",
+    "event_type": "Grand Final",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (OPEN) {EVENT} {TYPE} {NUMBER}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL} and will be competing in {NEXT_EVENT} today at {TIME_NEXT} (CAM time).",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "NUMBER",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "NEXT_EVENT",
+      "TIME_NEXT"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - MEN 12 CREWS (OPEN) 250M GRAND FINAL 1*\nTime: 1:06.187\nSGP finished 4th out of 5 and will be competing in Grand Final 2 today at 1200hr (CAM time)."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "WOMEN 250M GRAND FINAL",
+    "gender": "Women",
+    "event_name": "250M",
+    "event_type": "Grand Final",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (U-24) {EVENT} {TYPE} {NUMBER}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL} and will be competing in {NEXT_EVENT} today at {TIME_NEXT} (CAM time).",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "NUMBER",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "NEXT_EVENT",
+      "TIME_NEXT"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - WOMEN 3 CREWS (U-24) 250M GRAND FINAL 1*\nTime: 2:18.20\nSGP finished 4th out of 4 and will be competing in Grand Final 2 today at 1130hr (CAM time)."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "MEN 250M GRAND FINAL",
+    "gender": "Men",
+    "event_name": "250M",
+    "event_type": "Grand Final",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (OPEN) {EVENT} {TYPE} {NUMBER}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL}. With a combined time of {COMBINED_TIME}, {COUNTRY} finished {OVERALL_PLACEMENT} overall.",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "NUMBER",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "COMBINED_TIME",
+      "OVERALL_PLACEMENT"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - MEN 12 CREWS (OPEN) 250M GRAND FINAL 2*\nTime: 1:06.371\nSGP finished 4th out of 4. With a combined time of 2:12.558, SGP finished 4th overall."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "WOMEN 250M GRAND FINAL",
+    "gender": "Women",
+    "event_name": "250M",
+    "event_type": "Grand Final",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (U-24) {EVENT} {TYPE} {NUMBER}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL}. With a combined time of {COMBINED_TIME}, {COUNTRY} finished {OVERALL_PLACEMENT} overall.",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "NUMBER",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "COMBINED_TIME",
+      "OVERALL_PLACEMENT"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - WOMEN 3 CREWS (U-24) 250M GRAND FINAL 2*\nTime: 2:18.963\nSGP finished 4th out of 4. With a combined time of 4:37.137, SGP finished 4th overall."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "MEN 500M HEATS",
+    "gender": "Men",
+    "event_name": "500M",
+    "event_type": "Heats",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (OPEN) {EVENT} {TYPE}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL} and qualified for the {NEXT_STAGE}.",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "NEXT_STAGE"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - MEN 12 CREWS (OPEN) 500M HEATS*\nTime: 2:15.586\nSGP finished 3rd out of 4 and qualified for the Semi Final."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "MEN 500M SEMI FINALS",
+    "gender": "Men",
+    "event_name": "500M",
+    "event_type": "Semi Finals",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (OPEN) {EVENT} {TYPE}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL} and qualified for the {NEXT_EVENT}, which will be held today at {TIME_NEXT} (CAM time).",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "NEXT_EVENT",
+      "TIME_NEXT"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - MEN 12 CREWS (OPEN) 500M SEMI FINALS*\nTime: 2:15.191\nSGP finished 3rd out of 3 and qualified for the Grand Final, which will be held today at 1500hr (CAM time)."
+  },
+  {
+    "sport": "Traditional Boat Racing",
+    "event_category": "MEN 500M GRAND FINAL",
+    "gender": "Men",
+    "event_name": "500M",
+    "event_type": "Grand Final",
+    "template": "*TRADITIONAL BOAT RACE - {GENDER} {CREWS} CREWS (OPEN) {EVENT} {TYPE}*\nTime: {TIME}\n{COUNTRY} finished {PLACEMENT} out of {TOTAL}. / and has won the {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "CREWS",
+      "EVENT",
+      "TYPE",
+      "TIME",
+      "COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*TRADITIONAL BOAT RACE - MEN 12 CREWS (OPEN) 500M GRAND FINAL*\nTime: \nSGP finished X out of X. / and has won the ___ medal."
+  },
+  {
+    "sport": "Floorball",
+    "event_category": "FLOORBALL MEN TEAM GROUP STAGE",
+    "gender": "Men",
+    "event_name": "TEAM",
+    "event_type": "GROUP STAGE",
+    "template": "{DATE}\nFLOORBALL - MEN TEAM GROUP STAGE\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "DATE",
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "12 May\nFLOORBALL - MEN TEAM GROUP STAGE\nSGP VS MAS\nSGP beat MAS 6 - 0. SGP will play against PHI on 14 May at 1215hr (CAM time)."
+  },
+  {
+    "sport": "Floorball",
+    "event_category": "FLOORBALL WOMEN TEAM GROUP STAGE",
+    "gender": "Women",
+    "event_name": "TEAM",
+    "event_type": "GROUP STAGE",
+    "template": "{DATE}\nFLOORBALL - WOMEN TEAM GROUP STAGE\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "DATE",
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "12 May\nFLOORBALL - WOMEN TEAM GROUP STAGE\nSGP VS MAS\nSGP beat MAS 13 - 0. SGP will play against PHI on 14 May at 1000hr (CAM time)."
+  },
+  {
+    "sport": "Floorball",
+    "event_category": "FLOORBALL MEN TEAM 3RD PLACING MATCH",
+    "gender": "Men",
+    "event_name": "TEAM",
+    "event_type": "3RD PLACING MATCH",
+    "template": "{DATE}\nFLOORBALL - MEN TEAM 3RD PLACING MATCH\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} finished {PLACEMENT} out of {TOTAL} and won the Bronze medal.",
+    "fields": [
+      "DATE",
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "16 May\nFLOORBALL - MEN TEAM 3RD PLACING MATCH\nSGP VS MAS\nSGP beat MAS 3 - 1. SGP finished 3rd out of 5 and won the Bronze medal."
+  },
+  {
+    "sport": "Floorball",
+    "event_category": "FLOORBALL WOMEN TEAM FINAL",
+    "gender": "Women",
+    "event_name": "TEAM",
+    "event_type": "FINAL",
+    "template": "{DATE}\nFLOORBALL - WOMEN TEAM FINAL\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} finished {PLACEMENT} out of {TOTAL} and won the Gold medal.",
+    "fields": [
+      "DATE",
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "16 May\nFLOORBALL - WOMEN TEAM FINAL\nSGP VS THA\nSGP beat THA 4 - 2. SGP finished 1st out of 5 and won the Gold medal."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF MEN INDIVIDUAL ROUND",
+    "gender": "Men",
+    "event_name": "Individual",
+    "event_type": "Round",
+    "template": "*GOLF - MEN INDIVIDUAL ROUND {ROUND_NUMBER}*\n{NAME} (SGP)\nIndividual Score of {SCORE} ({PAR_STATUS})\n{TOTAL_SCORE_INFO}\nHe is currently ranked {RANK} out of {TOTAL_PARTICIPANTS} after ROUND {ROUND_NUMBER}.",
+    "fields": [
+      "ROUND_NUMBER",
+      "NAME",
+      "SCORE",
+      "PAR_STATUS",
+      "TOTAL_SCORE_INFO",
+      "RANK",
+      "TOTAL_PARTICIPANTS"
+    ],
+    "sample_data": "*GOLF - MEN INDIVIDUAL ROUND 1*\nLOW DARYL MENG TIANG (SGP)\nIndividual Score of 73 (1 Over Par)\nHe is currently ranked joint 12th out of 32 after ROUND 1."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF WOMEN INDIVIDUAL ROUND",
+    "gender": "Women",
+    "event_name": "Individual",
+    "event_type": "Round",
+    "template": "*GOLF - WOMEN INDIVIDUAL ROUND {ROUND_NUMBER}*\n{NAME} (SGP)\nIndividual Score of {SCORE} ({PAR_STATUS})\n{TOTAL_SCORE_INFO}\nShe is currently ranked {RANK} out of {TOTAL_PARTICIPANTS} after ROUND {ROUND_NUMBER}.",
+    "fields": [
+      "ROUND_NUMBER",
+      "NAME",
+      "SCORE",
+      "PAR_STATUS",
+      "TOTAL_SCORE_INFO",
+      "RANK",
+      "TOTAL_PARTICIPANTS"
+    ],
+    "sample_data": "*GOLF - WOMEN INDIVIDUAL ROUND 1*\nATIENZA ALOYSA MARGIELA MABUTAS (SGP)\nIndividual Score of 71 (1 Under Par)\nShe is ranked 3rd out of 21 after ROUND 1."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF MEN INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "Individual",
+    "event_type": "Final",
+    "template": "*GOLF - MEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nIndividual Score of {SCORE} ({PAR_STATUS})\nTotal Score of {TOTAL_SCORE} ({TOTAL_PAR_STATUS})\nHe finished {FINAL_RANK} out of {TOTAL_PARTICIPANTS}.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PAR_STATUS",
+      "TOTAL_SCORE",
+      "TOTAL_PAR_STATUS",
+      "FINAL_RANK",
+      "TOTAL_PARTICIPANTS"
+    ],
+    "sample_data": "*GOLF - MEN INDIVIDUAL FINAL*\nRYAN JOHN ANG (SGP)\nIndividual Score of 67 (5 Under Par)\nTotal Score of 210 (6 Under Par)\nHe finished joint 8th out of 32."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF WOMEN INDIVIDUAL FINAL",
+    "gender": "Women",
+    "event_name": "Individual",
+    "event_type": "Final",
+    "template": "*GOLF - WOMEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nIndividual Score of {SCORE} ({PAR_STATUS})\nTotal Score of {TOTAL_SCORE} ({TOTAL_PAR_STATUS})\nShe finished {FINAL_RANK} out of {TOTAL_PARTICIPANTS}.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PAR_STATUS",
+      "TOTAL_SCORE",
+      "TOTAL_PAR_STATUS",
+      "FINAL_RANK",
+      "TOTAL_PARTICIPANTS"
+    ],
+    "sample_data": "*GOLF - WOMEN INDIVIDUAL FINAL*\nATIENZA ALOYSA MARGIELA MABUTAS (SGP)\nIndividual Score of 76 (4 Over Par)\nTotal Score of 215 (1 Under Par)\nShe finished joint 7th out of 20."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF MEN TEAM QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Team",
+    "event_type": "Quarter Finals",
+    "template": "*GOLF - MEN TEAM QUARTER FINALS*\nTEAM OF {TEAM_MEMBERS} (SGP)\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {SCORE}. SGP did not advance to the Semi Finals.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "OPPONENT",
+      "SCORE"
+    ],
+    "sample_data": "*GOLF - MEN TEAM QUARTER FINALS*\nTEAM OF HAN ZHEN GUANG BRANDON, LOW DARYL MENG TIANG & RYAN JOHN ANG (SGP)\nSGP VS INA\nTHA beat SGP 2.5 - 0.5. SGP did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Golf",
+    "event_category": "GOLF WOMEN TEAM QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "Team",
+    "event_type": "Quarter Finals",
+    "template": "*GOLF - WOMEN TEAM QUARTER FINALS*\nTEAM OF {TEAM_MEMBERS} (SGP)\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {SCORE} via Sudden Death playoff. SGP did not advance to the Semi Finals.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "OPPONENT",
+      "SCORE"
+    ],
+    "sample_data": "*GOLF - WOMEN TEAM QUARTER FINALS*\nTEAM OF ATIENZA ALOYSA MARGIELA MABUTAS & LOH SUANNE HAILEY (SGP)\nSGP VS INA\nINA beat SGP 1 - 1 via Sudden Death playoff. SGP did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Tennis",
+    "event_category": "TENNIS WOMEN TEAM ROUND ONE",
+    "gender": "Women",
+    "event_name": "Team",
+    "event_type": "Round One",
+    "template": "*TENNIS - WOMEN TEAM ROUND ONE*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{OPPONENT_COUNTRY} beat {COUNTRY_CODE} {SCORE}. {COUNTRY_CODE} did not advance to the {NEXT_ROUND}.",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*TENNIS - WOMEN TEAM ROUND ONE*\nTEAM OF ALEXIS LARA CHUA JIA EN, MICHELLE YEO SI TING, TAN SUE YAN & TONG YING SHAN AUDREY (SGP)\nCAM beat SGP 2 - 0. SGP did not advance to the Quarter Finals."
+  },
+  {
+    "sport": "Tennis",
+    "event_category": "TENNIS WOMEN TEAM QUARTER FINAL",
+    "gender": "Women",
+    "event_name": "Team",
+    "event_type": "Quarter Final",
+    "template": "*TENNIS - WOMEN TEAM QUARTER FINAL*\nTEAM OF {PLAYER_NAMES} ({COUNTRY_CODE})\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY} {SCORE} and advanced to the {NEXT_ROUND}. {COUNTRY_CODE} will play against {NEXT_OPPONENT} on {DATE} at {TIME} ({TIMEZONE}).",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "NEXT_OPPONENT",
+      "DATE",
+      "TIME",
+      "TIMEZONE"
+    ],
+    "sample_data": "*TENNIS - WOMEN TEAM QUARTER FINAL*\nTEAM OF ALEXIS LARA CHUA JIA EN, MICHELLE YEO SI TING, TAN SUE YAN & TONG YING SHAN AUDREY (SGP)\nSGP beat XXX ? - ? and advanced to the Semi Finals. SGP will play against XXX on XX May at XXXXhr (CAM time)."
+  },
+  {
+    "sport": "Tennis",
+    "event_category": "TENNIS WOMEN SINGLES ROUND ONE",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Round One",
+    "template": "*TENNIS - WOMEN SINGLES ROUND ONE*\n{PLAYER_NAME} ({COUNTRY_CODE}) VS {OPPONENT_NAME} ({OPPONENT_COUNTRY_CODE})\n{COUNTRY_CODE} beat {OPPONENT_COUNTRY_CODE} {SCORE} and advanced to the {NEXT_ROUND} (match details to be confirmed).",
+    "fields": [
+      "PLAYER_NAME",
+      "COUNTRY_CODE",
+      "OPPONENT_NAME",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*TENNIS - WOMEN SINGLES ROUND ONE*\nTAN SUE YAN (SGP) VS MALAYACK DELILAH PATHUMMAKURONEN (LAO)\nSGP beat LAO 2 - 0 and has advanced to the Quarter Finals (match details to be confirmed)."
+  },
+  {
+    "sport": "Tennis",
+    "event_category": "TENNIS WOMEN DOUBLES ROUND ONE",
+    "gender": "Women",
+    "event_name": "Doubles",
+    "event_type": "Round One",
+    "template": "*TENNIS - WOMEN DOUBLES ROUND ONE*\n{PLAYER_NAMES} ({COUNTRY_CODE}) VS {OPPONENT_NAMES} ({OPPONENT_COUNTRY_CODE})\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE} and did not advance to the {NEXT_ROUND}.",
+    "fields": [
+      "PLAYER_NAMES",
+      "COUNTRY_CODE",
+      "OPPONENT_NAMES",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*TENNIS - WOMEN DOUBLES ROUND ONE*\nALEXIS LARA CHUA JIA EN & MICHELLE YEO SI TING (SGP) VS KHIM ROMAN IGLUPAS & SHAIRA HOPE DIONSON RIVERA (PHI)\nPHI beat SGP 2 - 0 and did not advance to the Quarter Finals."
+  },
+  {
+    "sport": "Tennis",
+    "event_category": "TENNIS WOMEN SINGLES QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Quarter Finals",
+    "template": "*TENNIS - WOMEN SINGLES QUARTER FINALS*\n{PLAYER_NAME} (SGP) VS {OPPONENT_NAME} ({OPPONENT_COUNTRY_CODE})\n{OPPONENT_COUNTRY_CODE} beat {COUNTRY_CODE} {SCORE} and did not advance to the {NEXT_ROUND}.",
+    "fields": [
+      "PLAYER_NAME",
+      "COUNTRY_CODE",
+      "OPPONENT_NAME",
+      "OPPONENT_COUNTRY_CODE",
+      "SCORE",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*TENNIS - WOMEN SINGLES QUARTER FINALS*\nTAN SUE YAN (SGP) VS NGUYEN SAVANNA LY (VIE)\nVIE beat SGP 2 - 1 and did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Aquatics Swimming",
+    "event_category": "MEN 200M INDIVIDUAL MEDLEY HEAT",
+    "gender": "Men",
+    "event_name": "200M Individual Medley",
+    "event_type": "Heat",
+    "template": "*SWIMMING - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_STATUS"
+    ],
+    "sample_data": "*SWIMMING - MEN 200M INDIVIDUAL MEDLEY HEAT*\nMAXIMILLIAN ANG WEI (SGP)\nTime: 2:07.58. He finished 3rd out of 12 and qualified for the Final."
+  },
+  {
+    "sport": "Aquatics Swimming",
+    "event_category": "MEN 200M INDIVIDUAL MEDLEY FINAL",
+    "gender": "Men",
+    "event_name": "200M Individual Medley",
+    "event_type": "Final",
+    "template": "*SWIMMING - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*SWIMMING - MEN 200M INDIVIDUAL MEDLEY FINAL*\nZACHARY IAN TAN (SGP)\nTime: 2:02.42. He finished 3rd out of 8 and won the Bronze medal. He has set a new Personal Best."
+  },
+  {
+    "sport": "Aquatics Swimming",
+    "event_category": "WOMEN 200M BUTTERFLY FINAL",
+    "gender": "Women",
+    "event_name": "200M Butterfly",
+    "event_type": "Final",
+    "template": "*SWIMMING - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*SWIMMING - WOMEN 200M BUTTERFLY FINAL*\nQUAH JING WEN (SGP)\nTime: 2:10.63. She finished 1st out of 8 and won the Gold medal."
+  },
+  {
+    "sport": "Aquatics Swimming",
+    "event_category": "MEN 4 X 100M FREESTYLE RELAY FINAL",
+    "gender": "Men",
+    "event_name": "4 X 100M Freestyle Relay",
+    "event_type": "Final",
+    "template": "*SWIMMING - {GENDER} {EVENT} {TYPE}*\nTEAM OF {TEAM_MEMBERS} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "TEAM_MEMBERS",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*SWIMMING - MEN 4 X 100M FREESTYLE RELAY FINAL*\nTEAM OF JONATHAN TAN EU JIN, MIKKEL LEE JUN JIE, CHUA YI SHOU DARREN & QUAH ZHENG WEN (SGP)\nTime: 3:17.35. SGP finished 1st out of 8 and won the Gold medal."
+  },
+  {
+    "sport": "Aquatics Swimming",
+    "event_category": "WOMEN 4 X 200M FREESTYLE RELAY FINAL",
+    "gender": "Women",
+    "event_name": "4 X 200M Freestyle Relay",
+    "event_type": "Final",
+    "template": "*SWIMMING - {GENDER} {EVENT} {TYPE}*\nTEAM OF {TEAM_MEMBERS} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "TEAM_MEMBERS",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*SWIMMING - WOMEN 4 X 200M FREESTYLE RELAY FINAL*\nTEAM OF GAN CHING HWEE, ASHLEY LIM YI-XUAN, CHAN ZI YI & QUAH TING WEN (SGP)\nTime: 8:12.80. SGP finished 1st out of 6 and won the Gold medal."
+  },
+  {
+    "sport": "Volleyball Indoor",
+    "event_category": "MEN INDOOR VOLLEYBALL GROUP STAGE",
+    "gender": "Men",
+    "event_name": "Indoor Volleyball",
+    "event_type": "Group Stage",
+    "template": "*INDOOR VOLLEYBALL - MEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR VOLLEYBALL - MEN TEAM GROUP STAGE*\nSGP VS CAM\nCAM beat SGP 3 - 0. SGP will play against INA on 4 May at 1700hr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Indoor",
+    "event_category": "MEN INDOOR VOLLEYBALL 5TH TO 8TH PLACING PLAYOFFS",
+    "gender": "Men",
+    "event_name": "Indoor Volleyball",
+    "event_type": "5th to 8th Placing Playoffs",
+    "template": "*INDOOR VOLLEYBALL - MEN TEAM 5TH TO 8TH PLACING PLAYOFFS*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {WINNER} advanced to the {NEXT_MATCH}, which will be held on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_MATCH",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR VOLLEYBALL - MEN TEAM 5TH TO 8TH PLACING PLAYOFFS*\nSGP VS MYA\nSGP beat MYA 3 - 0. SGP advanced to the 5th placing match, which will be held on 8 May at 1430hr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Indoor",
+    "event_category": "MEN INDOOR VOLLEYBALL FINAL",
+    "gender": "Men",
+    "event_name": "Indoor Volleyball",
+    "event_type": "Final",
+    "template": "*INDOOR VOLLEYBALL - MEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {WINNER} has won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*INDOOR VOLLEYBALL - MEN TEAM FINAL*\nSGP VS XXX\nSGP beat XXX ? - ?. SGP has won the Gold medal."
+  },
+  {
+    "sport": "Volleyball Indoor",
+    "event_category": "WOMEN INDOOR VOLLEYBALL GROUP STAGE",
+    "gender": "Women",
+    "event_name": "Indoor Volleyball",
+    "event_type": "Group Stage",
+    "template": "*INDOOR VOLLEYBALL - WOMEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR VOLLEYBALL - WOMEN TEAM GROUP STAGE*\nSGP VS VIE\nVIE beat SGP 3 - 0. SGP will play against CAM on 10 May at 1930hr (CAM time)."
+  },
+  {
+    "sport": "Volleyball Indoor",
+    "event_category": "WOMEN INDOOR VOLLEYBALL 5TH TO 8TH PLACING",
+    "gender": "Women",
+    "event_name": "Indoor Volleyball",
+    "event_type": "5th to 8th Placing",
+    "template": "*INDOOR VOLLEYBALL - WOMEN TEAM 5TH TO 8TH PLACING*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE}. {WINNER} advanced to the {NEXT_MATCH} against {NEXT_OPPONENT}, which will be held on {NEXT_DATE} at {NEXT_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "NEXT_MATCH",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR VOLLEYBALL - WOMEN TEAM 5TH TO 8TH PLACING*\nSGP VS MYA\nSGP beat MYA 3 - 2. SGP advanced to the 5th placing match against MAS, which will be held on 14 May at 1430hr (CAM time)."
+  },
+  {
+    "sport": "Petanque",
+    "event_category": "PETANQUE - WOMEN SINGLES ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Round Robin",
+    "template": "*PETANQUE - WOMEN SINGLES ROUND ROBIN*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {WINNER_SCORE} - {LOSER_SCORE}.",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "WINNER_SCORE",
+      "LOSER_SCORE"
+    ],
+    "sample_data": "*PETANQUE - WOMEN SINGLES ROUND ROBIN*\nPAN YI HUI JOSEPHINE ANN (SGP) VS THI HONG THOA THAI (VIE)\nVIE beat SGP 11 - 6."
+  },
+  {
+    "sport": "Petanque",
+    "event_category": "PETANQUE - WOMEN SINGLES SEMI FINALS",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Semi Finals",
+    "template": "*PETANQUE - WOMEN SINGLES SEMI FINALS*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {WINNER_SCORE} - {LOSER_SCORE} and advances to the Final which will be held at {TIME} today. / {LOSER_COUNTRY} beat {WINNER_COUNTRY} {LOSER_SCORE} - {WINNER_SCORE}. She has won the joint Bronze medal.",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "TIME"
+    ],
+    "sample_data": "*PETANQUE - WOMEN SINGLES SEMI FINALS*\nPAN YI HUI JOSEPHINE ANN (SGP) VS xxxxxxx (xxx)\nSGP beat XXX 2 - 1 and advances to the Final which will be held at 1700hrs today. / XXX beat SGP 2 - 1. She has won the joint Bronze medal."
+  },
+  {
+    "sport": "Petanque",
+    "event_category": "PETANQUE - WOMEN SINGLES FINAL",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Final",
+    "template": "*PETANQUE - WOMEN SINGLES FINAL*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {WINNER_SCORE} - {LOSER_SCORE} and has won the {MEDAL_TYPE} medal. / {LOSER_COUNTRY} beat {WINNER_COUNTRY} {LOSER_SCORE} - {WINNER_SCORE}. She has won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "WINNER_SCORE",
+      "LOSER_SCORE",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*PETANQUE - WOMEN SINGLES FINAL*\nPAN YI HUI JOSEPHINE ANN (SGP) VS xxxxxxx (xxx)\nSGP beat XXX 2 - 1 and has won the Gold medal. / XXX beat SGP 2 - 1. She has won the Silver medal."
+  },
+  {
+    "sport": "Pencak Silat",
+    "event_category": "PENCAK SILAT MEN TUNGGAL QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Tunggal",
+    "event_type": "Quarter Finals",
+    "template": "*PENCAK SILAT - MEN TUNGGAL QUARTER FINALS*\n{ATHLETE1} (SGP) VS {ATHLETE2} (BRU)\nScore: {SCORE}. SGP beat BRU and advanced to the Semi Finals, which will be held on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "SCORE",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*PENCAK SILAT - MEN TUNGGAL QUARTER FINALS*\nMUHAMMAD IQBAL BIN ABDUL RAHMAN (SGP) VS MUHD ALI SAIFULLAH ABDULLAH MD SUHAIMI (BRU)\nScore: 9.935. SGP beat BRU and advanced to the Semi Finals, which will be held on 7 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Pencak Silat",
+    "event_category": "PENCAK SILAT MEN REGU QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Regu",
+    "event_type": "Quarter Finals",
+    "template": "*PENCAK SILAT - MEN REGU QUARTER FINALS*\nTEAM OF {ATHLETE1}, {ATHLETE2} & {ATHLETE3} (SGP) VS TEAM OF {ATHLETE4}, {ATHLETE5} & {ATHLETE6} (INA)\nScore: {SCORE}. INA beat SGP. SGP did not advance to the Semi Finals.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "ATHLETE3",
+      "ATHLETE4",
+      "ATHLETE5",
+      "ATHLETE6",
+      "SCORE"
+    ],
+    "sample_data": "*PENCAK SILAT - MEN REGU QUARTER FINALS*\nTEAM OF MUHAMMAD AFFIZ BIN MOHAMED ZAKRI, MUHAMMAD NAZRUL BIN MOHD KAMAL & MUHAMMADINIL MUSTAFAR BIN MOHD ISA (SGP) VS TEAM OF ANGGI FAISAL MUBAROK, RANO SLAMET NUGRAHA & ASEP YULDAN SANI (INA)\nScore: 9.925. INA beat SGP. SGP did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Pencak Silat",
+    "event_category": "PENCAK SILAT WOMEN TUNGGAL QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "Tunggal",
+    "event_type": "Quarter Finals",
+    "template": "*PENCAK SILAT - WOMEN TUNGGAL QUARTER FINALS*\n{ATHLETE1} (SGP) VS {ATHLETE2} (BRU)\nScore: {SCORE}. SGP beat BRU and advanced to the Semi Finals, which will be held on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "SCORE",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*PENCAK SILAT - WOMEN TUNGGAL QUARTER FINALS*\nSITI NAZURAH BINTE MOHD YUSOFF (SGP) VS NUR WASIQAH AZIEMAH BINTI ROSIHAN (BRU)\nScore: 9.940. SGP beat BRU and advanced to the Semi Finals, which will be held on 7 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Pencak Silat",
+    "event_category": "PENCAK SILAT WOMEN REGU QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "Regu",
+    "event_type": "Quarter Finals",
+    "template": "*PENCAK SILAT - WOMEN REGU QUARTER FINALS*\nTEAM OF {ATHLETE1}, {ATHLETE2} & {ATHLETE3} (SGP) VS TEAM OF {ATHLETE4}, {ATHLETE5} & {ATHLETE6} (VIE)\nScore: {SCORE}. SGP beat VIE and advanced to the Semi Finals, which will be held on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "ATHLETE3",
+      "ATHLETE4",
+      "ATHLETE5",
+      "ATHLETE6",
+      "SCORE",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*PENCAK SILAT - WOMEN REGU QUARTER FINALS*\nTEAM OF AMIRAH BINTE SAHRIN, IFFAH BATRISYIA BINTE NOH & NUR ASHIKIN BINTE ZULKIFLI (SGP) VS TEAM OF THUY LINH DUONG, PHUONG LINH NGUYEN & THI HOAI TRIEU (VIE)\nScore: 9.950. SGP beat VIE and advanced to the Semi Finals, which will be held on 7 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Pencak Silat",
+    "event_category": "PENCAK SILAT MEN TANDING A (45-50KG) QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Tanding A (45-50KG)",
+    "event_type": "Quarter Finals",
+    "template": "*PENCAK SILAT - MEN TANDING A (45-50KG) QUARTER FINALS*\n{ATHLETE1} (SGP) VS {ATHLETE2} (CAM)\n{COUNTRY} beat SGP {SCORE1} - {SCORE2}. {PRONOUN} did not advance to the Semi Finals.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "COUNTRY",
+      "SCORE1",
+      "SCORE2",
+      "PRONOUN"
+    ],
+    "sample_data": "*PENCAK SILAT - MEN TANDING A (45-50KG) QUARTER FINALS*\nMUHAMMAD SHAIMAN JOHANIS (SGP) VS VORN SOKSREYMOMPISAL (CAM)\nCAM beat SGP 63 - 50. He did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Hockey Field",
+    "event_category": "FIELD HOCKEY MEN TEAM POOL STAGE",
+    "gender": "Men",
+    "event_name": "FIELD HOCKEY",
+    "event_type": "POOL STAGE",
+    "template": "*FIELD HOCKEY - MEN TEAM POOL STAGE*\n{TEAM1} VS {TEAM2}\n{TEAM1} {RESULT} {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "RESULT",
+      "SCORE1",
+      "SCORE2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FIELD HOCKEY - MEN TEAM POOL STAGE*\nSGP VS INA\nSGP drew INA 2 - 2. SGP will play against MAS on 11 May at 1715hr (CAM time)."
+  },
+  {
+    "sport": "Hockey Field",
+    "event_category": "FIELD HOCKEY WOMEN TEAM POOL STAGE",
+    "gender": "Women",
+    "event_name": "FIELD HOCKEY",
+    "event_type": "POOL STAGE",
+    "template": "*FIELD HOCKEY - WOMEN TEAM POOL STAGE*\n{TEAM1} VS {TEAM2}\n{TEAM1} {RESULT} {TEAM2} {SCORE1} - {SCORE2}. {TEAM1} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "RESULT",
+      "SCORE1",
+      "SCORE2",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FIELD HOCKEY - WOMEN TEAM POOL STAGE*\nSGP VS INA\nSGP drew INA 2 - 2. SGP will play against MAS on 12 May at 0930hr (CAM time)."
+  },
+  {
+    "sport": "Hockey Field",
+    "event_category": "FIELD HOCKEY MEN TEAM FINAL",
+    "gender": "Men",
+    "event_name": "FIELD HOCKEY",
+    "event_type": "FINAL",
+    "template": "*FIELD HOCKEY - MEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{TEAM2} beat {TEAM1} {SCORE1} - {SCORE2}. {TEAM1} finished {PLACEMENT} out of {TOTAL_TEAMS} and won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "PLACEMENT",
+      "TOTAL_TEAMS",
+      "MEDAL"
+    ],
+    "sample_data": "*FIELD HOCKEY - MEN TEAM FINAL*\nSGP VS MAS\nMAS beat SGP 3 - 0. SGP finished 2nd out of 5 and won the Silver medal."
+  },
+  {
+    "sport": "Hockey Field",
+    "event_category": "FIELD HOCKEY WOMEN TEAM FINAL",
+    "gender": "Women",
+    "event_name": "FIELD HOCKEY",
+    "event_type": "FINAL",
+    "template": "*FIELD HOCKEY - WOMEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE1} - {SCORE2} / {TEAM2} beat {TEAM1} {SCORE1} - {SCORE2}. {TEAM1} has won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "SCORE1",
+      "SCORE2",
+      "MEDAL"
+    ],
+    "sample_data": "*FIELD HOCKEY - WOMEN TEAM FINAL*\nSGP VS XXX\nSGP beat XXX ?? - ?? / XXX beat SGP ?? - ??. SGP has won the ___ medal."
+  },
+  {
+    "sport": "Basketball",
+    "event_category": "BASKETBALL - WOMEN 3X3 PRELIMINARY ROUND",
+    "gender": "Women",
+    "event_name": "3X3",
+    "event_type": "Preliminary Round",
+    "template": "*BASKETBALL - WOMEN 3X3 PRELIMINARY ROUND*\nTEAM OF {PLAYER_NAMES} (SGP)\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {OPPONENT_SCORE} - {SGP_SCORE}. SGP will play against {NEXT_OPPONENT} today at {TIME} (CAM time).",
+    "fields": [
+      "PLAYER_NAMES",
+      "OPPONENT",
+      "OPPONENT_SCORE",
+      "SGP_SCORE",
+      "NEXT_OPPONENT",
+      "TIME"
+    ],
+    "sample_data": "*BASKETBALL - WOMEN 3X3 PRELIMINARY ROUND*\nTEAM OF ANG ZI YI LYDIA, CHOONG SI YING SARA, NAH WEI LIN DANIA ERVIANNY & TAN KANG YI (SGP)\nSGP VS INA\nINA beat SGP 21 - 11. SGP will play against CAM today at 1240hr (CAM time)."
+  },
+  {
+    "sport": "Basketball ",
+    "event_category": "BASKETBALL - MEN 3X3 PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "3X3",
+    "event_type": "Preliminary Round",
+    "template": "*BASKETBALL - MEN 3X3 PRELIMINARY ROUND*\nTEAM OF {PLAYER_NAMES} (SGP)\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {OPPONENT_SCORE} - {SGP_SCORE}. SGP will play against {NEXT_OPPONENT} today at {TIME} (CAM time).",
+    "fields": [
+      "PLAYER_NAMES",
+      "OPPONENT",
+      "OPPONENT_SCORE",
+      "SGP_SCORE",
+      "NEXT_OPPONENT",
+      "TIME"
+    ],
+    "sample_data": "*BASKETBALL - MEN 3X3 PRELIMINARY ROUND*\nTEAM OF CHUA CHONG AIK, CHONG MIN HAN, JONATHAN NG ZI BIN & TAN KIAN SENG BRANSON (SGP)\nSGP VS MAS\nMAS beat SGP 21 - 15. SGP will play against CAM today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Basketball",
+    "event_category": "BASKETBALL - MEN 3X3 7TH AND 8TH PLACING",
+    "gender": "Men",
+    "event_name": "3X3",
+    "event_type": "7th and 8th Placing",
+    "template": "*BASKETBALL - MEN 3X3 7TH AND 8TH PLACING*\nTEAM OF {PLAYER_NAMES} (SGP)\nSGP VS {OPPONENT}\nSGP beat {OPPONENT} {SGP_SCORE} - {OPPONENT_SCORE} and has won the 7th placing. / {OPPONENT} beat SGP {OPPONENT_SCORE} - {SGP_SCORE}. SGP has won the 8th placing.",
+    "fields": [
+      "PLAYER_NAMES",
+      "OPPONENT",
+      "SGP_SCORE",
+      "OPPONENT_SCORE"
+    ],
+    "sample_data": "*BASKETBALL - MEN 3X3 7TH AND 8TH PLACING*\nTEAM OF CHUA CHONG AIK, CHONG MIN HAN, JONATHAN NG ZI BIN & TAN KIAN SENG BRANSON (SGP)\nSGP VS XXX\nSGP beat XXX ?? - ?? and has won the 7th placing. / XXX beat SGP ?? - ??. SGP has won the 8th placing."
+  },
+  {
+    "sport": "Basketball",
+    "event_category": "BASKETBALL - WOMEN 5X5 PRELIMINARY ROUND",
+    "gender": "Women",
+    "event_name": "5X5",
+    "event_type": "Preliminary Round",
+    "template": "*BASKETBALL - WOMEN 5X5 PRELIMINARY ROUND*\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {OPPONENT_SCORE} - {SGP_SCORE}. SGP will play against {NEXT_OPPONENT} on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "OPPONENT",
+      "OPPONENT_SCORE",
+      "SGP_SCORE",
+      "NEXT_OPPONENT",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*BASKETBALL - WOMEN 5X5 PRELIMINARY ROUND*\nSGP VS THA\nTHA beat SGP 78 - 26. SGP will play against MAS on 10 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Basketball",
+    "event_category": "BASKETBALL - MEN 5X5 PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "5X5",
+    "event_type": "Preliminary Round",
+    "template": "*BASKETBALL - MEN 5X5 PRELIMINARY ROUND*\nSGP VS {OPPONENT}\n{OPPONENT} beat SGP {OPPONENT_SCORE} - {SGP_SCORE}. SGP will play against {NEXT_OPPONENT} on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "OPPONENT",
+      "OPPONENT_SCORE",
+      "SGP_SCORE",
+      "NEXT_OPPONENT",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*BASKETBALL - MEN 5X5 PRELIMINARY ROUND*\nSGP VS CAM\nCAM beat SGP 85 - 60. SGP will play against MAS on 11 May at 1300hr (CAM time)."
+  },
+  {
+    "sport": "Xiangqi",
+    "event_category": "XIANGQI MEN STANDARD SINGLE",
+    "gender": "Men",
+    "event_name": "STANDARD SINGLE",
+    "event_type": "Round",
+    "template": "*XIANGQI - MEN STANDARD SINGLE ROUND {ROUND_NUMBER}*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} {RESULT} {SCORE}. {PRONOUN} will play against {NEXT_OPPONENT_NAME} ({NEXT_OPPONENT_COUNTRY}) today at {TIME} (CAM time).",
+    "fields": [
+      "ROUND_NUMBER",
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "RESULT",
+      "SCORE",
+      "PRONOUN",
+      "NEXT_OPPONENT_NAME",
+      "NEXT_OPPONENT_COUNTRY",
+      "TIME"
+    ],
+    "sample_data": "*XIANGQI - MEN STANDARD SINGLE ROUND 1*\nNG JUNYANG (SGP) VS THANH BAO NGUYEN (VIE)\nVIE beat SGP 2 - 0. He will play against YOUNG ANGELO (PHI) today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Xiangqi",
+    "event_category": "XIANGQI WOMEN STANDARD SINGLE",
+    "gender": "Women",
+    "event_name": "STANDARD SINGLE",
+    "event_type": "Round",
+    "template": "*XIANGQI - WOMEN STANDARD SINGLE ROUND {ROUND_NUMBER}*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} {RESULT} {SCORE}. {PRONOUN} will play against {NEXT_OPPONENT_NAME} ({NEXT_OPPONENT_COUNTRY}) today at {TIME} (CAM time).",
+    "fields": [
+      "ROUND_NUMBER",
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "RESULT",
+      "SCORE",
+      "PRONOUN",
+      "NEXT_OPPONENT_NAME",
+      "NEXT_OPPONENT_COUNTRY",
+      "TIME"
+    ],
+    "sample_data": "*XIANGQI - WOMEN STANDARD SINGLE ROUND 1*\nFIONA TAN MIN FANG (SGP) VS THI KIM LOAN LE (VIE)\nSGP draw VIE 1 - 1. She will play against SURATSADA PROMSIRINIMIT (THA) today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Xiangqi",
+    "event_category": "XIANGQI MEN RAPID TEAM",
+    "gender": "Men",
+    "event_name": "RAPID TEAM",
+    "event_type": "Round",
+    "template": "*XIANGQI - MEN RAPID TEAM ROUND {ROUND_NUMBER}*\nSGP VS {OPPONENT_COUNTRY}\n{PLAYER1_NAME} & {PLAYER2_NAME} (SGP) VS {OPPONENT_PLAYER1_NAME} & {OPPONENT_PLAYER2_NAME}\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}.",
+    "fields": [
+      "ROUND_NUMBER",
+      "OPPONENT_COUNTRY",
+      "PLAYER1_NAME",
+      "PLAYER2_NAME",
+      "OPPONENT_PLAYER1_NAME",
+      "OPPONENT_PLAYER2_NAME",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE"
+    ],
+    "sample_data": "*XIANGQI - MEN RAPID TEAM ROUND 1*\nSGP VS MAS\nNG JUNYANG & LOW YI HAO (SGP) VS TAN YU HUAT & YEOH THEAN JERN\nMAS beat SGP 2 - 0."
+  },
+  {
+    "sport": "Xiangqi",
+    "event_category": "XIANGQI MEN BLITZ TEAM",
+    "gender": "Men",
+    "event_name": "BLITZ TEAM",
+    "event_type": "Round",
+    "template": "*XIANGQI - MEN BLITZ TEAM ROUND {ROUND_NUMBER}*\nSGP VS {OPPONENT_COUNTRY}\n{PLAYER1_NAME} & {PLAYER2_NAME} (SGP) VS {OPPONENT_PLAYER1_NAME} & {OPPONENT_PLAYER2_NAME}\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}. SGP finished {PLACEMENT} out of {TOTAL} and won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "ROUND_NUMBER",
+      "OPPONENT_COUNTRY",
+      "PLAYER1_NAME",
+      "PLAYER2_NAME",
+      "OPPONENT_PLAYER1_NAME",
+      "OPPONENT_PLAYER2_NAME",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*XIANGQI - MEN BLITZ TEAM ROUND 5*\nSGP VS MAS\nALVIN WOO TSUNG HAN & LOW YI HAO (SGP) VS YEOH THEAN JERN & SIM YIP HOW (MAS)\nSGP beat MAS 2 - 0. SGP finished 1st out of 6 and won the Gold medal."
+  },
+  {
+    "sport": "Aquatics Diving",
+    "event_category": "WOMEN 3M SPRINGBOARD FINAL",
+    "gender": "Women",
+    "event_name": "3M Springboard",
+    "event_type": "Final",
+    "template": "*DIVING - WOMEN 3M SPRINGBOARD FINAL*\n{NAME} (SGP)\nScore: {SCORE} She finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*DIVING - WOMEN 3M SPRINGBOARD FINAL*\nALYCIA CHARLOTTE LIM (SGP)\nScore: 212.90 She finished 6th out of 9."
+  },
+  {
+    "sport": "Aquatics Diving",
+    "event_category": "MEN 3M SPRINGBOARD FINAL",
+    "gender": "Men",
+    "event_name": "3M Springboard",
+    "event_type": "Final",
+    "template": "*DIVING - MEN 3M SPRINGBOARD FINAL*\n{NAME} (SGP)\nScore: {SCORE}. He finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*DIVING - MEN 3M SPRINGBOARD FINAL*\nAVVIR THAM PAC LUN (SGP)\nScore: 360.40. He finished 3rd out of 7 and won the Bronze medal."
+  },
+  {
+    "sport": "Aquatics Diving",
+    "event_category": "WOMEN 10M PLATFORM FINAL",
+    "gender": "Women",
+    "event_name": "10M Platform",
+    "event_type": "Final",
+    "template": "*DIVING - WOMEN 10M PLATFORM FINAL*\n{NAME} (SGP)\nScore: {SCORE}. She finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*DIVING - WOMEN 10M PLATFORM FINAL*\nONG REI EN (SGP)\nScore: 188.10. She finished 6th out of 8."
+  },
+  {
+    "sport": "Aquatics Diving",
+    "event_category": "MEN 10M PLATFORM FINAL",
+    "gender": "Men",
+    "event_name": "10M Platform",
+    "event_type": "Final",
+    "template": "*DIVING - MEN 10M PLATFORM FINAL*\n{NAME} (SGP)\nScore: {SCORE}. He finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*DIVING - MEN 10M PLATFORM FINAL*\nLEE SHEN OON MAX (SGP)\nScore: 362.80. He finished 3rd out of 8 and won the Bronze medal."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - MEN TEAM GROUP STAGE",
+    "gender": "Men",
+    "event_name": "TEAM",
+    "event_type": "GROUP STAGE",
+    "template": "*FOOTBALL - MEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} - {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE_WINNER",
+      "SCORE_LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FOOTBALL - MEN TEAM GROUP STAGE*\nSGP VS THA\nTHA beat SGP 3 - 1. SGP will play against VIE in the next match on 3 May at 1600hr (CAM Time)."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - WOMEN TEAM GROUP STAGE",
+    "gender": "Women",
+    "event_name": "TEAM",
+    "event_type": "GROUP STAGE",
+    "template": "*FOOTBALL - WOMEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} - {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE_WINNER",
+      "SCORE_LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FOOTBALL - WOMEN TEAM GROUP STAGE*\nSGP VS THA\nTHA beat SGP 4 - 0. SGP will play against CAM on 6 May at 2000hr (CAM Time)."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - MEN TEAM SEMI FINALS",
+    "gender": "Men",
+    "event_name": "TEAM",
+    "event_type": "SEMI FINALS",
+    "template": "*FOOTBALL - MEN TEAM SEMI FINALS*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ? / {LOSER} beat {WINNER} ? - ?. {WINNER} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FOOTBALL - MEN TEAM SEMI FINALS*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?. SGP will play against XXX in the 3rd placing match/final match on 16 May at XXXXhr (CAM Time)."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - WOMEN TEAM SEMI FINALS",
+    "gender": "Women",
+    "event_name": "TEAM",
+    "event_type": "SEMI FINALS",
+    "template": "*FOOTBALL - WOMEN TEAM SEMI FINALS*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ? / {LOSER} beat {WINNER} ? - ?. {WINNER} will play against {NEXT_OPPONENT} in the {NEXT_MATCH_TYPE} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_TYPE",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*FOOTBALL - WOMEN TEAM SEMI FINALS*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?. SGP will play against XXX in the Final on ___ at XXXXhr (CAM Time)."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - WOMEN TEAM 3RD PLACING MATCH",
+    "gender": "Women",
+    "event_name": "TEAM",
+    "event_type": "3RD PLACING MATCH",
+    "template": "*FOOTBALL - WOMEN TEAM 3RD PLACING MATCH*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ? / {LOSER} beat {WINNER} ? - ?. {WINNER} has won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*FOOTBALL - WOMEN TEAM 3RD PLACING MATCH*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?. SGP has won the ___ medal."
+  },
+  {
+    "sport": "Football",
+    "event_category": "FOOTBALL - MEN TEAM 3RD PLACING MATCH",
+    "gender": "Men",
+    "event_name": "TEAM",
+    "event_type": "3RD PLACING MATCH",
+    "template": "*FOOTBALL - MEN TEAM 3RD PLACING MATCH*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ? / {LOSER} beat {WINNER} ? - ?. {WINNER} has won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*FOOTBALL - MEN TEAM 3RD PLACING MATCH*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?. SGP has won the ___ medal."
+  },
+  {
+    "sport": "Sailing Whatsapp Template .docx",
+    "event_category": "SAILING - MEN ILCA7 FLEET RACING",
+    "gender": "Men",
+    "event_name": "ILCA7",
+    "event_type": "Fleet Racing",
+    "template": "*SAILING - MEN ILCA7 FLEET RACING DAY {DAY}*\n{NAME} (SGP)\nTotal Points: {POINTS}. He is currently ranked {RANK} out of {TOTAL} after {RACES} races.\nRound {NEXT_ROUND} will be held on {NEXT_DATE} at {TIME} (CAM time).",
+    "fields": [
+      "DAY",
+      "NAME",
+      "POINTS",
+      "RANK",
+      "TOTAL",
+      "RACES",
+      "NEXT_ROUND",
+      "NEXT_DATE",
+      "TIME"
+    ],
+    "sample_data": "*SAILING - MEN ILCA7 FLEET RACING DAY 1*\nLO JUN HAN RYAN (SGP)\nTotal Points: 4. He is currently ranked 1st out of 6 after 3 races.\nRound 2 will be held on 3 May at 1030hr (CAM time)."
+  },
+  {
+    "sport": "Sailing Whatsapp Template .docx",
+    "event_category": "SAILING - MIXED 29ER OPEN FLEET RACING",
+    "gender": "Mixed",
+    "event_name": "29ER",
+    "event_type": "Open Fleet Racing",
+    "template": "*SAILING - MIXED 29ER OPEN FLEET RACING DAY {DAY}*\n{NAMES} (SGP)\nTotal Points: {POINTS}. SGP is currently ranked {RANK} out of {TOTAL} after {RACES} races.\nRound {NEXT_ROUND} will be held on {NEXT_DATE} at {TIME} (CAM time).",
+    "fields": [
+      "DAY",
+      "NAMES",
+      "POINTS",
+      "RANK",
+      "TOTAL",
+      "RACES",
+      "NEXT_ROUND",
+      "NEXT_DATE",
+      "TIME"
+    ],
+    "sample_data": "*SAILING - MIXED 29ER OPEN FLEET RACING DAY 1*\nELLYN TAN JIAMIN & CHIA TECK PIN (SGP)\nTotal Points: 7. SGP is currently ranked 3rd out of 5 after 3 races.\nRound 2 will be held on 3 May at 1040hr (CAM time)."
+  },
+  {
+    "sport": "Sailing Whatsapp Template .docx",
+    "event_category": "SAILING - WOMEN ILCA6 FLEET RACING",
+    "gender": "Women",
+    "event_name": "ILCA6",
+    "event_type": "Fleet Racing",
+    "template": "*SAILING - WOMEN ILCA6 FLEET RACING DAY {DAY}*\n{NAME} (SGP)\nTotal Points: {POINTS}. She is currently ranked {RANK} out of {TOTAL} after {RACES} races.\nRound {NEXT_ROUND} will be held on {NEXT_DATE} at {TIME} (CAM time).",
+    "fields": [
+      "DAY",
+      "NAME",
+      "POINTS",
+      "RANK",
+      "TOTAL",
+      "RACES",
+      "NEXT_ROUND",
+      "NEXT_DATE",
+      "TIME"
+    ],
+    "sample_data": "*SAILING - WOMEN ILCA6 FLEET RACING DAY 1*\nANG JANIA (SGP)\nTotal Points: 4. She is currently ranked 1st out of 5 after 3 races.\nRound 2 will be held on 3 May at 1030hr (CAM time)."
+  },
+  {
+    "sport": "Sailing Whatsapp Template .docx",
+    "event_category": "SAILING - MEN WINDSURFING RS:X FLEET RACING",
+    "gender": "Men",
+    "event_name": "WINDSURFING RS:X",
+    "event_type": "Fleet Racing",
+    "template": "*SAILING - MEN WINDSURFING RS:X FLEET RACING DAY {DAY}*\n{NAME} (SGP)\nTotal Points: {POINTS}. He is currently ranked {RANK} out of {TOTAL} after {RACES} races.\nRound {NEXT_ROUND} will be held on {NEXT_DATE} at {TIME} (CAM time).",
+    "fields": [
+      "DAY",
+      "NAME",
+      "POINTS",
+      "RANK",
+      "TOTAL",
+      "RACES",
+      "NEXT_ROUND",
+      "NEXT_DATE",
+      "TIME"
+    ],
+    "sample_data": "*SAILING - MEN WINDSURFING RS:X FLEET RACING DAY 1*\nJAYSON TAN JIAN SEN (SGP)\nTotal Points: 5. He is currently ranked 1st out of 4 after 3 races.\nRound 2 will be held on 3 May at 1030hr (CAM time)."
+  },
+  {
+    "sport": "Sailing Whatsapp Template .docx",
+    "event_category": "SAILING - MIXED OPTIMIST FLEET RACING",
+    "gender": "Mixed",
+    "event_name": "OPTIMIST",
+    "event_type": "Fleet Racing",
+    "template": "*SAILING - MIXED OPTIMIST FLEET RACING DAY {DAY}*\n{NAME} (SGP)\nTotal Points: {POINTS}. {PRONOUN} is currently ranked {RANK} out of {TOTAL} after {RACES} races.\nRound {NEXT_ROUND} will be held on {NEXT_DATE} at {TIME} (CAM time).",
+    "fields": [
+      "DAY",
+      "NAME",
+      "POINTS",
+      "PRONOUN",
+      "RANK",
+      "TOTAL",
+      "RACES",
+      "NEXT_ROUND",
+      "NEXT_DATE",
+      "TIME"
+    ],
+    "sample_data": "*SAILING - MIXED OPTIMIST FLEET RACING DAY 1*\nETHAN CHIA HAN WEI (SGP)\nTotal Points: 8. He is currently ranked 3rd out of 10 after 3 races.\nRound 2 will be held on 3 May at 1030hr (CAM time)."
+  },
+  {
+    "sport": "Teqball",
+    "event_category": "TEQBALL WOMEN SINGLES GROUP STAGE",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Group Stage",
+    "template": "*TEQBALL (DEMO SPORT) - WOMEN SINGLES GROUP STAGE*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?? - ??. {WINNER_COUNTRY} will play against {NEXT_OPPONENT_COUNTRY} at {NEXT_MATCH_TIME} today (CAM time).",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "NEXT_OPPONENT_COUNTRY",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*TEQBALL (DEMO SPORT) - WOMEN SINGLES GROUP STAGE*\nSHARIFAH NUR AMANINA BTE SYED MOHD SHAHAB (SGP) VS ZAMRI SITIASNIDAH (MAS)\nSGP beat MAS ?? - ??. SGP will play against INA at 1100hr today (CAM time)."
+  },
+  {
+    "sport": "Teqball",
+    "event_category": "TEQBALL WOMEN SINGLES SEMI FINALS",
+    "gender": "Women",
+    "event_name": "Singles",
+    "event_type": "Semi Finals",
+    "template": "*TEQBALL (DEMO SPORT) - WOMEN SINGLES SEMI FINALS*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?? - ?? and has advanced to the Final, which will be held on {FINAL_DATE} at {FINAL_TIME} (CAM time). / {LOSER_COUNTRY} beat {WINNER_COUNTRY} ?? - ??. {WINNER_COUNTRY} will play the Bronze medal match at {BRONZE_MATCH_TIME} today (CAM time).",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "FINAL_DATE",
+      "FINAL_TIME",
+      "BRONZE_MATCH_TIME"
+    ],
+    "sample_data": "*TEQBALL (DEMO SPORT) - WOMEN SINGLES SEMI FINALS*\nSHARIFAH NUR AMANINA BTE SYED MOHD SHAHAB (SGP) VS XXX? (XXX)\nSGP beat XXX ?? - ?? and has advanced to the Final, which will be held on 8 May at 1600hr (CAM time). / XXX beat SGP ?? - ??. SGP will play the Bronze medal match at 1630hr today (CAM time)."
+  },
+  {
+    "sport": "Teqball",
+    "event_category": "TEQBALL MEN SINGLES GROUP STAGE",
+    "gender": "Men",
+    "event_name": "Singles",
+    "event_type": "Group Stage",
+    "template": "*TEQBALL (DEMO SPORT) - MEN SINGLES GROUP STAGE*\n{PLAYER1_NAME} ({PLAYER1_COUNTRY}) VS {PLAYER2_NAME} ({PLAYER2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?? - ?? OR {LOSER_COUNTRY} beat {WINNER_COUNTRY} ?? - ??. {WINNER_COUNTRY} will play against {NEXT_OPPONENT_COUNTRY} at {NEXT_MATCH_TIME} today (CAM time).",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER1_COUNTRY",
+      "PLAYER2_NAME",
+      "PLAYER2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "NEXT_OPPONENT_COUNTRY",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*TEQBALL (DEMO SPORT) - MEN SINGLES GROUP STAGE*\nMOHAMED FAROOK MOHAMED FARHAN (SGP) VS YOGA ARDIKA PUTRA (INA)\nSGP beat INA ?? - ?? OR INA beat SGP ?? - ??. SGP will play against CAM 2 at 1030hr today (CAM time)."
+  },
+  {
+    "sport": "Teqball",
+    "event_category": "TEQBALL MEN DOUBLES GROUP STAGE",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "Group Stage",
+    "template": "*TEQBALL (DEMO SPORT) - MEN DOUBLES GROUP STAGE*\n{PLAYER1_NAME} & {PLAYER2_NAME} (SGP) VS {OPPONENT1_NAME} & {OPPONENT2_NAME} ({OPPONENT_COUNTRY})\nSGP beat {OPPONENT_COUNTRY} ?? - ??. OR {OPPONENT_COUNTRY} beat SGP ?? - ??. SGP will play against {NEXT_OPPONENT_COUNTRY} at {NEXT_MATCH_TIME} today (CAM time).",
+    "fields": [
+      "PLAYER1_NAME",
+      "PLAYER2_NAME",
+      "OPPONENT1_NAME",
+      "OPPONENT2_NAME",
+      "OPPONENT_COUNTRY",
+      "NEXT_OPPONENT_COUNTRY",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*TEQBALL (DEMO SPORT) - MEN DOUBLES GROUP STAGE*\nMUHAMMAD FAHRISH KHAN BIN FAHROSH KHAN & MUHAMMAD FARIZ BIN MUHAMMAD FAIZAL (SGP) VS BENDIKTUS BUDI SETYOKO & HUSNI UBA (INA)\nSGP beat INA ?? - ??. OR INA beat SGP ?? - ??. SGP will play against CAM 1 at 1000hr today (CAM time)."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "WOMEN 54KG QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "54KG",
+    "event_type": "Quarter Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}. {PRONOUN} did not advance to the {NEXT_ROUND}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "PRONOUN",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*BOXING - WOMEN 54KG QUARTER FINALS*\nRAFHANA BINTE ROSLI (SGP) VS NOVITA SINADIA (INA)\nINA beat SGP 5 - 0. She did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "MEN 71KG QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "71KG",
+    "event_type": "Quarter Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY}, {METHOD}. {PRONOUN} did not advance to the {NEXT_ROUND}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "METHOD",
+      "PRONOUN",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*BOXING - MEN 71KG QUARTER FINALS*\nMUHAMMAD KHIDHIR BIN SANIFF (SGP) VS DELIO ANZAQECI MOUZINHO (TLS)\nTLS beat SGP, Referee Stopped Contest. He did not advance to the Semi Finals."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "MEN 67KG QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "67KG",
+    "event_type": "Quarter Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE} and advanced to the {NEXT_ROUND} against {NEXT_OPPONENT} ({NEXT_OPPONENT_COUNTRY}), which will be held on {DATE}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "NEXT_OPPONENT",
+      "NEXT_OPPONENT_COUNTRY",
+      "DATE"
+    ],
+    "sample_data": "*BOXING - MEN 67KG QUARTER FINALS*\nTAN JUN JIE VELVAN (SGP) VS PENH VANTHUNG (CAM)\nSGP beat CAM 3 - 2 and advanced to the Semi Finals against NORLAN ALCAYDE PETECIO (PHI), which will be held on 10 May."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "WOMEN 63KG SEMI FINALS",
+    "gender": "Women",
+    "event_name": "63KG",
+    "event_type": "Semi Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}. {LOSER_COUNTRY} did not advance to the {NEXT_ROUND} and won the joint {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "MEDAL"
+    ],
+    "sample_data": "*BOXING - WOMEN 63KG SEMI FINALS*\nNUR SABRINA BINTE MOHD FAIZAL (SGP) VS RIZA LEGASPI PASUIT (PHI)\nPHI beat SGP 4 - 1. SGP did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "MEN 80KG SEMI FINALS",
+    "gender": "Men",
+    "event_name": "80KG",
+    "event_type": "Semi Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} by {METHOD}. {PRONOUN} did not advance to the {NEXT_ROUND} and won the joint {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "METHOD",
+      "PRONOUN",
+      "NEXT_ROUND",
+      "MEDAL"
+    ],
+    "sample_data": "*BOXING - MEN 80KG SEMI FINALS*\nMUHAMMAD DANISH BIN HUSLI (SGP) VS WEERAPON JONGJOHO (THA)\nTHA beat SGP by Referee Stopped Contest (RSC). He did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "MEN 67KG SEMI FINALS",
+    "gender": "Men",
+    "event_name": "67KG",
+    "event_type": "Semi Finals",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}. {LOSER_COUNTRY} did not advance to the {NEXT_ROUND} and won the joint {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "MEDAL"
+    ],
+    "sample_data": "*BOXING - MEN 67KG SEMI FINALS*\nTAN JUN JIE VELVAN (SGP) VS NORLAN ALCAYDE PETECIO (PHI)\nPHI beat SGP 4 - 1. SGP did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Boxing",
+    "event_category": "WOMEN 63KG FINAL",
+    "gender": "Women",
+    "event_name": "63KG",
+    "event_type": "Final",
+    "template": "*BOXING - {GENDER} {EVENT} {TYPE}*\n{ATHLETE1_NAME} ({ATHLETE1_COUNTRY}) VS {ATHLETE2_NAME} ({ATHLETE2_COUNTRY})\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE} - {SCORE}. {PRONOUN} has won the {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE1_NAME",
+      "ATHLETE1_COUNTRY",
+      "ATHLETE2_NAME",
+      "ATHLETE2_COUNTRY",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "PRONOUN",
+      "MEDAL"
+    ],
+    "sample_data": "*BOXING - WOMEN 63KG FINAL*\nNUR SABRINA BINTE MOHD FAIZAL (SGP) VS XXXXXX (XXX)\nSGP beat XXX ?? - ?? and has won the Gold medal.\nXXX beat SGP ?? - ??. She has won the Silver medal."
+  },
+  {
+    "sport": "Wrestling",
+    "event_category": "MEN GRECO-ROMAN 60KG ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "GRECO-ROMAN 60KG",
+    "event_type": "Round Robin",
+    "template": "*WRESTLING - MEN GRECO-ROMAN {WEIGHT}KG ROUND ROBIN*\n{WRESTLER1} ({COUNTRY1}) vs {WRESTLER2} ({COUNTRY2})\n{COUNTRY2} beat {COUNTRY1} {SCORE1} - {SCORE2}.\n{WRESTLER1} ({COUNTRY1}) vs {WRESTLER3} ({COUNTRY3})\n{COUNTRY3} beat {COUNTRY1} {SCORE3} - {SCORE4}.\n{WRESTLER1} ({COUNTRY1}) vs {WRESTLER4} ({COUNTRY4})\n{COUNTRY1} beat {COUNTRY4} {SCORE5} - {SCORE6}.\n{COUNTRY1} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+    "fields": [
+      "WEIGHT",
+      "WRESTLER1",
+      "COUNTRY1",
+      "WRESTLER2",
+      "COUNTRY2",
+      "SCORE1",
+      "SCORE2",
+      "WRESTLER3",
+      "COUNTRY3",
+      "SCORE3",
+      "SCORE4",
+      "WRESTLER4",
+      "COUNTRY4",
+      "SCORE5",
+      "SCORE6",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*WRESTLING - MEN GRECO-ROMAN 60KG ROUND ROBIN*\nEDDY ZULQARNAIN BIN KHIDZER (SGP) vs TIENHAI BUI (VIE)\nVIE beat SGP 8 - 0.\nEDDY ZULQARNAIN BIN KHIDZER (SGP) vs BUNNA YON (CAM)\nCAM beat SGP 9 - 1.\nEDDY ZULQARNAIN BIN KHIDZER (SGP) vs BOUNTHIEN KOMMALAXA (LAO)\nSGP beat LAO 10 - 4.\nSGP finished 3rd out of 4 and won the Bronze medal."
+  },
+  {
+    "sport": "Wrestling",
+    "event_category": "WOMEN WRESTLING 53KG ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "WRESTLING 53KG",
+    "event_type": "Round Robin",
+    "template": "*WRESTLING - WOMEN WRESTLING {WEIGHT}KG ROUND ROBIN*\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER2} ({COUNTRY2})\n{COUNTRY2} beat {COUNTRY1} {SCORE1} - {SCORE2} ({RESULT}).\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER3} ({COUNTRY3})\n{COUNTRY3} beat {COUNTRY1} {SCORE3} - {SCORE4} ({RESULT}).\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER4} ({COUNTRY4})\n{COUNTRY4} beat {COUNTRY1} X - X.\n{COUNTRY1} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "WEIGHT",
+      "WRESTLER1",
+      "COUNTRY1",
+      "WRESTLER2",
+      "COUNTRY2",
+      "SCORE1",
+      "SCORE2",
+      "RESULT",
+      "WRESTLER3",
+      "COUNTRY3",
+      "SCORE3",
+      "SCORE4",
+      "WRESTLER4",
+      "COUNTRY4",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*WRESTLING - WOMEN WRESTLING 53KG ROUND ROBIN*\nLIM HSIAO PING ALVINA (SGP) VS MARIBELJAMBORA ANGANA(PHI)\nPHI beat SGP 2 - 0 (Won by Fall).\nLIM HSIAO PING ALVINA (SGP) VS MUTIARA AYUNINGTIAS (INA)\nINA beat SGP 2 - 0 (Won by Fall).\nLIM HSIAO PING ALVINA (SGP) VS SAMNANG DIT (CAM)\nCAM beat SGP X - X.\nSGP finished 5th out of 5."
+  },
+  {
+    "sport": "Wrestling",
+    "event_category": "MEN FREESTYLE 65KG ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "FREESTYLE 65KG",
+    "event_type": "Round Robin",
+    "template": "*WRESTLING - MEN FREESTYLE {WEIGHT}KG ROUND ROBIN*\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER2} ({COUNTRY2})\n{COUNTRY1} beat {COUNTRY2} {SCORE1} - {SCORE2}.\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER3} ({COUNTRY3})\n{COUNTRY3} retired from the match due to injury.\n{WRESTLER1} ({COUNTRY1}) VS {WRESTLER4} ({COUNTRY4})\n{COUNTRY4} beat {COUNTRY1} {SCORE3} - {SCORE4}.\n{COUNTRY1} finished {PLACEMENT} out of {TOTAL} and advanced to the Semi Finals.",
+    "fields": [
+      "WEIGHT",
+      "WRESTLER1",
+      "COUNTRY1",
+      "WRESTLER2",
+      "COUNTRY2",
+      "SCORE1",
+      "SCORE2",
+      "WRESTLER3",
+      "COUNTRY3",
+      "WRESTLER4",
+      "COUNTRY4",
+      "SCORE3",
+      "SCORE4",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*WRESTLING - MEN FREESTYLE 65KG ROUND ROBIN*\nLIM ZI XYAN (SGP) VS SUTDI THANWA (THA)\nSGP beat THA 6 - 0.\nLIM ZI XYAN (SGP) VS JHONNYGADUGDUG MORTE (PHI)\nPHI retired from the match due to injury.\nLIM ZI XYAN (SGP) VS HAMKA HAMKA (INA)\nINA beat SGP 10 - 0.\nSGP finished 2nd out of 3 and advanced to the Semi Finals."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - WOMEN T10 ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "T10",
+    "event_type": "Round Robin",
+    "template": "*CRICKET - WOMEN T10 ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {LOSER} will play against {NEXT_OPPONENT} in the next round robin match on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*CRICKET - WOMEN T10 ROUND ROBIN*\nSGP VS MAS\nMAS beat SGP 38 - 37. SGP will play against THA in the next round robin match on 30 Apr at 1430hr (CAM time)."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - WOMEN T20 ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "T20",
+    "event_type": "Round Robin",
+    "template": "*CRICKET - WOMEN T20 ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. Progression to the next stage will be determined after completion of round robin matches on {FINAL_DATE}.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "FINAL_DATE"
+    ],
+    "sample_data": "*CRICKET - WOMEN T20 ROUND ROBIN*\nSGP VS INA\nINA beat SGP 121 - 69. Progression to the next stage will be determined after completion of round robin matches on 8 May."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - MEN T20 ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "T20",
+    "event_type": "Round Robin",
+    "template": "*CRICKET - MEN T20 ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {WINNER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*CRICKET - MEN T20 ROUND ROBIN*\nSGP VS PHI\nSGP beat PHI 181 - 94. SGP will play against CAM on 4 May at 1030hr (CAM time)."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - WOMEN SIXES ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "SIXES",
+    "event_type": "Round Robin",
+    "template": "*CRICKET - WOMEN SIXES ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE"
+    ],
+    "sample_data": "*CRICKET - WOMEN SIXES ROUND ROBIN*\nSGP VS INA\nINA beat SGP 72 - 43."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - WOMEN SIXES 3RD/4TH PLACING MATCH",
+    "gender": "Women",
+    "event_name": "SIXES",
+    "event_type": "3rd/4th Placing Match",
+    "template": "*CRICKET - WOMEN SIXES 3RD/4TH PLACING MATCH*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE} - {SCORE} and has won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*CRICKET - WOMEN SIXES 3RD/4TH PLACING MATCH*\nSGP VS XXX\nSGP beat XXX 7 - 4 and has won the Bronze medal."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - MEN T20 BRONZE MEDAL PLAYOFF",
+    "gender": "Men",
+    "event_name": "T20",
+    "event_type": "Bronze Medal Playoff",
+    "template": "*CRICKET - MEN T20 BRONZE MEDAL PLAYOFF*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {WINNER} finished {PLACEMENT} out of {TOTAL} and won the Bronze medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CRICKET - MEN T20 BRONZE MEDAL PLAYOFF*\nSGP VS INA\nSGP beat INA 162 - 147. SGP finished 3rd out of 6 and won the Bronze medal."
+  },
+  {
+    "sport": "Cricket",
+    "event_category": "CRICKET - MEN T10 ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "T10",
+    "event_type": "Round Robin",
+    "template": "*CRICKET - MEN T10 ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {LOSER} advanced to the {NEXT_STAGE} against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_STAGE",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME"
+    ],
+    "sample_data": "*CRICKET - MEN T10 ROUND ROBIN*\nSGP VS THA\nTHA beat SGP 84 - 83. SGP advanced to the Bronze medal playoff against PHI on 16 May at 1000hr (CAM time)."
+  },
+  {
+    "sport": "Judo",
+    "event_category": "MEN KIME NO KATA PRELIMINARIES",
+    "gender": "Men",
+    "event_name": "KIME NO KATA",
+    "event_type": "Preliminaries",
+    "template": "*JUDO - {GENDER} {EVENT} {TYPE}*\n{ATHLETES} ({COUNTRY})\nScore: {SCORE}. {COUNTRY} advanced to the {NEXT_ROUND}, which will be held today at {TIME} (CAM time).",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETES",
+      "COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "TIME"
+    ],
+    "sample_data": "*JUDO - MEN KIME NO KATA PRELIMINARIES*\nSOH KENG CHUAN & TAN CHENG KIAT BENNY (SGP)\nScore: 449.5000. SGP advanced to the Final, which will be held today at 1430hr (CAM time)."
+  },
+  {
+    "sport": "Judo",
+    "event_category": "MEN KIME NO KATA FINAL",
+    "gender": "Men",
+    "event_name": "KIME NO KATA",
+    "event_type": "Final",
+    "template": "*JUDO - {GENDER} {EVENT} {TYPE}*\n{ATHLETES} ({COUNTRY})\nScore: {SCORE}. {COUNTRY} finished {RANK} out of {TOTAL} and has won the {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETES",
+      "COUNTRY",
+      "SCORE",
+      "RANK",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*JUDO - MEN KIME NO KATA FINAL*\nSOH KENG CHUAN & TAN CHENG KIAT BENNY (SGP)\nScore: 507.5. SGP finished 4th out of 4 and has won the joint Bronze medal."
+  },
+  {
+    "sport": "Judo",
+    "event_category": "MEN 66KG ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "66KG",
+    "event_type": "Round Robin",
+    "template": "*JUDO - {GENDER} {EVENT} {TYPE}*\n{ATHLETE} ({COUNTRY}) VS {OPPONENT} ({OPPONENT_COUNTRY})\n{OPPONENT_COUNTRY} {RESULT} - {SCORE}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "ATHLETE",
+      "COUNTRY",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "RESULT",
+      "SCORE"
+    ],
+    "sample_data": "*JUDO - MEN 66KG ROUND ROBIN*\nZHOU YUJIE (SGP) VS PUTRA DEWA KADEK RAMA WARMA (INA)\nINA 1 - 0."
+  },
+  {
+    "sport": "Judo",
+    "event_category": "WOMEN 57KG QUARTER FINALS",
+    "gender": "Women",
+    "event_name": "57KG",
+    "event_type": "Quarter Finals",
+    "template": "*JUDO - {GENDER} {EVENT} {TYPE}*\n{TANG_JINGFANG} ({SGP}) VS {OPPONENT} ({OPPONENT_COUNTRY})\n{SGP} beat {OPPONENT_COUNTRY} 1 - 0.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "TANG_JINGFANG",
+      "SGP",
+      "OPPONENT",
+      "OPPONENT_COUNTRY"
+    ],
+    "sample_data": "*JUDO - WOMEN 57KG QUARTER FINALS*\nTANG JINGFANG (SGP) VS PRASERTSRI KANYAWEE (THA)\nSGP beat THA 1 - 0."
+  },
+  {
+    "sport": "Judo",
+    "event_category": "MIXED TEAM PRELIMINARIES",
+    "gender": "Mixed",
+    "event_name": "TEAM",
+    "event_type": "Preliminaries",
+    "template": "*JUDO - {GENDER} {EVENT} {TYPE}*\n{TEAM_MEMBERS} ({COUNTRY}) VS {OPPONENT} ({OPPONENT_COUNTRY})\n{COUNTRY} beat {OPPONENT_COUNTRY} {SCORE} - {SCORE} and has advanced to the {NEXT_ROUND} to be held later today.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "TEAM_MEMBERS",
+      "COUNTRY",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND"
+    ],
+    "sample_data": "*JUDO - MIXED TEAM PRELIMINARIES*\nJOELLE HO JEN HUI TANG JINGFANG VALERIE TEO FANG WEI ZHEN YUXUAN AARON NG KOH YU ZE PANG JIA CHENG RYAN GOH YIK SENG SHALDON NG ZHOU YUJIE (SGP) VS XXX (XXX)\nSGP beat XXX X - X and has advanced to the Semi Finals to be held later today."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "AQUATHLON MEN INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "AQUATHLON",
+    "event_type": "Individual Final",
+    "template": "*AQUATHLON - MEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL} and has won the {MEDAL} medal. This is SGP\u2019s first medal.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*AQUATHLON - MEN INDIVIDUAL FINAL*\nBRYCE CHONG SHENG CHER (SGP)\nTime: 00:15:40.5. He finished 3rd out of 14 and has won the Bronze medal. This is SGP\u2019s first medal."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "AQUATHLON MEN INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "AQUATHLON",
+    "event_type": "Individual Final",
+    "template": "*AQUATHLON - MEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*AQUATHLON - MEN INDIVIDUAL FINAL*\nLUKE CHUA LI RONG (SGP)\nTime: 00:16:01.9. He finished 4th out of 14."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "AQUATHLON WOMEN INDIVIDUAL FINAL",
+    "gender": "Women",
+    "event_name": "AQUATHLON",
+    "event_type": "Individual Final",
+    "template": "*AQUATHLON - WOMEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. She finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*AQUATHLON - WOMEN INDIVIDUAL FINAL*\nYEO YEN LING KATHLYN (SGP)\nTime: 00:18:17.7. She finished 6th out of 14."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "AQUATHLON MIXED RELAY FINAL",
+    "gender": "Mixed",
+    "event_name": "AQUATHLON",
+    "event_type": "Relay Final",
+    "template": "*AQUATHLON - MIXED RELAY FINAL*\nTEAM OF {TEAM_MEMBERS}\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*AQUATHLON - MIXED RELAY FINAL*\nTEAM OF HILLARY NICOLE YU ZHIYING, LIM WAN TING, CEDRIC CHUA JIAN HONG & SAMIR VARMA\nTime: 01:16:48. SGP finished 6th out of 7."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "DUATHLON MEN INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "DUATHLON",
+    "event_type": "Individual Final",
+    "template": "*DUATHLON - MEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*DUATHLON - MEN INDIVIDUAL FINAL*\nAHMAD ARIF BIN IBRAHIM (SGP)\nTime: 56:18.20. SGP finished 8th out of 13."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "DUATHLON WOMEN INDIVIDUAL FINAL",
+    "gender": "Women",
+    "event_name": "DUATHLON",
+    "event_type": "Individual Final",
+    "template": "*DUATHLON - WOMEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*DUATHLON - WOMEN INDIVIDUAL FINAL*\nLOUISA MARIE MIDDLEDITCH (SGP)\nTime: 01:06:44.10. SGP finished 4th out of 12."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "TRIATHLON WOMEN INDIVIDUAL FINAL",
+    "gender": "Women",
+    "event_name": "TRIATHLON",
+    "event_type": "Individual Final",
+    "template": "*TRIATHLON - WOMEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*TRIATHLON - WOMEN INDIVIDUAL FINAL*\nHERLENE NATASHA YU ZHIHUI (SGP)\nTime: . SGP finished Xth out of XX."
+  },
+  {
+    "sport": "Triathlon",
+    "event_category": "TRIATHLON MEN INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "TRIATHLON",
+    "event_type": "Individual Final",
+    "template": "*TRIATHLON - MEN INDIVIDUAL FINAL*\n{NAME} (SGP)\nTime: {TIME}. SGP finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*TRIATHLON - MEN INDIVIDUAL FINAL*\nBRYCE CHONG SHENG CHER (SGP)\nTime: X:XX.XX. SGP finished Xth out of XX."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON TEAM QUARTER FINALS",
+    "gender": "Mixed",
+    "event_name": "Team",
+    "event_type": "Quarter Finals",
+    "template": "*BADMINTON - {GENDER} TEAM QUARTER FINALS*\n {TEAM1} VS {TEAM2}\n {TEAM1} beat {TEAM2} {SCORE} and advanced to the Semi Finals. {TEAM1} will play against {NEXT_OPPONENT} on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "GENDER",
+      "TEAM1",
+      "TEAM2",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*BADMINTON - MEN TEAM QUARTER FINALS*\n SGP VS PHI\n SGP beat PHI 3 - 1 and advanced to the Semi Finals. SGP will play against INA on 10 May at 1230hr (CAM time)."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON TEAM SEMI FINALS",
+    "gender": "Mixed",
+    "event_name": "Team",
+    "event_type": "Semi Finals",
+    "template": "BADMINTON - {GENDER} TEAM SEMI FINALS\n{TEAM1} VS {TEAM2}\n{TEAM2} beat {TEAM1} {SCORE}. {TEAM1} did not advance to the Final and won the joint Bronze medal.",
+    "fields": [
+      "GENDER",
+      "TEAM1",
+      "TEAM2",
+      "SCORE"
+    ],
+    "sample_data": "BADMINTON - WOMEN TEAM SEMI FINALS\nSGP VS THA\nTHA beat SGP 3 - 1. SGP did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON TEAM FINALS",
+    "gender": "Mixed",
+    "event_name": "Team",
+    "event_type": "Finals",
+    "template": "*BADMINTON - {GENDER} TEAM FINALS*\nSGP VS {OPPONENTS}\nSGP beat {WINNER} 3 - 0 and won the Gold medal. \n/ \n{LOSER} beat SGP. SGP won the Silver medal.",
+    "fields": [
+      "GENDER",
+      "OPPONENTS",
+      "WINNER",
+      "LOSER"
+    ],
+    "sample_data": "*BADMINTON - WOMEN TEAM FINALS*\nSGP VS PHI/IND\nSGP beat XXX 3 - 0 and won the Gold medal. \n/ \nXXX beat SGP. SGP won the Silver medal."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON SINGLES ROUND OF 32",
+    "gender": "Men",
+    "event_name": "Singles",
+    "event_type": "Round of 32",
+    "template": "*BADMINTON - {GENDER} SINGLES ROUND OF 32*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\nSGP beat {COUNTRY2} {SCORE} and advanced to the {NEXT_ROUND} against {NEXT_OPPONENT} ({NEXT_COUNTRY}), which will be held on {DATE}.",
+    "fields": [
+      "GENDER",
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "SCORE",
+      "NEXT_ROUND",
+      "NEXT_OPPONENT",
+      "NEXT_COUNTRY",
+      "DATE"
+    ],
+    "sample_data": "*BADMINTON - MEN SINGLES ROUND OF 32*\nMARCUS PHIL LAU JUN HUI (SGP) VS ZIDANE EVALDO COSTA GUSMAO DE JESUS (TLS)\nSGP beat TLS 2 - 0 and advanced to the Round of 16 against PANITCHAPHON TEERARATSAKUL (THA), which will be held on 13 May."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON SINGLES SEMI FINALS",
+    "gender": "Mixed",
+    "event_name": "Singles",
+    "event_type": "Semi Finals",
+    "template": "*BADMINTON - {GENDER} SINGLES SEMI FINALS*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\nSGP beat {COUNTRY2} {SCORE} and advances to the Finals, which will be held on {DATE}.\n{COUNTRY3} beat SGP {SCORE2}. SGP won the joint Bronze medal.",
+    "fields": [
+      "GENDER",
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2",
+      "SCORE",
+      "DATE",
+      "COUNTRY3",
+      "SCORE2"
+    ],
+    "sample_data": "*BADMINTON - MEN SINGLES SEMI FINALS*\nJOEL KOH JIA WEI (SGP) VS CHENG PHUOR ROM (MYA)\nSGP beat MYA 2 - 0 and advances to the Finals, which will be held on 16 May.\nPHI beat SGP 2 - 0. SGP won the joint Bronze medal."
+  },
+  {
+    "sport": "Badminton",
+    "event_category": "BADMINTON SINGLES FINAL",
+    "gender": "Mixed",
+    "event_name": "Singles",
+    "event_type": "Final",
+    "template": "*BADMINTON - {GENDER} SINGLES FINAL*\n{PLAYER1} (SGP) VS {PLAYER2} ({COUNTRY2})\nSGP beat XXX 3-0 and won the Gold medal. \nXXX beat SGP. SGP won the Silver medal.",
+    "fields": [
+      "GENDER",
+      "PLAYER1",
+      "PLAYER2",
+      "COUNTRY2"
+    ],
+    "sample_data": "*BADMINTON - MEN SINGLES FINAL*\nJOEL KOH JIA WEI (SGP) VS CHENG PHUOR ROM (MYA)\nSGP beat XXX 3-0 and won the Gold medal. \nXXX beat SGP. SGP won the Silver medal."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN FREESTYLE INDIVIDUAL FINAL",
+    "gender": "Men",
+    "event_name": "Freestyle Individual",
+    "event_type": "Final",
+    "template": "*TAEKWONDO - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nSCORE: {SCORE}. He finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*TAEKWONDO - MEN FREESTYLE INDIVIDUAL FINAL*\nYAP ZONG-HAN DARREN (SGP)\nSCORE: 6.300. He finished 5th out of 6."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN RECOGNIZED POOMSAE TEAM FINAL",
+    "gender": "Men",
+    "event_name": "Recognized Poomsae Team",
+    "event_type": "Final",
+    "template": "*TAEKWONDO - {GENDER} {EVENT} {TYPE}*\n{NAMES} (SGP)\nSCORE: {SCORE}. SGP finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAMES",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*TAEKWONDO - MEN RECOGNIZED POOMSAE TEAM FINAL*\nALOYSIUS YEO ZHIJIE, FONG PENG SHIN RANEN & KHAW HOONG KEAT NICHOLAS ADAM (SGP)\nSCORE: 7.290. SGP finished 4th out of 6 and won the joint Bronze medal."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MIXED RECOGNIZED POOMSAE PAIR FINAL",
+    "gender": "Mixed",
+    "event_name": "Recognized Poomsae Pair",
+    "event_type": "Final",
+    "template": "*TAEKWONDO - {GENDER} {EVENT} {TYPE}*\n{NAMES} (SGP)\nSCORE: {SCORE}. SGP finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAMES",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*TAEKWONDO - MIXED RECOGNIZED POOMSAE PAIR FINAL*\nDIYANAH AQIDAH BINTE MUHAMMAD DIAN KHUDHAIRI & FONG PENG SHIN RANEN (SGP)\nSCORE: 7.460. SGP finished 4th out of 7 and won the joint Bronze medal."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "WOMEN RECOGNIZED POOMSAE INDIVIDUAL FINAL",
+    "gender": "Women",
+    "event_name": "Recognized Poomsae Individual",
+    "event_type": "Final",
+    "template": "*TAEKWONDO - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nSCORE: {SCORE}. She finished {PLACEMENT} out of {TOTAL} and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*TAEKWONDO - WOMEN RECOGNIZED POOMSAE INDIVIDUAL FINAL*\nDIYANAH AQIDAH BINTE MUHAMMAD DIAN KHUDHAIRI (SGP)\nSCORE: 7.260. She finished 2nd out of 4 and won the Silver medal."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN UNDER 54KG KYORUGI ELIMINATION ROUND",
+    "gender": "Men",
+    "event_name": "Under 54kg Kyorugi",
+    "event_type": "Elimination Round",
+    "template": "*TAEKWONDO - {GENDER} UNDER {WEIGHT}KG {EVENT} {TYPE}*\n{NAME} (SGP) VS {OPPONENT} ({OPPONENT_COUNTRY})\nSGP beat {OPPONENT_COUNTRY} {SCORE}. He advanced to the {NEXT_ROUND}, which will be played today at {TIME} (CAM time).",
+    "fields": [
+      "GENDER",
+      "WEIGHT",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "TIME"
+    ],
+    "sample_data": "*TAEKWONDO - MEN UNDER 54KG KYORUGI ELIMINATION ROUND*\nKESTON PANG GHIM WENG (SGP) VS XXX (XXX)\nSGP beat XXX ?? - ??. He advanced to the Quarter Finals, which will be played today at XXXXhr (CAM time)."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN UNDER 54KG KYORUGI QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Under 54kg Kyorugi",
+    "event_type": "Quarter Finals",
+    "template": "*TAEKWONDO - {GENDER} UNDER {WEIGHT}KG {EVENT} {TYPE}*\n{NAME} (SGP) VS {OPPONENT} ({OPPONENT_COUNTRY})\nSGP beat {OPPONENT_COUNTRY} {SCORE} and advanced to the {NEXT_ROUND}, which will be played today at {TIME} (CAM time).",
+    "fields": [
+      "GENDER",
+      "WEIGHT",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "NEXT_ROUND",
+      "TIME"
+    ],
+    "sample_data": "*TAEKWONDO - MEN UNDER 54KG KYORUGI QUARTER FINALS*\nKESTON PANG GHIM WENG (SGP) VS JOSE DA COSTA E SILVA (TLS)\nSGP beat TLS 2 - 1 and advanced to the Semi Finals, which will be played today at 1600hr (CAM time)."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN UNDER 54KG KYORUGI SEMI FINALS",
+    "gender": "Men",
+    "event_name": "Under 54kg Kyorugi",
+    "event_type": "Semi Finals",
+    "template": "*TAEKWONDO - {GENDER} UNDER {WEIGHT}KG {EVENT} {TYPE}*\n{NAME} (SGP) VS {OPPONENT} ({OPPONENT_COUNTRY})\n{OPPONENT_COUNTRY} beat SGP {SCORE}. SGP did not advance to the Final and won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "WEIGHT",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*TAEKWONDO - MEN UNDER 54KG KYORUGI SEMI FINALS*\nKESTON PANG GHIM WENG (SGP) VS KURT BRYAN DELA VEGA BARBOSA (PHI)\nPHI beat SGP 2 - 0. SGP did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Taekwondo",
+    "event_category": "MEN UNDER 54KG KYORUGI FINAL",
+    "gender": "Men",
+    "event_name": "Under 54kg Kyorugi",
+    "event_type": "Final",
+    "template": "*TAEKWONDO - {GENDER} UNDER {WEIGHT}KG {EVENT} {TYPE}*\n{NAME} (SGP) VS {OPPONENT} ({OPPONENT_COUNTRY})\nSGP beat {OPPONENT_COUNTRY} {SCORE}. He won the {MEDAL}.",
+    "fields": [
+      "GENDER",
+      "WEIGHT",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "SCORE",
+      "MEDAL"
+    ],
+    "sample_data": "*TAEKWONDO - MEN UNDER 54KG KYORUGI FINAL*\nKESTON PANG GHIM WENG (SGP) VS XXX (XXX)\nSGP beat XXX ? - ?. He won the Gold medal."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY MEN TEAM GROUP STAGE",
+    "gender": "Men",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "GROUP STAGE",
+    "template": "*INDOOR HOCKEY - MEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} - {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE_WINNER",
+      "SCORE_LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR HOCKEY - MEN TEAM GROUP STAGE*\nSGP VS CAM\nSGP beat CAM 4 - 1, SGP will play against MAS on 3 May at 1415hr (CAM time)."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY WOMEN TEAM GROUP STAGE",
+    "gender": "Women",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "GROUP STAGE",
+    "template": "*INDOOR HOCKEY - WOMEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} - {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} ({TIME_ZONE}).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE_WINNER",
+      "SCORE_LOSER",
+      "NEXT_OPPONENT",
+      "NEXT_MATCH_DATE",
+      "NEXT_MATCH_TIME",
+      "TIME_ZONE"
+    ],
+    "sample_data": "*INDOOR HOCKEY - WOMEN TEAM GROUP STAGE*\nSGP VS MAS\nMAS beat SGP 8 - 0.  SGP will play against INA in the next match tomorrow at 1415hr (CAM time)."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY MEN TEAM GROUP STAGE",
+    "gender": "Men",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "GROUP STAGE",
+    "template": "*INDOOR HOCKEY - MEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} - {SCORE_LOSER}. {LOSER} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "SCORE_WINNER",
+      "SCORE_LOSER",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*INDOOR HOCKEY - MEN TEAM GROUP STAGE*\nSGP VS THA\nTHA beat SGP 4 - 1. SGP finished 4th out of 6 and won the Joint Bronze medal."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY WOMEN TEAM GROUP STAGE",
+    "gender": "Women",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "GROUP STAGE",
+    "template": "*INDOOR HOCKEY - WOMEN TEAM GROUP STAGE*\n{TEAM1} VS {TEAM2}\n{TEAM1} drew {TEAM2} {SCORE_TEAM1} - {SCORE_TEAM2}. {TEAM1} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "SCORE_TEAM1",
+      "SCORE_TEAM2",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*INDOOR HOCKEY - WOMEN TEAM GROUP STAGE*\nSGP VS THA\nSGP drew THA 2 - 2. SGP finished 5th out of 6."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY MEN TEAM FINAL",
+    "gender": "Men",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "FINAL",
+    "template": "*INDOOR HOCKEY - MEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ?. {LOSER} has won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*INDOOR HOCKEY - MEN TEAM FINAL*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?.  SGP has won the ___ medal."
+  },
+  {
+    "sport": "Hockey Indoor",
+    "event_category": "INDOOR HOCKEY WOMEN TEAM FINAL",
+    "gender": "Women",
+    "event_name": "INDOOR HOCKEY",
+    "event_type": "FINAL",
+    "template": "*INDOOR HOCKEY - WOMEN TEAM FINAL*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} ? - ?. {LOSER} has won the {MEDAL_TYPE} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "MEDAL_TYPE"
+    ],
+    "sample_data": "*INDOOR HOCKEY - WOMEN TEAM FINAL*\nSGP VS XXX\nSGP beat XXX ? - ? / XXX beat SGP ? - ?.  SGP has won the ___ medal."
+  },
+  {
+    "sport": "Finswimming",
+    "event_category": "WOMEN 100M SURFACE HEAT",
+    "gender": "Women",
+    "event_name": "100M SURFACE",
+    "event_type": "Heat",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_STATUS",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*FINSWIMMING - WOMEN 100M SURFACE HEAT*\nBERNICE TING HIU YING (SGP)\nTime: 45.30. She finished 6th out of 10 and qualified for the Final, which will be held today at 1800hr (CAM time)."
+  },
+  {
+    "sport": "Finswimming",
+    "event_category": "MEN 100M SURFACE HEAT",
+    "gender": "Men",
+    "event_name": "100M SURFACE",
+    "event_type": "Heat",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and did not qualify for the Final. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*FINSWIMMING - MEN 100M SURFACE HEAT*\nNICHOLAS CHOON JUN JIE (SGP)\nTime: 46.23. He finished 9th out of 9 and did not qualify for the Final. He has set a new Personal Best."
+  },
+  {
+    "sport": "Finswimming",
+    "event_category": "WOMEN 100M SURFACE FINAL",
+    "gender": "Women",
+    "event_name": "100M SURFACE",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*FINSWIMMING - WOMEN 100M SURFACE FINAL*\nBERNICE TING HIU YING (SGP)\nTime: 45.33. She finished 6th out of 8."
+  },
+  {
+    "sport": "Finswimming",
+    "event_category": "MIXED 4 X 100M BI-FINS RELAY FINAL",
+    "gender": "Mixed",
+    "event_name": "4 X 100M BI-FINS RELAY",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\nTEAM OF {NAMES} (SGP)\nTime: {TIME}. They finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAMES",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*FINSWIMMING - MIXED 4 X 100M BI-FINS RELAY FINAL*\nTEAM OF JAMIE ANG HUI HSIEN, VANESSA ONG, ONG JUN HAN JORDAN & ONG RAYEN (SGP)\nTime: 3:20.29. They finished 5th out of 7."
+  },
+  {
+    "sport": "Finswimming",
+    "event_category": "MEN 50M SURFACE HEAT",
+    "gender": "Men",
+    "event_name": "50M SURFACE",
+    "event_type": "Heat",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_STATUS",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*FINSWIMMING - MEN 50M SURFACE HEAT*\nONG JUN HAN JORDAN (SGP)\nTime: 18.28. He finished 8th out of 13 and qualified for the Final, which will be held today at 1800hr (CAM time). He has set a new National Record and Personal Best."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "MEN CROSS-COUNTRY OLYMPIC FINAL",
+    "gender": "Men",
+    "event_name": "CROSS-COUNTRY OLYMPIC",
+    "event_type": "Final",
+    "template": "*CYCLING MOUNTAIN BIKE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING MOUNTAIN BIKE - MEN CROSS-COUNTRY OLYMPIC FINAL*\nRIYADH HAKIM BIN LUKMAN (SGP)\nTime: 1:20:56. He finished 11th out of 20."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "MEN CROSS-COUNTRY ELIMINATOR FINAL",
+    "gender": "Men",
+    "event_name": "CROSS-COUNTRY ELIMINATOR",
+    "event_type": "Final",
+    "template": "*CYCLING MOUNTAIN BIKE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nHe finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING MOUNTAIN BIKE - MEN CROSS-COUNTRY ELIMINATOR FINAL*\nRIYADH HAKIM BIN LUKMAN (SGP)\nHe finished 6th out of 14."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "MEN CRITERIUM FINAL",
+    "gender": "Men",
+    "event_name": "CRITERIUM",
+    "event_type": "Final",
+    "template": "*CYCLING ROAD RACE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING ROAD RACE - MEN CRITERIUM FINAL*\nYEO BOON KIAK (SGP)\nTime: 1:13:39. He finished 5th out of 24."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "WOMEN CRITERIUM FINAL",
+    "gender": "Women",
+    "event_name": "CRITERIUM",
+    "event_type": "Final",
+    "template": "*CYCLING ROAD RACE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. She finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING ROAD RACE - WOMEN CRITERIUM FINAL*\nELIZABETH LIAU LE MIN (SGP)\nTime: 55:19. She finished 5th out of 20."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "MEN INDIVIDUAL MASS START FINAL",
+    "gender": "Men",
+    "event_name": "INDIVIDUAL MASS START",
+    "event_type": "Final",
+    "template": "*CYCLING ROAD RACE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING ROAD RACE - MEN INDIVIDUAL MASS START FINAL*\nYEO BOON KIAK (SGP)\nTime: 3:22:50. He finished 6th out of 38."
+  },
+  {
+    "sport": "Cycling",
+    "event_category": "WOMEN INDIVIDUAL MASS START FINAL",
+    "gender": "Women",
+    "event_name": "INDIVIDUAL MASS START",
+    "event_type": "Final",
+    "template": "*CYCLING ROAD RACE - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. She finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*CYCLING ROAD RACE - WOMEN INDIVIDUAL MASS START FINAL*\nCHELSIE TAN WEI SHI (SGP)\nTime: 2:48:39. She finished 6th out of 30."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "WOMEN DUILIAN FINAL",
+    "gender": "Women",
+    "event_name": "Duilian",
+    "event_type": "Final",
+    "template": "*WOMEN DUILIAN FINAL*\nTEAM OF {TEAM_MEMBERS}\nScore: {SCORE}. {TEAM_COUNTRY} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "SCORE",
+      "TEAM_COUNTRY",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*WOMEN DUILIAN FINAL*\nTEAM OF ONG LI LING KIMBERLY, ZEANNE LAW ZHI NING & ZOE TAN ZIYI\nScore: 9.393. SGP finished 3rd out of 6 and won the Bronze medal."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "MEN DUILIAN FINAL",
+    "gender": "Men",
+    "event_name": "Duilian",
+    "event_type": "Final",
+    "template": "*MEN DUILIAN FINAL*\nTEAM OF {TEAM_MEMBERS}\nScore: {SCORE}. {TEAM_COUNTRY} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "TEAM_MEMBERS",
+      "SCORE",
+      "TEAM_COUNTRY",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*MEN DUILIAN FINAL*\nTEAM OF CHAN JUN KAI, ONG ZI MENG & TAY YU XUAN\nScore: 9.266. SGP finished 5th out of 8."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "WOMEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)",
+    "gender": "Women",
+    "event_name": "Daoshu + Gunshu Combined",
+    "event_type": "Finals (Gunshu)",
+    "template": "*WOMEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)*\n{NAME}\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} in Gunshu, and will be competing in Daoshu on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*WOMEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)*\nONG LI LING KIMBERLY\nScore: 9.603. She finished 1st out of 5 in Gunshu, and will be competing in Daoshu on 11 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "MEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)",
+    "gender": "Men",
+    "event_name": "Daoshu + Gunshu Combined",
+    "event_type": "Finals (Gunshu)",
+    "template": "*MEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)*\n{NAME}\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and will be competing in Daoshu on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*MEN DAOSHU + GUNSHU COMBINED FINALS (GUNSHU)*\nJOWEN LIM SI WEI \nScore: 9.676. He finished 3rd out of 11 and will be competing in Daoshu on 11 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "WOMEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)",
+    "gender": "Women",
+    "event_name": "Taijiquan + Taijijian Combined",
+    "event_type": "Finals (Taijiquan)",
+    "template": "*WOMEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)*\n{NAME}\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and will be competing in Tajijian on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*WOMEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)*\nVERA TAN YAN NING\nScore: 9.506. She finished 4th out of 9 and will be competing in Tajijian on 12 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "MEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)",
+    "gender": "Men",
+    "event_name": "Taijiquan + Taijijian Combined",
+    "event_type": "Finals (Taijiquan)",
+    "template": "*MEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)*\n{NAME}\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and will be competing in Tajijian on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*MEN TAIJIQUAN + TAIJIJIAN COMBINED FINALS (TAIJIQUAN)*\nTAY YU XUAN\nScore: 9.556. He finished 2nd out of 12 and will be competing in Tajijian on 12 May at 0900hr (CAM time)."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "WUSHU - MEN CHANGQUAN FINAL",
+    "gender": "Men",
+    "event_name": "Changquan",
+    "event_type": "Final",
+    "template": "*WUSHU - MEN CHANGQUAN FINAL*\n{NAME} (SGP)\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} Medal.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*WUSHU - MEN CHANGQUAN FINAL*\nJOWEN LIM SI WEI (SGP)\nScore: 9.670. He finished 2nd out of 14 and won the Silver Medal."
+  },
+  {
+    "sport": "Wushu",
+    "event_category": "WUSHU - WOMEN CHANGQUAN FINAL",
+    "gender": "Women",
+    "event_name": "Changquan",
+    "event_type": "Final",
+    "template": "*WUSHU - WOMEN CHANGQUAN FINAL*\n{NAME} (SGP)\nScore: {SCORE}. {PRONOUN} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "NAME",
+      "SCORE",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*WUSHU - WOMEN CHANGQUAN FINAL*\nZOE TAN ZIYI (SGP)\nScore: 9.586. She finished 4th out of 10."
+  },
+  {
+    "sport": "Ju-Jitsu ",
+    "event_category": "JU-JITSU WOMEN NE-WAZA GI -52KG ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "NE-WAZA GI -52KG",
+    "event_type": "Round Robin",
+    "template": "*JU-JITSU - WOMEN NE-WAZA GI -52KG ROUND ROBIN*\n{ATHLETE1} (SGP) VS {ATHLETE2} ({COUNTRY})\n{COUNTRY} beat SGP by submission. {ADDITIONAL_INFO}",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "COUNTRY",
+      "ADDITIONAL_INFO"
+    ],
+    "sample_data": "*JU-JITSU - WOMEN NE-WAZA GI -52KG ROUND ROBIN*\nTEH MAY YONG (SGP) VS DANG THI HUYEN (VIE)\nVIE beat SGP by submission. She finished 5th out of 5."
+  },
+  {
+    "sport": "Ju-Jitsu ",
+    "event_category": "JU-JITSU MEN NE-WAZA GI -62KG ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "NE-WAZA GI -62KG",
+    "event_type": "Round Robin",
+    "template": "*JU-JITSU - MEN NE-WAZA GI -62KG ROUND ROBIN*\n{ATHLETE1} (SGP) VS {ATHLETE2} ({COUNTRY})\n{COUNTRY} beat SGP {SCORE}. {ADDITIONAL_INFO}",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "COUNTRY",
+      "SCORE",
+      "ADDITIONAL_INFO"
+    ],
+    "sample_data": "*JU-JITSU - MEN NE-WAZA GI -62KG ROUND ROBIN*\nAMIRUL SYAFIQ BIN SHAH ERAN (SGP) VS CAN VAN THANG (VIE)\nVIE beat SGP 4 - 4 by 1 advantage. He finished 3rd out of 5 and won the joint Bronze medal."
+  },
+  {
+    "sport": "Ju-Jitsu ",
+    "event_category": "JU-JITSU MEN NE-WAZA GI -69KG FINAL",
+    "gender": "Men",
+    "event_name": "NE-WAZA GI -69KG",
+    "event_type": "Final",
+    "template": "*JU-JITSU - MEN NE-WAZA GI -69KG FINAL*\n{ATHLETE1} (SGP) VS {ATHLETE2} ({COUNTRY})\nSGP beat {COUNTRY} by submission. SGP has won the Gold medal. This is SGP's first Gold medal.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "COUNTRY"
+    ],
+    "sample_data": "*JU-JITSU - MEN NE-WAZA GI -69KG FINAL*\nNOAH LIM TIAN RUN (SGP) VS SLAYMAN JEDIDIAH PHOMSAVATH (LAO)\nSGP beat LAO by submission. SGP has won the Gold medal. This is SGP's first Gold medal."
+  },
+  {
+    "sport": "Ju-Jitsu ",
+    "event_category": "JU-JITSU MEN NE-WAZA NOGI -56KG ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "NE-WAZA NOGI -56KG",
+    "event_type": "Round Robin",
+    "template": "*JU-JITSU - MEN NE-WAZA NOGI -56KG ROUND ROBIN*\n{TANG_YONG_SIANG} (SGP) VS {OPPONENT} ({COUNTRY})\n{COUNTRY} beat SGP {SCORE}. {ADDITIONAL_INFO}",
+    "fields": [
+      "TANG_YONG_SIANG",
+      "OPPONENT",
+      "COUNTRY",
+      "SCORE",
+      "ADDITIONAL_INFO"
+    ],
+    "sample_data": "*JU-JITSU - MEN NE-WAZA NOGI -56KG ROUND ROBIN*\nTANG YONG SIANG (SGP) VS CORTEZ JAN VINCENT CORTEZ (PHI)\nSGP beat PHI by submission. SGP finished 1st out of 5 and won the Gold medal."
+  },
+  {
+    "sport": "Ju-Jitsu ",
+    "event_category": "JU-JITSU WOMEN NE-WAZA NOGI -52KG ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "NE-WAZA NOGI -52KG",
+    "event_type": "Round Robin",
+    "template": "*JU-JITSU - WOMEN NE-WAZA NOGI -52KG ROUND ROBIN*\n{ATHLETE1} (SGP) vs {ATHLETE2} ({COUNTRY})\n{COUNTRY} beat SGP {SCORE}. {ADDITIONAL_INFO}",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "COUNTRY",
+      "SCORE",
+      "ADDITIONAL_INFO"
+    ],
+    "sample_data": "*JU-JITSU - WOMEN NE-WAZA NOGI -52KG ROUND ROBIN*\nTEH MAY YONG (SGP) vs OCHOA MARGARITA (PHI)\nPHI beat SGP 13 - 0."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "WOMEN MARATHON",
+    "gender": "Women",
+    "event_name": "Marathon",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL}.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL"
+    ],
+    "sample_data": "*ATHLETICS - WOMEN MARATHON*\nTAN FANG YU SHARON (SGP)\nTime: 3:32.58. She finished 7th out of 9."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "WOMEN 200M HEAT",
+    "gender": "Women",
+    "event_name": "200M",
+    "event_type": "Heat",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_STATUS"
+    ],
+    "sample_data": "*ATHLETICS - WOMEN 200M HEAT*\nPEREIRA VERONICA SHANTI (SGP)\nTime: 24.02. She finished 3rd out of 12 and advanced to the Final, which will be held today at 1615hr (CAM time)."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "MEN 200M HEAT",
+    "gender": "Men",
+    "event_name": "200M",
+    "event_type": "Heat",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "ADVANCEMENT_STATUS",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*ATHLETICS - MEN 200M HEAT*\nMARK LEE REN (SGP)\nTime: 21.44. He finished 7th out of 15 and advanced to the Final, which will be held today at 1635hr (CAM time). He has set a new Personal Best (pending ratification)."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "MEN POLE VAULT FINAL",
+    "gender": "Men",
+    "event_name": "Pole Vault",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nHeight: {HEIGHT}.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "HEIGHT"
+    ],
+    "sample_data": "*ATHLETICS - MEN POLE VAULT FINAL*\nKOH WEI SHIEN (SGP)\nHeight: No Height (NH)."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "WOMEN 200M FINAL",
+    "gender": "Women",
+    "event_name": "200M",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal. {ADDITIONAL_COMMENTS}",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "TIME",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL",
+      "ADDITIONAL_COMMENTS"
+    ],
+    "sample_data": "*ATHLETICS - WOMEN 200M FINAL*\nPEREIRA VERONICA SHANTI (SGP)\nTime: 22.69. She finished 1st out of 8 and won the Gold medal. She has set a new National Record and Personal Best (pending ratification)."
+  },
+  {
+    "sport": "Athletics",
+    "event_category": "WOMEN HIGH JUMP FINAL",
+    "gender": "Women",
+    "event_name": "High Jump",
+    "event_type": "Final",
+    "template": "*{SPORT} - {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nHeight: {HEIGHT}. {PRONOUN} finished {PLACEMENT} out of {TOTAL} and won the {MEDAL} medal.",
+    "fields": [
+      "SPORT",
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "HEIGHT",
+      "PRONOUN",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*ATHLETICS - WOMEN HIGH JUMP FINAL*\nSNG SUAT LI MICHELLE (SGP)\nHeight: 1.73. She finished 3rd out of 7 and won the Bronze medal."
+  },
+  {
+    "sport": "KickBoxing",
+    "event_category": "MEN BELOW 71KG LOW KICK PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "BELOW 71KG LOW KICK",
+    "event_type": "Preliminary Round",
+    "template": "*KICKBOXING - MEN BELOW 71KG LOW KICK PRELIMINARY ROUND*\n{ATHLETE1} (SGP) VS {ATHLETE2} (VIE)\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} {SCORE}. {PRONOUN} did not advance to the Quarter Finals.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "SCORE",
+      "PRONOUN"
+    ],
+    "sample_data": "*KICKBOXING - MEN BELOW 71KG LOW KICK PRELIMINARY ROUND*\nMUHAMMAD NAZRI BIN SUTARI (SGP) VS QUAN KIEU DUY (VIE)\nVIE beat SGP 3 - 0. He did not advance to the Quarter Finals."
+  },
+  {
+    "sport": "KickBoxing",
+    "event_category": "MEN BELOW 71KG LOW KICK QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "BELOW 71KG LOW KICK",
+    "event_type": "Quarter Finals",
+    "template": "*KICKBOXING - MEN BELOW 71KG LOW KICK QUARTER FINALS*\n{ATHLETE1} (SGP) {ATHLETE2} (VIE)\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?-? and advanced to the Semi Finals, which will be held today at {TIME} (CAM time). / \n{LOSER_COUNTRY} beat {WINNER_COUNTRY} ?-?. He did not advance to the Semi Finals.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "TIME"
+    ],
+    "sample_data": "*KICKBOXING - MEN BELOW 71KG LOW KICK QUARTER FINALS*\nMUHAMMAD NAZRI BIN SUTARI (SGP) QUAN KIEU DUY (VIE)\nSGP beat VIE ?-? and advanced to the Semi Finals, which will be held today at 1800hr (CAM time). / \nVIE beat SGP ?-?. He did not advance to the Semi Finals."
+  },
+  {
+    "sport": "KickBoxing",
+    "event_category": "MEN BELOW 71KG LOW KICK SEMI FINALS",
+    "gender": "Men",
+    "event_name": "BELOW 71KG LOW KICK",
+    "event_type": "Semi Finals",
+    "template": "*KICKBOXING - MEN BELOW 71KG LOW KICK SEMI FINALS*\n{ATHLETE1} (SGP) VS {ATHLETE2}\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?-? and advances to the Final, which will be held on {DATE} at {TIME} (CAM time). / \n{LOSER_COUNTRY} beat {WINNER_COUNTRY} ?-?. He has won the Joint Bronze medal.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*KICKBOXING - MEN BELOW 71KG LOW KICK SEMI FINALS*\nMUHAMMAD NAZRI BIN SUTARI (SGP) VS XXXXXX\nSGP beat XXX ?-? and advances to the Final, which will be held on 16 May at 1430hr (CAM time). / \nXXX beat SGP ?-?. He has won the Joint Bronze medal."
+  },
+  {
+    "sport": "KickBoxing",
+    "event_category": "MEN BELOW 71KG LOW KICK FINAL",
+    "gender": "Men",
+    "event_name": "BELOW 71KG LOW KICK",
+    "event_type": "Final",
+    "template": "*KICKBOXING - MEN BELOW 71KG LOW KICK FINAL*\n{ATHLETE1} (SGP) VS {ATHLETE2}\n{WINNER_COUNTRY} beat {LOSER_COUNTRY} ?-?. He has won the {MEDAL_TYPE} medal. / \n{LOSER_COUNTRY} beat {WINNER_COUNTRY} ?-?. He has won the {OTHER_MEDAL_TYPE} medal.",
+    "fields": [
+      "ATHLETE1",
+      "ATHLETE2",
+      "WINNER_COUNTRY",
+      "LOSER_COUNTRY",
+      "MEDAL_TYPE",
+      "OTHER_MEDAL_TYPE"
+    ],
+    "sample_data": "*KICKBOXING - MEN BELOW 71KG LOW KICK FINAL*\nMUHAMMAD NAZRI BIN SUTARI (SGP) VS XXXXXX\nSGP beat XXX ?-?. He has won the Gold medal. / \nXXX beat SGP ?-?. He has won the Silver medal."
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - MEN TEAM PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "Team",
+    "event_type": "Preliminary Round",
+    "template": "*TABLE TENNIS - MEN TEAM PRELIMINARY ROUND*\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE}. {TEAM1} will play against {NEXT_OPPONENT} on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "SCORE",
+      "NEXT_OPPONENT",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*TABLE TENNIS - MEN TEAM PRELIMINARY ROUND*\nSGP VS LAO\nSGP beat LAO 3 - 0. SGP will play against MAS today at 1600hr (CAM time)."
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - WOMEN TEAM PRELIMINARY ROUND",
+    "gender": "Women",
+    "event_name": "Team",
+    "event_type": "Preliminary Round",
+    "template": "*TABLE TENNIS - WOMEN TEAM PRELIMINARY ROUND*\n{TEAM1} VS {TEAM2}\n{TEAM1} beat {TEAM2} {SCORE}. {TEAM1} finished {PLACEMENT} out of {TOTAL} and advanced to the {NEXT_ROUND}. {TEAM1} will play against {NEXT_OPPONENT} today at {TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "NEXT_ROUND",
+      "NEXT_OPPONENT",
+      "TIME"
+    ],
+    "sample_data": "*TABLE TENNIS - WOMEN TEAM PRELIMINARY ROUND*\nSGP VS MAS\nMAS beat SGP 3 - 0. SGP finished 2nd out of 3 and advanced to the Semi Finals. SGP will play against THA today at 1600hr (CAM time)."
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - MEN DOUBLES QUARTER FINALS",
+    "gender": "Men",
+    "event_name": "Doubles",
+    "event_type": "Quarter Finals",
+    "template": "*TABLE TENNIS - MEN DOUBLES QUARTER FINALS*\n{PLAYERS1} (SGP) VS {PLAYERS2} ({COUNTRY2})\nSGP beat {COUNTRY2} {SCORE} and advanced to the {NEXT_ROUND} against {NEXT_OPPONENTS} ({NEXT_COUNTRY}), which will be held on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "PLAYERS1",
+      "PLAYERS2",
+      "COUNTRY2",
+      "SCORE",
+      "NEXT_ROUND",
+      "NEXT_OPPONENTS",
+      "NEXT_COUNTRY",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*TABLE TENNIS - MEN DOUBLES QUARTER FINALS*\nBEH KUN TING & POH SHAO FENG ETHAN (SGP) VS NAPAT THANMATHIKOM & PHAKPOOM SANGUANSIN (THA)\nSGP beat THA 3 - 2 and advanced to the Semi Finals against CHOONG JAVEN & WONG QI SHEN (MAS), which will be held on 14 May at 1200hr (CAM time)."
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - WOMEN DOUBLES SEMI FINALS",
+    "gender": "Women",
+    "event_name": "Doubles",
+    "event_type": "Semi Finals",
+    "template": "*TABLE TENNIS - WOMEN DOUBLES SEMI FINALS*\n{PLAYERS1} (SGP) VS {PLAYERS2} ({COUNTRY2})\n{COUNTRY2} beat SGP {SCORE}. SGP did not advance to the Final and won the joint Bronze medal.",
+    "fields": [
+      "PLAYERS1",
+      "PLAYERS2",
+      "COUNTRY2",
+      "SCORE"
+    ],
+    "sample_data": "*TABLE TENNIS - WOMEN DOUBLES SEMI FINALS*\nSER LIN QIAN & GOI RUI XUAN (SGP) VS SUTHASINI SAWETTABUT & ORAWAN PARANANG (THA)\nTHA beat SGP 3 - 0. SGP did not advance to the Final and won the joint Bronze medal."
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - MIXED DOUBLES FINAL",
+    "gender": "Mixed",
+    "event_name": "Doubles",
+    "event_type": "Final",
+    "template": "*TABLE TENNIS - MIXED DOUBLES FINAL*\n{PLAYERS1} (SGP) VS {PLAYERS2} ({COUNTRY2})\nSGP beat {COUNTRY2} {SCORE} and has won the Gold medal. / {COUNTRY2} beat SGP. SGP has won the Silver medal",
+    "fields": [
+      "PLAYERS1",
+      "PLAYERS2",
+      "COUNTRY2",
+      "SCORE"
+    ],
+    "sample_data": "*TABLE TENNIS - MIXED DOUBLES FINAL*\nPANG YEW EN KOEN & WONG XIN RU (SGP) VS XXX & XXX (XXX)\nSGP beat XXX 3 - 2 and has won the Gold medal. / XXX beat SGP. SGP has won the Silver medal"
+  },
+  {
+    "sport": "Table Tennis",
+    "event_category": "TABLE TENNIS - MEN SINGLES PRELIMINARY ROUND",
+    "gender": "Men",
+    "event_name": "Singles",
+    "event_type": "Preliminary Round",
+    "template": "*TABLE TENNIS - MEN SINGLES PRELIMINARY ROUND*\n{PLAYER} (SGP) VS {OPPONENT} ({COUNTRY2})\nSGP beat {COUNTRY2} {SCORE}. {PRONOUN} will play against {NEXT_OPPONENT} ({NEXT_COUNTRY}) on {DATE} at {TIME} (CAM time).",
+    "fields": [
+      "PLAYER",
+      "OPPONENT",
+      "COUNTRY2",
+      "SCORE",
+      "PRONOUN",
+      "NEXT_OPPONENT",
+      "NEXT_COUNTRY",
+      "DATE",
+      "TIME"
+    ],
+    "sample_data": "*TABLE TENNIS - MEN SINGLES PRELIMINARY ROUND*\nCHEW ZHE YU CLARENCE (SGP) VS PHINITH KONGPHET (LAO)\nSGP beat LAO 3 - 1. He will play against PADASAK TANVIRIYAVECHAKUL (THA) on 15 May at 1040hr (CAM time)."
+  },
+  {
+    "sport": "Aquatics Waterpolo",
+    "event_category": "WATER POLO WOMEN TEAM ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "Water Polo",
+    "event_type": "Team Round Robin",
+    "template": "*WATER POLO - WOMEN TEAM ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*WATER POLO - WOMEN TEAM ROUND ROBIN*\nSGP VS THA\nTHA beat SGP 11 - 4. SGP will play against INA on 14 May at 0800hr (CAM time)."
+  },
+  {
+    "sport": "Aquatics Waterpolo",
+    "event_category": "WATER POLO MEN TEAM ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Water Polo",
+    "event_type": "Team Round Robin",
+    "template": "*WATER POLO - MEN TEAM ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*WATER POLO - MEN TEAM ROUND ROBIN*\nSGP VS THA\nSGP beat THA 12 - 7. SGP will play against MAS on 13 May at 0930hr (CAM time)."
+  },
+  {
+    "sport": "Aquatics Waterpolo",
+    "event_category": "WATER POLO WOMEN TEAM ROUND ROBIN",
+    "gender": "Women",
+    "event_name": "Water Polo",
+    "event_type": "Team Round Robin",
+    "template": "*WATER POLO - WOMEN TEAM ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. Overall placing will be determined after all matches are completed on {FINAL_DATE}.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "FINAL_DATE"
+    ],
+    "sample_data": "*WATER POLO - WOMEN TEAM ROUND ROBIN*\nSGP VS INA\nSGP beat INA 10 - 4. Overall placing will be determined after all matches are completed on 16 May."
+  },
+  {
+    "sport": "Aquatics Waterpolo",
+    "event_category": "WATER POLO MEN TEAM ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Water Polo",
+    "event_type": "Team Round Robin",
+    "template": "*WATER POLO - MEN TEAM ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time). / {LOSER} beat {WINNER} X-X. {WINNER} will play against {NEXT_OPPONENT} on {NEXT_DATE} at {NEXT_TIME} (CAM time).",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "NEXT_OPPONENT",
+      "NEXT_DATE",
+      "NEXT_TIME"
+    ],
+    "sample_data": "*WATER POLO - MEN TEAM ROUND ROBIN*\nSGP VS INA\nSGP beat INA 19-4. SGP will play against PHI on 15 May at 1500hr (CAM time). / INA beat SGP X-X. SGP will play against PHI on 15 May at 1500hr (CAM time)."
+  },
+  {
+    "sport": "Aquatics Waterpolo",
+    "event_category": "WATER POLO MEN TEAM ROUND ROBIN",
+    "gender": "Men",
+    "event_name": "Water Polo",
+    "event_type": "Team Round Robin",
+    "template": "*WATER POLO - MEN TEAM ROUND ROBIN*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {WIN_SCORE} - {LOSE_SCORE}. {WINNER} finished {PLACEMENT} out of {TOTAL} and has won the {MEDAL} medal.",
+    "fields": [
+      "TEAM1",
+      "TEAM2",
+      "WINNER",
+      "LOSER",
+      "WIN_SCORE",
+      "LOSE_SCORE",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*WATER POLO - MEN TEAM ROUND ROBIN*\nSGP VS CAM\nSGP beat CAM 22 - 14. SGP finished 1st out of 6 and has won the Gold medal."
+  },
+  {
+    "sport": "Fencing",
+    "event_category": "MEN INDIVIDUAL EPEE POOL",
+    "gender": "Men",
+    "event_name": "INDIVIDUAL EPEE",
+    "event_type": "Pool",
+    "template": "*FENCING - {GENDER} {EVENT} {TYPE}*\n{NAME} ({COUNTRY})\nHe won {WON_BOUTS} bouts of {TOTAL_BOUTS} and advanced to the {NEXT_ROUND}. {BYE_INFO}",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME",
+      "COUNTRY",
+      "WON_BOUTS",
+      "TOTAL_BOUTS",
+      "NEXT_ROUND",
+      "BYE_INFO"
+    ],
+    "sample_data": "*FENCING - MEN INDIVIDUAL EPEE POOL*\nSIMON LEE RENJIE (SGP)\nHe won 4 bouts of 6 and advanced to the Table of 16. As he has received a BYE in the Table of 16, he will advance to the Table of 8, which will be held today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Fencing",
+    "event_category": "MEN INDIVIDUAL EPEE TABLE OF 16",
+    "gender": "Men",
+    "event_name": "INDIVIDUAL EPEE",
+    "event_type": "Table of 16",
+    "template": "*FENCING - {GENDER} {EVENT} {TYPE}*\n{NAME1} ({COUNTRY1}) VS {NAME2} ({COUNTRY2})\n{COUNTRY1} beat {COUNTRY2} {SCORE1} - {SCORE2} and advanced to the {NEXT_ROUND}, which will be played today at {TIME} (CAM time).",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME1",
+      "COUNTRY1",
+      "NAME2",
+      "COUNTRY2",
+      "SCORE1",
+      "SCORE2",
+      "NEXT_ROUND",
+      "TIME"
+    ],
+    "sample_data": "*FENCING - MEN INDIVIDUAL EPEE TABLE OF 16*\nSI TO JIAN TONG (SGP) VS WILLIANSYAH ANGGI (INA)\nSGP beat INA 14 - 3 and advanced to the Table of 16 against KOH I JIE (MAS), which will be played today at 1400hr (CAM time)."
+  },
+  {
+    "sport": "Fencing",
+    "event_category": "WOMEN INDIVIDUAL SABRE FINAL",
+    "gender": "Women",
+    "event_name": "INDIVIDUAL SABRE",
+    "event_type": "Final",
+    "template": "*FENCING - {GENDER} {EVENT} {TYPE}*\n{NAME1} ({COUNTRY1}) VS {NAME2} ({COUNTRY2})\n{NAME1} ({COUNTRY1}) beat {NAME2} ({COUNTRY2}) {SCORE1} - {SCORE2}.\n{NAME1} won the Gold Medal.\n{NAME2} won the Silver medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "NAME1",
+      "COUNTRY1",
+      "NAME2",
+      "COUNTRY2",
+      "SCORE1",
+      "SCORE2"
+    ],
+    "sample_data": "*FENCING - WOMEN INDIVIDUAL SABRE FINAL*\nHENG JI MIN JULIET (SGP) VS ONG SHU HUI JESSICA (SGP)\nHENG JI MIN JULIET (SGP) beat ONG SHU HUI JESSICA (SGP) 15 - 8.\nHENG JI MIN JULIET won the Gold Medal.\nONG SHU HUI JESSICA won the Silver medal."
+  },
+  {
+    "sport": "Fencing",
+    "event_category": "MEN TEAM SABRE FINAL",
+    "gender": "Men",
+    "event_name": "TEAM SABRE",
+    "event_type": "Final",
+    "template": "*FENCING - {GENDER} {EVENT} {TYPE}*\n{TEAM} VS {OPPONENT}\n{OPPONENT_COUNTRY} beat {TEAM_COUNTRY} {SCORE1} - {SCORE2}. {TEAM_COUNTRY} has finished {PLACEMENT} out of {TOTAL} won the {MEDAL} medal.",
+    "fields": [
+      "GENDER",
+      "EVENT",
+      "TYPE",
+      "TEAM",
+      "OPPONENT",
+      "OPPONENT_COUNTRY",
+      "TEAM_COUNTRY",
+      "SCORE1",
+      "SCORE2",
+      "PLACEMENT",
+      "TOTAL",
+      "MEDAL"
+    ],
+    "sample_data": "*FENCING - MEN TEAM SABRE FINAL*\nSGP VS VIE\nVIE beat SGP 45 - 31. SGP has finished 2nd out of 8 won the Silver medal."
+  }
+]
