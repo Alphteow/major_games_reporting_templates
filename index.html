@@ -332,6 +332,14 @@
             
             variableFieldsDiv.innerHTML = '';
             
+            // Extract ALL fields from template dynamically
+            const templateFields = currentTemplate.match(/\{([^}]+)\}/g) || [];
+            const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
+            const uniqueFields = [...new Set(allFields)];
+            
+            // Update currentFields to include all detected fields
+            currentFields = uniqueFields;
+            
             currentFields.forEach(field => {
                 const fieldDiv = document.createElement('div');
                 fieldDiv.className = 'variable-field';
@@ -363,6 +371,9 @@
             
             variableInputsDiv.style.display = 'block';
             showNextEventInfo();
+            
+            // Initial preview update
+            updatePreview();
         }
 
         function getAutoPopulatedValue(field) {
