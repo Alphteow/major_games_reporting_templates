@@ -1,80 +1,299 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Template Generator</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        select, input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-        textarea { height: 200px; resize: vertical; }
-        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        .template-output { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 20px; }
-        .variable-inputs { display: none; margin-top: 20px; padding: 20px; background: #f0f8ff; border-radius: 4px; }
-        .variable-field { margin-bottom: 10px; }
-        .template-preview { background: #fff3cd; padding: 15px; border-radius: 4px; margin: 15px 0; }
-        .next-event-info { background: #f0f8ff; padding: 10px; margin: 10px 0; border-radius: 4px; }
-        .auto-populated { background-color: #e8f5e8; border-left: 3px solid #28a745; }
-        .hidden { display: none; }
-        .loading { text-align: center; padding: 20px; color: #666; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+        
+        .template-preview {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .variable-inputs {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .variable-field {
+            margin-bottom: 15px;
+        }
+        
+        .template-output {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px solid #4caf50;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .template-info {
+            background: #f0f8ff;
+            border: 1px solid #4169e1;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .template-info strong {
+            color: #4169e1;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .debug-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Sports Template Generator</h1>
-    
-    <div id="loadingMessage" class="loading">Loading templates...</div>
-    
-    <div id="mainContent" style="display: none;">
-        <div class="form-group">
-            <label for="sport">Sport:</label>
-            <select id="sport" onchange="updateGenders()">
-                <option value="">Select Sport</option>
-            </select>
+    <div class="container">
+        <h1>Sports Template Generator</h1>
+        
+        <div id="loadingMessage" class="loading">
+            <div>Loading templates...</div>
+            <div style="margin-top: 10px;">Preparing sports data...</div>
         </div>
         
-        <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select id="gender" onchange="updateEventNames()">
-                <option value="">Select Gender</option>
-            </select>
+        <div id="errorMessage" class="error-message hidden">
+            <strong>Error:</strong> <span id="errorText"></span>
         </div>
         
-        <div class="form-group">
-            <label for="eventName">Event Name:</label>
-            <select id="eventName" onchange="updateEventTypes()">
-                <option value="">Select Event Name</option>
-            </select>
+        <div id="debugInfo" class="debug-info hidden">
+            <strong>Debug Information:</strong>
+            <div id="debugText"></div>
         </div>
         
-        <div class="form-group">
-            <label for="eventType">Event Type:</label>
-            <select id="eventType" onchange="loadTemplate()">
-                <option value="">Select Event Type</option>
-            </select>
-        </div>
-        
-        <div id="templatePreview" class="template-preview hidden">
-            <h3>Template Preview:</h3>
-            <div id="templateText"></div>
-        </div>
-
-        <div id="nextEventInfo" class="next-event-info" style="display: none;">
-            <h4>Next Event Information Available:</h4>
-            <p id="nextEventDetails"></p>
-        </div>
-        
-        <div id="variableInputs" class="variable-inputs">
-            <h3>Fill in Template Variables:</h3>
-            <div id="variableFields"></div>
-            <button onclick="generateOutput()">Generate Template</button>
-            <button onclick="clearFields()">Clear All Fields</button>
-        </div>
-        
-        <div id="templateOutput" class="template-output hidden">
-            <h3>Generated Template:</h3>
-            <textarea id="outputText" readonly></textarea>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <div id="mainContent" style="display: none;">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalTemplates">0</div>
+                    <div class="stat-label">Templates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalSports">0</div>
+                    <div class="stat-label">Sports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="selectedCount">0</div>
+                    <div class="stat-label">Selected</div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="sport">Sport:</label>
+                    <select id="sport" onchange="updateGenders()">
+                        <option value="">Select Sport</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" onchange="updateEventNames()">
+                        <option value="">Select Gender</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventName">Event Name:</label>
+                    <select id="eventName" onchange="updateEventTypes()">
+                        <option value="">Select Event Name</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventType">Event Type:</label>
+                    <select id="eventType" onchange="loadTemplate()">
+                        <option value="">Select Event Type</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="templateInfo" class="template-info hidden">
+                <strong>Template Information:</strong>
+                <div id="templateDetails"></div>
+            </div>
+            
+            <div id="templatePreview" class="template-preview hidden">
+                <h3>Template Preview:</h3>
+                <div id="templateText"></div>
+            </div>
+            
+            <div id="variableInputs" class="variable-inputs hidden">
+                <h3>Fill in Template Variables:</h3>
+                <div id="variableFields"></div>
+                <div style="margin-top: 20px;">
+                    <button class="btn" onclick="generateOutput()">Generate Template</button>
+                    <button class="btn btn-secondary" onclick="clearFields()">Clear All Fields</button>
+                </div>
+            </div>
+            
+            <div id="templateOutput" class="template-output hidden">
+                <h3>Generated Template:</h3>
+                <textarea id="outputText" readonly rows="10"></textarea>
+                <div style="margin-top: 15px;">
+                    <button class="btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="downloadTemplate()">Download</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -83,133 +302,132 @@
         let sportsData = [];
         let currentTemplate = null;
         let currentFields = [];
+        let competitionFlows = {};
+        let sportMappings = {};
 
-        // Load templates from JSON
+        // Load templates from JSON with detailed error reporting
         async function loadTemplatesData() {
             try {
-                const response = await fetch('data/templates.json');
+                showDebug('Attempting to load sports_templates.json...');
+                
+                const response = await fetch('data/sports_templates.json');
+                
+                showDebug(`Response status: ${response.status} ${response.statusText}`);
+                
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
-                const data = await response.json();
+                
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    showDebug(`Warning: Content-Type is ${contentType}, expected application/json`);
+                }
+                
+                const text = await response.text();
+                showDebug(`Response text length: ${text.length} characters`);
+                
+                const data = JSON.parse(text);
+                showDebug(`Parsed JSON successfully. Keys: ${Object.keys(data)}`);
+                
+                if (data.templates) {
+                    showDebug(`Found ${data.templates.length} templates`);
+                    showDebug(`Found ${data.sports_list ? data.sports_list.length : 0} sports`);
+                } else {
+                    showDebug('No templates property found in JSON');
+                }
+                
                 return data;
+                
             } catch (error) {
-                console.error('Error loading templates:', error);
-                // Fallback to dummy data if JSON fails to load
-                return getFallbackData();
+                const errorMessage = `Failed to load JSON: ${error.message}`;
+                console.error(errorMessage, error);
+                showError(errorMessage);
+                showDebug(`Full error: ${error.stack || error}`);
+                throw error;
             }
         }
 
-        // Fallback dummy data in case JSON doesn't load
-        function getFallbackData() {
-            return [
-                {
-                    sport: "Swimming",
-                    gender: "Men",
-                    event_name: "100M Freestyle",
-                    event_type: "Heat",
-                    template: "*SWIMMING – {GENDER} {EVENT} {TYPE}*\n{NAME} (SGP)\nTime: {TIME}. He finished {PLACEMENT} out of {TOTAL} and {ADVANCEMENT_STATUS}.",
-                    fields: ["GENDER", "EVENT", "TYPE", "NAME", "TIME", "PLACEMENT", "TOTAL", "ADVANCEMENT_STATUS"]
-                },
-                {
-                    sport: "Football",
-                    gender: "Men",
-                    event_name: "Team",
-                    event_type: "Group Stage",
-                    template: "*FOOTBALL – {GENDER} TEAM {EVENT_TYPE}*\n{TEAM1} VS {TEAM2}\n{WINNER} beat {LOSER} {SCORE_WINNER} – {SCORE_LOSER}. {LOSER} will play against {NEXT_OPPONENT} on {NEXT_MATCH_DATE} at {NEXT_MATCH_TIME} (CAM Time).",
-                    fields: ["GENDER", "EVENT_TYPE", "TEAM1", "TEAM2", "WINNER", "LOSER", "SCORE_WINNER", "SCORE_LOSER", "NEXT_OPPONENT", "NEXT_MATCH_DATE", "NEXT_MATCH_TIME"]
-                }
-            ];
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            errorText.textContent = message;
+            errorDiv.classList.remove('hidden');
         }
 
-        // Schedule data for auto-population
-        const scheduleData = [
-            {
-                date: "2025-08-06",
-                sport: "Sepak Takraw",
-                event: "Men Doubles",
-                stage: "Round Robin (SGP VS MYA)",
-                timeStart: "0900",
-                timeEnd: "1000",
-                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
-                opponents: "SGP vs MYA"
-            },
-            {
-                date: "2025-08-07",
-                sport: "Sepak Takraw",
-                event: "Men Doubles", 
-                stage: "Semi Finals (SGP VS THA)",
-                timeStart: "1500",
-                timeEnd: "1600",
-                venue: "Indoor Basketball Hall, Olympic Stadium Centre",
-                opponents: "SGP vs THA"
-            },
-            {
-                date: "2025-08-06",
-                sport: "Swimming",
-                event: "Men 200M Individual Medley",
-                stage: "Heat",
-                timeStart: "0900",
-                timeEnd: "1000",
-                venue: "Aquatic Centre Pool A",
-                opponents: "Individual Event"
-            },
-            {
-                date: "2025-08-06",
-                sport: "Swimming",
-                event: "Men 200M Individual Medley", 
-                stage: "Final",
-                timeStart: "1800",
-                timeEnd: "1900",
-                venue: "Aquatic Centre Pool A",
-                opponents: "Individual Event"
-            },
-            {
-                date: "2025-08-06",
-                sport: "Football",
-                event: "Men Team",
-                stage: "Group Stage (SGP VS THA)",
-                timeStart: "1600",
-                timeEnd: "1800",
-                venue: "National Stadium",
-                opponents: "SGP vs THA"
-            },
-            {
-                date: "2025-08-08",
-                sport: "Football",
-                event: "Men Team",
-                stage: "Quarter Finals (SGP VS MAS)",
-                timeStart: "1900",
-                timeEnd: "2100",
-                venue: "National Stadium", 
-                opponents: "SGP vs MAS"
-            }
-        ];
+        // Show debug information
+        function showDebug(message) {
+            const debugDiv = document.getElementById('debugInfo');
+            const debugText = document.getElementById('debugText');
+            debugText.innerHTML += message + '<br>';
+            debugDiv.classList.remove('hidden');
+            console.log('DEBUG:', message);
+        }
+
+        // Hide error message
+        function hideError() {
+            document.getElementById('errorMessage').classList.add('hidden');
+        }
 
         // Initialize the app
         async function initializeApp() {
             try {
-                sportsData = await loadTemplatesData();
-                console.log('Loaded templates:', sportsData.length);
+                hideError();
+                showDebug('Starting application initialization...');
+                
+                const data = await loadTemplatesData();
+                
+                // Handle the JSON structure from your file
+                if (data.templates && Array.isArray(data.templates)) {
+                    sportsData = data.templates;
+                    competitionFlows = data.competition_flows || {};
+                    sportMappings = data.sport_mappings || {};
+                    showDebug(`Successfully loaded ${sportsData.length} templates`);
+                } else {
+                    throw new Error('Invalid JSON structure: expected templates array');
+                }
+                
+                if (sportsData.length === 0) {
+                    throw new Error('No templates found in the loaded data');
+                }
+                
+                // Update stats
+                updateStats();
                 
                 // Hide loading message and show main content
                 document.getElementById('loadingMessage').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
                 
                 initializeDropdowns();
+                showDebug('Application initialized successfully');
+                
             } catch (error) {
                 console.error('Failed to initialize app:', error);
-                document.getElementById('loadingMessage').textContent = 'Error loading templates. Please refresh the page.';
+                showError(`Failed to initialize application: ${error.message}`);
+                
+                // Keep loading message visible with error
+                document.getElementById('loadingMessage').innerHTML = 
+                    '<div style="color: red;">Failed to load templates. Check console and debug info for details.</div>';
             }
         }
 
-        // Initialize dropdowns
+        function updateStats() {
+            document.getElementById('totalTemplates').textContent = sportsData.length;
+            document.getElementById('totalSports').textContent = 
+                [...new Set(sportsData.map(item => item.sport_normalized || item.sport))].length;
+        }
+
+        // Initialize dropdowns with data from JSON
         function initializeDropdowns() {
-            const sports = [...new Set(sportsData.map(item => item.sport))].sort();
-            const sportSelect = document.getElementById('sport');
+            // Get unique sports from the data, prioritizing sport_normalized
+            const sports = [...new Set(sportsData.map(item => item.sport_normalized || item.sport))]
+                .filter(sport => sport && sport.trim()) // Remove empty/null values
+                .sort();
             
-            // Clear existing options except the first one
+            const sportSelect = document.getElementById('sport');
             sportSelect.innerHTML = '<option value="">Select Sport</option>';
+            
+            showDebug(`Available sports: ${sports.join(', ')}`);
             
             sports.forEach(sport => {
                 const option = document.createElement('option');
@@ -230,9 +448,17 @@
             
             if (!selectedSport) return;
             
-            const genders = [...new Set(sportsData
-                .filter(item => item.sport === selectedSport)
-                .map(item => item.gender))].sort();
+            // Filter templates by selected sport (check both sport and sport_normalized)
+            const filteredTemplates = sportsData.filter(item => 
+                (item.sport_normalized === selectedSport) || 
+                (item.sport === selectedSport)
+            );
+            
+            const genders = [...new Set(filteredTemplates.map(item => item.gender))]
+                .filter(gender => gender && gender.trim())
+                .sort();
+            
+            showDebug(`Available genders for ${selectedSport}: ${genders.join(', ')}`);
             
             genders.forEach(gender => {
                 const option = document.createElement('option');
@@ -240,6 +466,8 @@
                 option.textContent = gender;
                 genderSelect.appendChild(option);
             });
+            
+            updateSelectedCount();
         }
         
         function updateEventNames() {
@@ -253,9 +481,16 @@
             
             if (!selectedSport || !selectedGender) return;
             
-            const eventNames = [...new Set(sportsData
-                .filter(item => item.sport === selectedSport && item.gender === selectedGender)
-                .map(item => item.event_name))].sort();
+            const filteredTemplates = sportsData.filter(item => 
+                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
+                item.gender === selectedGender
+            );
+            
+            const eventNames = [...new Set(filteredTemplates.map(item => item.event_name))]
+                .filter(eventName => eventName && eventName.trim())
+                .sort();
+            
+            showDebug(`Available event names for ${selectedSport} ${selectedGender}: ${eventNames.join(', ')}`);
             
             eventNames.forEach(eventName => {
                 const option = document.createElement('option');
@@ -263,6 +498,8 @@
                 option.textContent = eventName;
                 eventNameSelect.appendChild(option);
             });
+            
+            updateSelectedCount();
         }
         
         function updateEventTypes() {
@@ -276,12 +513,17 @@
             
             if (!selectedSport || !selectedGender || !selectedEventName) return;
             
-            const eventTypes = [...new Set(sportsData
-                .filter(item => 
-                    item.sport === selectedSport && 
-                    item.gender === selectedGender && 
-                    item.event_name === selectedEventName)
-                .map(item => item.event_type))].sort();
+            const filteredTemplates = sportsData.filter(item => 
+                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
+                item.gender === selectedGender && 
+                item.event_name === selectedEventName
+            );
+            
+            const eventTypes = [...new Set(filteredTemplates.map(item => item.event_type))]
+                .filter(eventType => eventType && eventType.trim())
+                .sort();
+            
+            showDebug(`Available event types: ${eventTypes.join(', ')}`);
             
             eventTypes.forEach(eventType => {
                 const option = document.createElement('option');
@@ -289,6 +531,23 @@
                 option.textContent = eventType;
                 eventTypeSelect.appendChild(option);
             });
+            
+            updateSelectedCount();
+        }
+        
+        function updateSelectedCount() {
+            const selectedSport = document.getElementById('sport').value;
+            const selectedGender = document.getElementById('gender').value;
+            const selectedEventName = document.getElementById('eventName').value;
+            const selectedEventType = document.getElementById('eventType').value;
+            
+            let count = 0;
+            if (selectedSport) count++;
+            if (selectedGender) count++;
+            if (selectedEventName) count++;
+            if (selectedEventType) count++;
+            
+            document.getElementById('selectedCount').textContent = count;
         }
         
         function loadTemplate() {
@@ -303,26 +562,52 @@
             }
             
             const templateData = sportsData.find(item => 
-                item.sport === selectedSport && 
+                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
                 item.gender === selectedGender && 
                 item.event_name === selectedEventName && 
                 item.event_type === selectedEventType
             );
             
             if (templateData) {
+                showDebug(`Found template: ${templateData.id || 'no-id'}`);
                 currentTemplate = templateData.template;
                 currentFields = templateData.fields || [];
                 
                 showTemplatePreview();
+                showTemplateInfo(templateData);
                 generateVariableInputs();
+            } else {
+                const errorMsg = `No template found for: ${selectedSport} > ${selectedGender} > ${selectedEventName} > ${selectedEventType}`;
+                showError(errorMsg);
+                showDebug(errorMsg);
             }
+            
+            updateSelectedCount();
+        }
+
+        function showTemplateInfo(templateData) {
+            const infoDiv = document.getElementById('templateInfo');
+            const detailsDiv = document.getElementById('templateDetails');
+            
+            let infoHtml = `
+                <div><strong>Sport:</strong> ${templateData.sport_normalized || templateData.sport}</div>
+                <div><strong>Result Type:</strong> ${templateData.result_type || 'score'}</div>
+                <div><strong>Team Event:</strong> ${templateData.is_team ? 'Yes' : 'No'}</div>
+            `;
+            
+            if (templateData.competition_flow && templateData.competition_flow.length > 0) {
+                infoHtml += `<div><strong>Competition Flow:</strong> ${templateData.competition_flow.join(' → ')}</div>`;
+            }
+            
+            detailsDiv.innerHTML = infoHtml;
+            infoDiv.classList.remove('hidden');
         }
         
         function showTemplatePreview() {
             const previewDiv = document.getElementById('templatePreview');
             const templateTextDiv = document.getElementById('templateText');
             
-            templateTextDiv.innerHTML = `<pre>${currentTemplate}</pre>`;
+            templateTextDiv.textContent = currentTemplate;
             previewDiv.classList.remove('hidden');
         }
         
@@ -337,8 +622,8 @@
             const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
             const uniqueFields = [...new Set(allFields)];
             
-            // Update currentFields to include all detected fields
             currentFields = uniqueFields;
+            showDebug(`Template fields: ${currentFields.join(', ')}`);
             
             currentFields.forEach(field => {
                 const fieldDiv = document.createElement('div');
@@ -354,14 +639,6 @@
                 input.name = field;
                 input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
                 
-                // Auto-populate if possible
-                const autoPopulatedValue = getAutoPopulatedValue(field);
-                if (autoPopulatedValue) {
-                    input.value = autoPopulatedValue;
-                    input.className = 'auto-populated';
-                    input.title = 'Auto-populated from schedule data';
-                }
-                
                 input.addEventListener('input', updatePreview);
                 
                 fieldDiv.appendChild(label);
@@ -369,92 +646,8 @@
                 variableFieldsDiv.appendChild(fieldDiv);
             });
             
-            variableInputsDiv.style.display = 'block';
-            showNextEventInfo();
-            
-            // Initial preview update
+            variableInputsDiv.classList.remove('hidden');
             updatePreview();
-        }
-
-        function getAutoPopulatedValue(field) {
-            const selectedSport = document.getElementById('sport').value;
-            const selectedGender = document.getElementById('gender').value;
-            const selectedEventName = document.getElementById('eventName').value;
-            
-            const nextEvent = findNextEvent(selectedSport, selectedGender, selectedEventName);
-            
-            switch(field) {
-                case 'NEXT_OPPONENT_COUNTRY_CODE':
-                case 'NEXT_OPPONENT':
-                    return extractOpponent(nextEvent);
-                case 'NEXT_MATCH_DATE':
-                case 'NEXT_DATE':
-                    return nextEvent ? formatDate(nextEvent.date) : '';
-                case 'NEXT_MATCH_TIME':
-                case 'NEXT_TIME':
-                case 'TIME':
-                    return nextEvent ? formatTime(nextEvent.timeStart) : '';
-                case 'TIME_ZONE':
-                    return 'CAM time';
-                case 'VENUE':
-                    return nextEvent ? nextEvent.venue : '';
-                default:
-                    return null;
-            }
-        }
-
-        function findNextEvent(sport, gender, eventName) {
-            const today = new Date();
-            const currentSportEvents = scheduleData.filter(event => 
-                event.sport.toLowerCase().includes(sport.toLowerCase()) &&
-                new Date(event.date) >= today
-            );
-            
-            currentSportEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-            return currentSportEvents[0] || null;
-        }
-
-        function extractOpponent(event) {
-            if (!event || !event.stage) return '';
-            
-            const vsMatch = event.stage.match(/SGP VS (\w+)/i);
-            if (vsMatch) {
-                return vsMatch[1];
-            }
-            return '';
-        }
-
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const options = { day: 'numeric', month: 'long' };
-            return date.toLocaleDateString('en-US', options);
-        }
-
-        function formatTime(timeString) {
-            if (timeString && timeString.length === 4) {
-                return timeString + 'hr';
-            }
-            return timeString;
-        }
-
-        function showNextEventInfo() {
-            const selectedSport = document.getElementById('sport').value;
-            const nextEvent = findNextEvent(selectedSport, '', '');
-            const nextEventDiv = document.getElementById('nextEventInfo');
-            const nextEventDetails = document.getElementById('nextEventDetails');
-            
-            if (nextEvent) {
-                nextEventDetails.innerHTML = `
-                    <strong>Next ${selectedSport} Event:</strong><br>
-                    Date: ${formatDate(nextEvent.date)}<br>
-                    Time: ${formatTime(nextEvent.timeStart)} (CAM time)<br>
-                    Stage: ${nextEvent.stage}<br>
-                    Venue: ${nextEvent.venue}
-                `;
-                nextEventDiv.style.display = 'block';
-            } else {
-                nextEventDiv.style.display = 'none';
-            }
         }
 
         function formatFieldLabel(field) {
@@ -466,14 +659,10 @@
         function updatePreview() {
             let previewTemplate = currentTemplate;
             
-            // Extract ALL fields from the template dynamically
             const templateFields = currentTemplate.match(/\{([^}]+)\}/g) || [];
             const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
-            
-            // Remove duplicates
             const uniqueFields = [...new Set(allFields)];
             
-            // Replace each field with input value or placeholder
             uniqueFields.forEach(field => {
                 const input = document.getElementById(field);
                 const value = input ? input.value : '';
@@ -481,7 +670,7 @@
                 previewTemplate = previewTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), placeholder);
             });
             
-            document.getElementById('templateText').innerHTML = `<pre>${previewTemplate}</pre>`;
+            document.getElementById('templateText').textContent = previewTemplate;
         }
         
         function generateOutput() {
@@ -500,7 +689,7 @@
             });
             
             if (missingFields.length > 0) {
-                alert(`Please fill in the following fields: ${missingFields.join(', ')}`);
+                alert('Please fill in the following fields: ' + missingFields.join(', '));
                 return;
             }
             
@@ -511,7 +700,9 @@
         function clearFields() {
             currentFields.forEach(field => {
                 const input = document.getElementById(field);
-                if (input) input.value = '';
+                if (input) {
+                    input.value = '';
+                }
             });
             updatePreview();
             document.getElementById('templateOutput').classList.add('hidden');
@@ -520,8 +711,32 @@
         function copyToClipboard() {
             const outputText = document.getElementById('outputText');
             outputText.select();
-            document.execCommand('copy');
-            alert('Template copied to clipboard!');
+            outputText.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                alert('Template copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy to clipboard. Please copy manually.');
+            }
+        }
+        
+        function downloadTemplate() {
+            const outputText = document.getElementById('outputText').value;
+            const selectedSport = document.getElementById('sport').value;
+            const selectedEventType = document.getElementById('eventType').value;
+            
+            const filename = `${selectedSport}_${selectedEventType}_template.txt`.replace(/[^a-z0-9]/gi, '_');
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputText));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
         }
         
         function clearDropdown(selectId) {
@@ -534,12 +749,13 @@
         
         function hideElements() {
             document.getElementById('templatePreview').classList.add('hidden');
-            document.getElementById('variableInputs').style.display = 'none';
+            document.getElementById('templateInfo').classList.add('hidden');
+            document.getElementById('variableInputs').classList.add('hidden');
             document.getElementById('templateOutput').classList.add('hidden');
         }
         
         // Initialize on page load
-        window.onload = initializeApp;
+        window.addEventListener('load', initializeApp);
     </script>
 </body>
 </html>
