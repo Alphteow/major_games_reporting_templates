@@ -5,211 +5,495 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Template Generator</title>
     <style>
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
         }
-        
-        .container {
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
             background: white;
             border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #3498db;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        /* Form Sections */
         .form-section {
+            margin-bottom: 35px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .form-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
             margin-bottom: 25px;
         }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
+
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #34495e;
-            font-size: 1.1em;
+            color: #2c3e50;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
         }
-        
+
         select, input, textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
         }
-        
+
         select:focus, input:focus, textarea:focus {
             outline: none;
             border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            transform: translateY(-1px);
         }
-        
+
+        select:hover, input:hover, textarea:hover {
+            border-color: #bdc3c7;
+        }
+
+        /* Buttons */
         .btn {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 12px 24px;
+            display: inline-block;
+            padding: 14px 28px;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
             transition: all 0.3s ease;
-            margin-right: 10px;
+            margin-right: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .btn:hover {
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
-        
+
         .btn-secondary {
             background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
         }
-        
-        .template-preview {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-            font-family: monospace;
-            white-space: pre-wrap;
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
         }
-        
-        .variable-inputs {
-            background: #f8f9fa;
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #229954, #1e8449);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        /* Template Info */
+        .template-info {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border: 1px solid #2196f3;
+            border-radius: 12px;
             padding: 25px;
-            border-radius: 6px;
-            margin-top: 20px;
-            border: 1px solid #e9ecef;
+            margin: 25px 0;
+            position: relative;
         }
-        
-        .variable-field {
+
+        .template-info h4 {
+            color: #1976d2;
             margin-bottom: 15px;
+            font-size: 1.2rem;
         }
-        
-        .template-output {
-            background: #e8f5e9;
-            padding: 20px;
+
+        .template-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .template-details > div {
+            background: white;
+            padding: 12px 16px;
             border-radius: 6px;
-            margin-top: 20px;
+            border-left: 3px solid #2196f3;
+        }
+
+        .template-details strong {
+            color: #1976d2;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Template Preview */
+        .template-preview {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border: 1px solid #ffc107;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .template-preview h4 {
+            color: #f57c00;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        #templateText {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ffcc02;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            min-height: 100px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Variable Inputs */
+        .variable-inputs {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border: 1px solid #9c27b0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .variable-inputs h4 {
+            color: #7b1fa2;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .variable-field {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #9c27b0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .variable-field label {
+            color: #7b1fa2;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .variable-field input {
+            border: 2px solid #e1bee7;
+        }
+
+        .variable-field input:focus {
+            border-color: #9c27b0;
+            box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+        }
+
+        /* Template Output */
+        .template-output {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
             border: 1px solid #4caf50;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
         }
-        
-        .hidden {
-            display: none;
+
+        .template-output h4 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
-        
+
+        #outputText {
+            background: white;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            min-height: 150px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Error Messages */
+        .error-message {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border: 1px solid #f44336;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .error-message strong {
+            color: #c62828;
+        }
+
+        /* Debug Info */
+        .debug-info {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 1px solid #ff9800;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        /* Loading States */
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px;
             color: #666;
             font-size: 18px;
         }
-        
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 6px;
+
+        .loading::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
-        
-        .stat-item {
-            text-align: center;
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #3498db;
+
+        /* Hidden Elements */
+        .hidden {
+            display: none !important;
         }
-        
-        .stat-label {
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .template-info {
-            background: #f0f8ff;
-            border: 1px solid #4169e1;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-size: 14px;
-        }
-        
-        .template-info strong {
-            color: #4169e1;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-        }
-        
-        .debug-info {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            font-family: monospace;
-            font-size: 12px;
-        }
-        
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
             
             .container {
-                padding: 20px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 30px 20px;
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
             }
             
             .stats {
-                flex-direction: column;
-                gap: 15px;
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .template-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            select, input, textarea {
+                padding: 12px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sports Template Generator</h1>
+        <div class="header">
+            <h1>Sports Template Generator</h1>
+            <p class="subtitle">Generate professional sports result templates</p>
+        </div>
         
         <div id="loadingMessage" class="loading">
-            <div>Loading templates...</div>
-            <div style="margin-top: 10px;">Preparing sports data...</div>
+            Loading sports data...
         </div>
         
         <div id="errorMessage" class="error-message hidden">
@@ -221,76 +505,72 @@
             <div id="debugText"></div>
         </div>
         
-        <div id="mainContent" style="display: none;">
+        <div id="mainContent" class="main-content" style="display: none;">
             <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalTemplates">0</div>
-                    <div class="stat-label">Templates</div>
-                </div>
                 <div class="stat-item">
                     <div class="stat-number" id="totalSports">0</div>
                     <div class="stat-label">Sports</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" id="selectedCount">0</div>
-                    <div class="stat-label">Selected</div>
+                    <div class="stat-number" id="totalEvents">0</div>
+                    <div class="stat-label">Events</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalTemplates">0</div>
+                    <div class="stat-label">Templates</div>
                 </div>
             </div>
             
             <div class="form-section">
-                <div class="form-group">
-                    <label for="sport">Sport:</label>
-                    <select id="sport" onchange="updateGenders()">
-                        <option value="">Select Sport</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" onchange="updateEventNames()">
-                        <option value="">Select Gender</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="eventName">Event Name:</label>
-                    <select id="eventName" onchange="updateEventTypes()">
-                        <option value="">Select Event Name</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="eventType">Event Type:</label>
-                    <select id="eventType" onchange="loadTemplate()">
-                        <option value="">Select Event Type</option>
-                    </select>
+                <h3>Select Competition Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sport">Sport:</label>
+                        <select id="sport" onchange="updateEvents()">
+                            <option value="">Select Sport</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event">Event:</label>
+                        <select id="event" onchange="updateRounds()">
+                            <option value="">Select Event</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="roundType">Round Type:</label>
+                        <select id="roundType" onchange="loadTemplate()">
+                            <option value="">Select Round Type</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             
             <div id="templateInfo" class="template-info hidden">
-                <strong>Template Information:</strong>
+                <h4>Template Information</h4>
                 <div id="templateDetails"></div>
             </div>
             
             <div id="templatePreview" class="template-preview hidden">
-                <h3>Template Preview:</h3>
+                <h4>Template Preview</h4>
                 <div id="templateText"></div>
             </div>
             
             <div id="variableInputs" class="variable-inputs hidden">
-                <h3>Fill in Template Variables:</h3>
+                <h4>Fill Template Variables</h4>
                 <div id="variableFields"></div>
                 <div style="margin-top: 20px;">
-                    <button class="btn" onclick="generateOutput()">Generate Template</button>
-                    <button class="btn btn-secondary" onclick="clearFields()">Clear All Fields</button>
+                    <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
+                    <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
                 </div>
             </div>
             
             <div id="templateOutput" class="template-output hidden">
-                <h3>Generated Template:</h3>
+                <h4>Generated Template</h4>
                 <textarea id="outputText" readonly rows="10"></textarea>
                 <div style="margin-top: 15px;">
-                    <button class="btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+                    <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
                     <button class="btn btn-secondary" onclick="downloadTemplate()">Download</button>
                 </div>
             </div>
@@ -299,13 +579,11 @@
 
     <script>
         // Global variables
-        let sportsData = [];
+        let sportsData = null;
         let currentTemplate = null;
         let currentFields = [];
-        let competitionFlows = {};
-        let sportMappings = {};
 
-        // Load templates from JSON with detailed error reporting
+        // Load templates from JSON
         async function loadTemplatesData() {
             try {
                 showDebug('Attempting to load sports_templates.json...');
@@ -318,23 +596,8 @@
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                const contentType = response.headers.get('content-type');
-                if (!contentType || !contentType.includes('application/json')) {
-                    showDebug(`Warning: Content-Type is ${contentType}, expected application/json`);
-                }
-                
-                const text = await response.text();
-                showDebug(`Response text length: ${text.length} characters`);
-                
-                const data = JSON.parse(text);
+                const data = await response.json();
                 showDebug(`Parsed JSON successfully. Keys: ${Object.keys(data)}`);
-                
-                if (data.templates) {
-                    showDebug(`Found ${data.templates.length} templates`);
-                    showDebug(`Found ${data.sports_list ? data.sports_list.length : 0} sports`);
-                } else {
-                    showDebug('No templates property found in JSON');
-                }
                 
                 return data;
                 
@@ -375,21 +638,13 @@
                 hideError();
                 showDebug('Starting application initialization...');
                 
-                const data = await loadTemplatesData();
+                sportsData = await loadTemplatesData();
                 
-                // Handle the JSON structure from your file
-                if (data.templates && Array.isArray(data.templates)) {
-                    sportsData = data.templates;
-                    competitionFlows = data.competition_flows || {};
-                    sportMappings = data.sport_mappings || {};
-                    showDebug(`Successfully loaded ${sportsData.length} templates`);
-                } else {
-                    throw new Error('Invalid JSON structure: expected templates array');
+                if (!sportsData || !sportsData.sport_mappings) {
+                    throw new Error('Invalid JSON structure: expected sport_mappings array');
                 }
                 
-                if (sportsData.length === 0) {
-                    throw new Error('No templates found in the loaded data');
-                }
+                showDebug(`Successfully loaded ${sportsData.sport_mappings.length} sport mappings`);
                 
                 // Update stats
                 updateStats();
@@ -405,29 +660,30 @@
                 console.error('Failed to initialize app:', error);
                 showError(`Failed to initialize application: ${error.message}`);
                 
-                // Keep loading message visible with error
                 document.getElementById('loadingMessage').innerHTML = 
                     '<div style="color: red;">Failed to load templates. Check console and debug info for details.</div>';
             }
         }
 
         function updateStats() {
-            document.getElementById('totalTemplates').textContent = sportsData.length;
-            document.getElementById('totalSports').textContent = 
-                [...new Set(sportsData.map(item => item.sport_normalized || item.sport))].length;
+            const uniqueSports = [...new Set(sportsData.sport_mappings.map(item => item.sport))];
+            const totalTemplates = Object.keys(sportsData.templates || {}).length;
+            
+            document.getElementById('totalSports').textContent = uniqueSports.length;
+            document.getElementById('totalEvents').textContent = sportsData.sport_mappings.length;
+            document.getElementById('totalTemplates').textContent = totalTemplates;
         }
 
         // Initialize dropdowns with data from JSON
         function initializeDropdowns() {
-            // Get unique sports from the data, prioritizing sport_normalized
-            const sports = [...new Set(sportsData.map(item => item.sport_normalized || item.sport))]
-                .filter(sport => sport && sport.trim()) // Remove empty/null values
+            const sports = [...new Set(sportsData.sport_mappings.map(item => item.sport))]
+                .filter(sport => sport && sport.trim())
                 .sort();
             
             const sportSelect = document.getElementById('sport');
             sportSelect.innerHTML = '<option value="">Select Sport</option>';
             
-            showDebug(`Available sports: ${sports.join(', ')}`);
+            showDebug(`Available sports: ${sports.slice(0, 5).join(', ')}... (${sports.length} total)`);
             
             sports.forEach(sport => {
                 const option = document.createElement('option');
@@ -437,172 +693,114 @@
             });
         }
         
-        function updateGenders() {
+        function updateEvents() {
             const selectedSport = document.getElementById('sport').value;
-            const genderSelect = document.getElementById('gender');
+            const eventSelect = document.getElementById('event');
             
-            clearDropdown('gender');
-            clearDropdown('eventName');
-            clearDropdown('eventType');
+            clearDropdown('event');
+            clearDropdown('roundType');
             hideElements();
             
             if (!selectedSport) return;
             
-            // Filter templates by selected sport (check both sport and sport_normalized)
-            const filteredTemplates = sportsData.filter(item => 
-                (item.sport_normalized === selectedSport) || 
-                (item.sport === selectedSport)
-            );
+            const events = [...new Set(
+                sportsData.sport_mappings
+                    .filter(item => item.sport === selectedSport)
+                    .map(item => item.event)
+            )].filter(event => event && event.trim()).sort();
             
-            const genders = [...new Set(filteredTemplates.map(item => item.gender))]
-                .filter(gender => gender && gender.trim())
-                .sort();
+            showDebug(`Available events for ${selectedSport}: ${events.slice(0, 3).join(', ')}... (${events.length} total)`);
             
-            showDebug(`Available genders for ${selectedSport}: ${genders.join(', ')}`);
-            
-            genders.forEach(gender => {
+            events.forEach(event => {
                 const option = document.createElement('option');
-                option.value = gender;
-                option.textContent = gender;
-                genderSelect.appendChild(option);
+                option.value = event;
+                option.textContent = event;
+                eventSelect.appendChild(option);
             });
-            
-            updateSelectedCount();
         }
-        
-        function updateEventNames() {
+
+        function updateRounds() {
             const selectedSport = document.getElementById('sport').value;
-            const selectedGender = document.getElementById('gender').value;
-            const eventNameSelect = document.getElementById('eventName');
+            const selectedEvent = document.getElementById('event').value;
+            const roundSelect = document.getElementById('roundType');
             
-            clearDropdown('eventName');
-            clearDropdown('eventType');
+            clearDropdown('roundType');
             hideElements();
             
-            if (!selectedSport || !selectedGender) return;
+            if (!selectedSport || !selectedEvent) return;
             
-            const filteredTemplates = sportsData.filter(item => 
-                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
-                item.gender === selectedGender
-            );
+            const rounds = [...new Set(
+                sportsData.round_mappings
+                    .filter(item => item.sport === selectedSport && item.event === selectedEvent)
+                    .map(item => item.round_type)
+            )].filter(round => round && round.trim()).sort();
             
-            const eventNames = [...new Set(filteredTemplates.map(item => item.event_name))]
-                .filter(eventName => eventName && eventName.trim())
-                .sort();
+            showDebug(`Available rounds for ${selectedSport} - ${selectedEvent}: ${rounds.slice(0, 3).join(', ')}... (${rounds.length} total)`);
             
-            showDebug(`Available event names for ${selectedSport} ${selectedGender}: ${eventNames.join(', ')}`);
-            
-            eventNames.forEach(eventName => {
+            rounds.forEach(round => {
                 const option = document.createElement('option');
-                option.value = eventName;
-                option.textContent = eventName;
-                eventNameSelect.appendChild(option);
+                option.value = round;
+                option.textContent = formatRoundName(round);
+                roundSelect.appendChild(option);
             });
-            
-            updateSelectedCount();
         }
-        
-        function updateEventTypes() {
-            const selectedSport = document.getElementById('sport').value;
-            const selectedGender = document.getElementById('gender').value;
-            const selectedEventName = document.getElementById('eventName').value;
-            const eventTypeSelect = document.getElementById('eventType');
-            
-            clearDropdown('eventType');
-            hideElements();
-            
-            if (!selectedSport || !selectedGender || !selectedEventName) return;
-            
-            const filteredTemplates = sportsData.filter(item => 
-                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
-                item.gender === selectedGender && 
-                item.event_name === selectedEventName
-            );
-            
-            const eventTypes = [...new Set(filteredTemplates.map(item => item.event_type))]
-                .filter(eventType => eventType && eventType.trim())
-                .sort();
-            
-            showDebug(`Available event types: ${eventTypes.join(', ')}`);
-            
-            eventTypes.forEach(eventType => {
-                const option = document.createElement('option');
-                option.value = eventType;
-                option.textContent = eventType;
-                eventTypeSelect.appendChild(option);
-            });
-            
-            updateSelectedCount();
-        }
-        
-        function updateSelectedCount() {
-            const selectedSport = document.getElementById('sport').value;
-            const selectedGender = document.getElementById('gender').value;
-            const selectedEventName = document.getElementById('eventName').value;
-            const selectedEventType = document.getElementById('eventType').value;
-            
-            let count = 0;
-            if (selectedSport) count++;
-            if (selectedGender) count++;
-            if (selectedEventName) count++;
-            if (selectedEventType) count++;
-            
-            document.getElementById('selectedCount').textContent = count;
-        }
-        
+
         function loadTemplate() {
             const selectedSport = document.getElementById('sport').value;
-            const selectedGender = document.getElementById('gender').value;
-            const selectedEventName = document.getElementById('eventName').value;
-            const selectedEventType = document.getElementById('eventType').value;
+            const selectedEvent = document.getElementById('event').value;
+            const selectedRound = document.getElementById('roundType').value;
             
-            if (!selectedSport || !selectedGender || !selectedEventName || !selectedEventType) {
+            if (!selectedSport || !selectedEvent || !selectedRound) {
                 hideElements();
                 return;
             }
             
-            const templateData = sportsData.find(item => 
-                ((item.sport_normalized === selectedSport) || (item.sport === selectedSport)) && 
-                item.gender === selectedGender && 
-                item.event_name === selectedEventName && 
-                item.event_type === selectedEventType
+            // Find the mapping
+            const mapping = sportsData.round_mappings.find(item => 
+                item.sport === selectedSport && 
+                item.event === selectedEvent && 
+                item.round_type === selectedRound
             );
             
-            if (templateData) {
-                showDebug(`Found template: ${templateData.id || 'no-id'}`);
-                currentTemplate = templateData.template;
-                currentFields = templateData.fields || [];
-                
-                showTemplatePreview();
-                showTemplateInfo(templateData);
-                generateVariableInputs();
-            } else {
-                const errorMsg = `No template found for: ${selectedSport} > ${selectedGender} > ${selectedEventName} > ${selectedEventType}`;
-                showError(errorMsg);
-                showDebug(errorMsg);
+            if (!mapping) {
+                showError('No template mapping found for this combination');
+                return;
             }
             
-            updateSelectedCount();
+            // Get the template
+            const template = sportsData.templates[mapping.template_id.toString()];
+            
+            if (!template) {
+                showError(`Template ${mapping.template_id} not found`);
+                return;
+            }
+            
+            currentTemplate = template.template;
+            currentFields = template.fields || [];
+            
+            showTemplateInfo(mapping, template);
+            showTemplatePreview();
+            generateVariableInputs();
         }
 
-        function showTemplateInfo(templateData) {
+        function showTemplateInfo(mapping, template) {
             const infoDiv = document.getElementById('templateInfo');
             const detailsDiv = document.getElementById('templateDetails');
             
-            let infoHtml = `
-                <div><strong>Sport:</strong> ${templateData.sport_normalized || templateData.sport}</div>
-                <div><strong>Result Type:</strong> ${templateData.result_type || 'score'}</div>
-                <div><strong>Team Event:</strong> ${templateData.is_team ? 'Yes' : 'No'}</div>
+            const infoHtml = `
+                <div><strong>Template ID:</strong> ${mapping.template_id}</div>
+                <div><strong>Template Name:</strong> ${template.name}</div>
+                <div><strong>Sport:</strong> ${mapping.sport}</div>
+                <div><strong>Event:</strong> ${mapping.event}</div>
+                <div><strong>Round Type:</strong> ${mapping.round_type}</div>
+                <div><strong>Result Type:</strong> ${mapping.result_type}</div>
+                <div><strong>Team Event:</strong> ${mapping.is_team === 'yes' ? 'Yes' : 'No'}</div>
             `;
-            
-            if (templateData.competition_flow && templateData.competition_flow.length > 0) {
-                infoHtml += `<div><strong>Competition Flow:</strong> ${templateData.competition_flow.join(' → ')}</div>`;
-            }
             
             detailsDiv.innerHTML = infoHtml;
             infoDiv.classList.remove('hidden');
         }
-        
+
         function showTemplatePreview() {
             const previewDiv = document.getElementById('templatePreview');
             const templateTextDiv = document.getElementById('templateText');
@@ -610,19 +808,13 @@
             templateTextDiv.textContent = currentTemplate;
             previewDiv.classList.remove('hidden');
         }
-        
+
         function generateVariableInputs() {
             const variableFieldsDiv = document.getElementById('variableFields');
             const variableInputsDiv = document.getElementById('variableInputs');
             
             variableFieldsDiv.innerHTML = '';
             
-            // Extract ALL fields from template dynamically
-            const templateFields = currentTemplate.match(/\{([^}]+)\}/g) || [];
-            const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
-            const uniqueFields = [...new Set(allFields)];
-            
-            currentFields = uniqueFields;
             showDebug(`Template fields: ${currentFields.join(', ')}`);
             
             currentFields.forEach(field => {
@@ -655,15 +847,17 @@
                        .toLowerCase()
                        .replace(/\b\w/g, l => l.toUpperCase()) + ':';
         }
+
+        function formatRoundName(round) {
+            return round.replace(/_/g, ' ')
+                       .toLowerCase()
+                       .replace(/\b\w/g, l => l.toUpperCase());
+        }
         
         function updatePreview() {
             let previewTemplate = currentTemplate;
             
-            const templateFields = currentTemplate.match(/\{([^}]+)\}/g) || [];
-            const allFields = templateFields.map(field => field.replace(/[{}]/g, ''));
-            const uniqueFields = [...new Set(allFields)];
-            
-            uniqueFields.forEach(field => {
+            currentFields.forEach(field => {
                 const input = document.getElementById(field);
                 const value = input ? input.value : '';
                 const placeholder = value || `{${field}}`;
@@ -725,9 +919,10 @@
         function downloadTemplate() {
             const outputText = document.getElementById('outputText').value;
             const selectedSport = document.getElementById('sport').value;
-            const selectedEventType = document.getElementById('eventType').value;
+            const selectedEvent = document.getElementById('event').value;
+            const selectedRound = document.getElementById('roundType').value;
             
-            const filename = `${selectedSport}_${selectedEventType}_template.txt`.replace(/[^a-z0-9]/gi, '_');
+            const filename = `${selectedSport}_${selectedEvent}_${selectedRound}_template.txt`.replace(/[^a-z0-9]/gi, '_');
             
             const element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outputText));
@@ -759,3 +954,4 @@
     </script>
 </body>
 </html>
+
