@@ -768,7 +768,7 @@
             }
             
             // Get the template from template_type using template_id
-            const template = sportsData.template_types[mapping.template_id.toString()];
+            const template = sportsData.templates[mapping.template_id.toString()];
             
             if (!template) {
                 showError(`Template ${mapping.template_id} not found in template_type`);
