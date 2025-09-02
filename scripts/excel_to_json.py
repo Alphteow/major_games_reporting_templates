@@ -58,34 +58,7 @@ def create_sports_templates_json():
     # Create templates dictionary from template_raw or template_type
     templates = {}
     
-    if template_raw_df is not None and not template_raw_df.empty:
-        # Use template_raw data
-        for _, row in template_raw_df.iterrows():
-            if pd.notna(row.get('template')):
-                template_id = str(row.get('id', len(templates) + 1))
-                
-                # Try to parse fields if they exist
-                fields = []
-                if pd.notna(row.get('fields')):
-                    try:
-                        fields = eval(str(row['fields'])) if isinstance(row['fields'], str) else row['fields']
-                        if not isinstance(fields, list):
-                            fields = []
-                    except:
-                        # Extract fields from template using regex
-                        import re
-                        template_text = str(row['template'])
-                        fields = list(set(re.findall(r'\{([^}]+)\}', template_text)))
-                
-                templates[template_id] = {
-                    'name': str(row.get('name', f'Template {template_id}')),
-                    'template': str(row['template']),
-                    'fields': fields,
-                    'sport': str(row.get('sport', '')) if pd.notna(row.get('sport')) else '',
-                    'event': str(row.get('event_name', '')) if pd.notna(row.get('event_name')) else ''
-                }
-    
-    elif template_type_df is not None and not template_type_df.empty:
+    if template_type_df is not None and not template_type_df.empty:
         # Use template_type data
         for _, row in template_type_df.iterrows():
             if pd.notna(row.get('template')):
@@ -101,27 +74,6 @@ def create_sports_templates_json():
                     'template': template_text,
                     'fields': fields
                 }
-    
-    else:
-        # Create basic templates based on unique template IDs from round mappings
-        unique_template_ids = set(mapping['template_id'] for mapping in round_mappings)
-        
-        for template_id in unique_template_ids:
-            # Find a sample mapping for this template
-            sample_mapping = next(m for m in round_mappings if m['template_id'] == template_id)
-            
-            # Create basic template based on result type and team status
-            template_text = create_basic_template(sample_mapping)
-            
-            # Extract fields from template
-            import re
-            fields = list(set(re.findall(r'\{([^}]+)\}', template_text)))
-            
-            templates[str(template_id)] = {
-                'name': f"Template {template_id}",
-                'template': template_text,
-                'fields': fields
-            }
     
     # Get unique sports list
     sports_list = sorted(list(set(mapping['sport'] for mapping in sport_mappings if mapping['sport'])))
