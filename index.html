@@ -824,6 +824,11 @@
             
             showDebug(`Template fields: ${currentFields.join(', ')}`);
             
+            // Get current selections for prefilling
+            const selectedSport = document.getElementById('sport').value;
+            const selectedEvent = document.getElementById('event').value;
+            const selectedRound = document.getElementById('roundType').value;
+            
             currentFields.forEach(field => {
                 const fieldDiv = document.createElement('div');
                 fieldDiv.className = 'variable-field';
@@ -838,6 +843,27 @@
                 input.name = field;
                 input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
                 
+                // Prefill based on field name and current selections
+                let prefillValue = '';
+                
+                // Check for sport-related fields
+                if (field.toUpperCase().includes('SPORT') && selectedSport) {
+                    prefillValue = selectedSport;
+                }
+                // Check for event-related fields
+                else if ((field.toUpperCase().includes('EVENT') || field.toUpperCase().includes('EVENT_NAME')) && selectedEvent) {
+                    prefillValue = selectedEvent;
+                }
+                // Check for round-related fields
+                else if ((field.toUpperCase().includes('ROUND') || field.toUpperCase().includes('TYPE')) && selectedRound) {
+                    prefillValue = formatRoundName(selectedRound);
+                }
+                
+                // Set the prefilled value
+                if (prefillValue) {
+                    input.value = prefillValue;
+                }
+                
                 input.addEventListener('input', updatePreview);
                 
                 fieldDiv.appendChild(label);
@@ -848,6 +874,7 @@
             variableInputsDiv.classList.remove('hidden');
             updatePreview();
         }
+
 
         function formatFieldLabel(field) {
             return field.replace(/_/g, ' ')
