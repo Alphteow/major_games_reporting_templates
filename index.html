@@ -776,7 +776,7 @@
             }
             
             currentTemplate = template.template;
-            currentFields = JSON.parse(template.fields); // Parse the fields array
+            currentFields = template.fields; // Remove JSON.parse() since fields is already an array
             
             showTemplateInfo(mapping, template);
             showTemplatePreview();
@@ -784,9 +784,15 @@
         }
 
 
+
         function showTemplateInfo(mapping, template) {
             const infoDiv = document.getElementById('templateInfo');
             const detailsDiv = document.getElementById('templateDetails');
+            
+            // Format the fields array for display
+            const fieldsDisplay = Array.isArray(template.fields) 
+                ? template.fields.join(', ') 
+                : template.fields;
             
             const infoHtml = `
                 <div><strong>Template ID:</strong> ${mapping.template_id}</div>
@@ -795,7 +801,7 @@
                 <div><strong>Round Type:</strong> ${mapping.round_type}</div>
                 <div><strong>Result Type:</strong> ${mapping.result_type}</div>
                 <div><strong>Team Event:</strong> ${mapping.is_team === 'yes' ? 'Yes' : 'No'}</div>
-                <div><strong>Template Fields:</strong> ${template.fields}</div>
+                <div><strong>Template Fields:</strong> ${fieldsDisplay}</div>
             `;
             
             detailsDiv.innerHTML = infoHtml;
