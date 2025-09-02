@@ -755,7 +755,7 @@
                 return;
             }
             
-            // Find the mapping
+            // Find the mapping from round_template_mappings
             const mapping = sportsData.round_mappings.find(item => 
                 item.sport === selectedSport && 
                 item.event === selectedEvent && 
@@ -767,21 +767,22 @@
                 return;
             }
             
-            // Get the template
-            const template = sportsData.templates[mapping.template_id.toString()];
+            // Get the template from template_type using template_id
+            const template = sportsData.template_types[mapping.template_id.toString()];
             
             if (!template) {
-                showError(`Template ${mapping.template_id} not found`);
+                showError(`Template ${mapping.template_id} not found in template_type`);
                 return;
             }
             
             currentTemplate = template.template;
-            currentFields = template.fields || [];
+            currentFields = JSON.parse(template.fields); // Parse the fields array
             
             showTemplateInfo(mapping, template);
             showTemplatePreview();
             generateVariableInputs();
         }
+
 
         function showTemplateInfo(mapping, template) {
             const infoDiv = document.getElementById('templateInfo');
@@ -789,12 +790,12 @@
             
             const infoHtml = `
                 <div><strong>Template ID:</strong> ${mapping.template_id}</div>
-                <div><strong>Template Name:</strong> ${template.name}</div>
                 <div><strong>Sport:</strong> ${mapping.sport}</div>
                 <div><strong>Event:</strong> ${mapping.event}</div>
                 <div><strong>Round Type:</strong> ${mapping.round_type}</div>
                 <div><strong>Result Type:</strong> ${mapping.result_type}</div>
                 <div><strong>Team Event:</strong> ${mapping.is_team === 'yes' ? 'Yes' : 'No'}</div>
+                <div><strong>Template Fields:</strong> ${template.fields}</div>
             `;
             
             detailsDiv.innerHTML = infoHtml;
