@@ -40,26 +40,34 @@
 
         .content-wrapper {
             display: flex;
+            flex-direction: column;
             gap: 20px;
-            position: relative;
+            /* position: relative; */
+        }
+
+        .top-section {
+            display: flex;
+            gap: 20px;
         }
 
         .left-panel {
             flex: 1;
             min-width: 600px;
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
-            padding-right: 10px;
         }
 
         .right-panel {
             flex: 0 0 400px;
             position: sticky;
-            top: 120px; /* Adjust based on header height */
+            top: 120px;
             height: fit-content;
             max-height: calc(100vh - 140px);
             overflow-y: auto;
             z-index: 100;
+        }
+
+        .bottom-section {
+            width: 100%;
+            margin-top: 20px;
         }
 
         #templatePreview {
@@ -390,7 +398,6 @@
             border-radius: 12px;
             padding: 30px;
             margin: 25px 0;
-            position: relative;
         }
 
         .template-output h4 {
@@ -428,6 +435,7 @@
 
         /* Debug Info */
         .debug-info {
+            display: non !important;
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
             border: 1px solid #ff9800;
             border-radius: 12px;
@@ -674,6 +682,9 @@
         <div class="header">
             <h1>Sports Template Generator</h1>
             <p class="subtitle">Generate professional sports result templates</p>
+            <div style="margin-top: 15px;">
+                <a href="template-manager.html" class="btn btn-secondary">Manage Templates</a>
+            </div>
         </div>
         
         <div id="loadingMessage" class="loading">
@@ -684,7 +695,8 @@
             <strong>Error:</strong> <span id="errorText"></span>
         </div>
         
-        <div id="debugInfo" class="debug-info hidden">
+        <!-- Debug console completely hidden from UI -->
+        <div id="debugInfo" class="debug-info" style="display: none !important;">
             <h4>Debug Information</h4>
             <div id="debugText"></div>
         </div>
@@ -706,64 +718,123 @@
             </div>
             
             <div class="content-wrapper">
-                <div class="left-panel">
-                    <div class="form-section">
-                        <h3>Select Competition Details</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="sport">Sport:</label>
-                                <select id="sport" onchange="updateEvents()">
-                                    <option value="">Select Sport</option>
-                                </select>
+                <!-- Top section with form and sticky preview -->
+                <div class="top-section">
+                    <div class="left-panel">
+                        <div class="form-section">
+                            <h3>Select Competition Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="sport">Sport:</label>
+                                    <select id="sport" onchange="updateEvents()">
+                                        <option value="">Select Sport</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event">Event:</label>
+                                    <select id="event" onchange="updateRounds()">
+                                        <option value="">Select Event</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roundType">Round Type:</label>
+                                    <select id="roundType" onchange="loadTemplate()">
+                                        <option value="">Select Round</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="event">Event:</label>
-                                <select id="event" onchange="updateRounds()">
-                                    <option value="">Select Event</option>
-                                </select>
+                        </div>
+                        
+                        <div id="templateInfo" class="template-info hidden">
+                            <h4>Template Information</h4>
+                            <div id="templateDetails" class="template-details"></div>
+                        </div>
+                        
+                        <div id="variableInputs" class="variable-inputs hidden">
+                            <h4>Fill Template Variables</h4>
+                            <p style="color: #7b1fa2; margin-bottom: 20px; font-size: 14px;">
+                                Fields are ordered by their appearance in the template. 
+                                <span style="color: #28a745;">🤖 Auto-filled</span> | 
+                                <span style="color: #007bff;">✏️ Manual entry</span>
+                            </p>
+                            <div id="variableFields"></div>
+                            <div style="margin-top: 20px;">
+                                <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
+                                <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
                             </div>
-                            <div class="form-group">
-                                <label for="roundType">Round Type:</label>
-                                <select id="roundType" onchange="loadTemplate()">
-                                    <option value="">Select Round</option>
-                                </select>
+                        </div>
+                        
+                        <!-- Template correction section -->
+                        <div id="templateUpdateSection" class="template-update-section hidden">
+                            <div class="form-section" style="border-left-color: #ff9800; background: linear-gradient(135deg, #fff8e1, #ffecb3);">
+                                <h3>🔧 Suggest Template Corrections</h3>
+                                <p style="margin-bottom: 20px; color: #f57c00;">
+                                    If the auto-filled values are incorrect, help us improve by suggesting corrections:
+                                </p>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Suggested Sport:</label>
+                                        <input type="text" id="suggestedSport" placeholder="Correct sport name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Suggested Event:</label>
+                                        <input type="text" id="suggestedEvent" placeholder="Correct event name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Suggested Round:</label>
+                                        <input type="text" id="suggestedRound" placeholder="Correct round name">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Additional Notes:</label>
+                                    <textarea id="updateNotes" rows="3" placeholder="Describe the issue or correction needed" style="border: 2px solid #ffcc02;"></textarea>
+                                </div>
+                                
+                                <button class="btn" onclick="submitTemplateUpdate()" style="background: linear-gradient(135deg, #ff9800, #f57c00); color: white; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">
+                                    Submit Correction
+                                </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div id="templateInfo" class="template-info hidden">
-                        <h4>Template Information</h4>
-                        <div id="templateDetails" class="template-details"></div>
-                    </div>
-                    
-                    <div id="variableInputs" class="variable-inputs hidden">
-                        <h4>Fill Template Variables</h4>
-                        <div id="variableFields"></div>
-                        <div style="margin-top: 20px;">
-                            <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
-                            <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
-                        </div>
-                    </div>
-                    
-                    <div id="templateOutput" class="template-output hidden">
-                        <h4>Generated Template</h4>
-                        <textarea id="outputText" readonly></textarea>
-                        <div style="margin-top: 15px;">
-                            <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
-                            <button class="btn btn-secondary" onclick="downloadTemplate()">Download Template</button>
+                    <div class="right-panel">
+                        <div id="templatePreview" class="template-preview hidden">
+                            <h3>📋 Template Preview</h3>
+                            <div id="previewContent" style="background: white; border: 1px solid #e9ecef; border-radius: 4px; padding: 15px; font-family: 'Courier New', monospace; white-space: pre-wrap; min-height: 200px; max-height: 400px; overflow-y: auto; font-size: 13px; line-height: 1.5;"></div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 4px; font-size: 12px; color: #1976d2;">
+                                <strong>💡 Tip:</strong> This preview updates in real-time as you fill in the fields below.
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="right-panel">
-                    <div id="templatePreview" class="template-preview hidden">
-                        <h3>Template Preview</h3>
-                        <div id="previewContent"></div>
+                <!-- Bottom section with generated template -->
+                <div class="bottom-section">
+                    <div id="templateOutput" class="template-output hidden">
+                        <h4>✅ Generated Template</h4>
+                        <p style="color: #2e7d32; margin-bottom: 15px; font-size: 14px;">
+                            Your completed template is ready! Copy it or download it for use.
+                        </p>
+                        <textarea id="outputText" readonly style="background: white; border: 2px solid #4caf50; border-radius: 8px; padding: 20px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 14px; line-height: 1.6; resize: vertical; min-height: 200px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);"></textarea>
+                        <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn btn-success" onclick="copyToClipboard()">
+                                📋 Copy to Clipboard
+                            </button>
+                            <button class="btn btn-secondary" onclick="downloadTemplate()">
+                                💾 Download Template
+                            </button>
+                            <button class="btn" onclick="generateNewTemplate()" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white;">
+                                🔄 Generate Another
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <script>
@@ -775,18 +846,18 @@
         // Load templates from JSON
         async function loadTemplatesData() {
             try {
-                showDebug('Attempting to load sports_templates.json...');
+                // showDebug('Attempting to load sports_templates.json...');
                 
                 const response = await fetch('data/sports_templates.json');
                 
-                showDebug(`Response status: ${response.status} ${response.statusText}`);
+                // showDebug(`Response status: ${response.status} ${response.statusText}`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
                 const data = await response.json();
-                showDebug(`Parsed JSON successfully. Keys: ${Object.keys(data)}`);
+                // showDebug(`Parsed JSON successfully. Keys: ${Object.keys(data)}`);
                 
                 return data;
                 
@@ -794,7 +865,7 @@
                 const errorMessage = `Failed to load JSON: ${error.message}`;
                 console.error(errorMessage, error);
                 showError(errorMessage);
-                showDebug(`Full error: ${error.stack || error}`);
+                // showDebug(`Full error: ${error.stack || error}`);
                 throw error;
             }
         }
@@ -809,10 +880,11 @@
 
         // Show debug information
         function showDebug(message) {
-            const debugDiv = document.getElementById('debugInfo');
-            const debugText = document.getElementById('debugText');
-            debugText.innerHTML += message + '<br>';
-            debugDiv.classList.remove('hidden');
+            // const debugDiv = document.getElementById('debugInfo');
+            // const debugText = document.getElementById('debugText');
+            // debugText.innerHTML += message + '<br>';
+            // debugDiv.classList.remove('hidden');
+            // console.log('DEBUG:', message);
             console.log('DEBUG:', message);
         }
 
@@ -825,7 +897,7 @@
         async function initializeApp() {
             try {
                 hideError();
-                showDebug('Starting application initialization...');
+                // showDebug('Starting application initialization...'); // Remove this
                 
                 sportsData = await loadTemplatesData();
                 
@@ -833,26 +905,25 @@
                     throw new Error('Invalid JSON structure: expected sport_mappings array');
                 }
                 
-                showDebug(`Successfully loaded ${sportsData.sport_mappings.length} sport mappings`);
+                // showDebug(`Successfully loaded ${sportsData.sport_mappings.length} sport mappings`); // Remove this
                 
-                // Update stats
                 updateStats();
                 
-                // Hide loading message and show main content
                 document.getElementById('loadingMessage').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
                 
                 initializeDropdowns();
-                showDebug('Application initialized successfully');
+                // showDebug('Application initialized successfully'); // Remove this
                 
             } catch (error) {
                 console.error('Failed to initialize app:', error);
                 showError(`Failed to initialize application: ${error.message}`);
                 
                 document.getElementById('loadingMessage').innerHTML = 
-                    '<div style="color: red;">Failed to load templates. Check console and debug info for details.</div>';
+                    '<div style="color: red;">Failed to load templates. Check console for details.</div>';
             }
         }
+
 
         function updateStats() {
             const uniqueSports = [...new Set(sportsData.sport_mappings.map(item => item.sport))];
@@ -872,7 +943,7 @@
             const sportSelect = document.getElementById('sport');
             sportSelect.innerHTML = '<option value="">Select Sport</option>';
             
-            showDebug(`Available sports: ${sports.slice(0, 5).join(', ')}... (${sports.length} total)`);
+            // showDebug(`Available sports: ${sports.slice(0, 5).join(', ')}... (${sports.length} total)`);
             
             sports.forEach(sport => {
                 const option = document.createElement('option');
@@ -898,7 +969,7 @@
                     .map(item => item.event)
             )].filter(event => event && event.trim()).sort();
             
-            showDebug(`Available events for ${selectedSport}: ${events.slice(0, 3).join(', ')}... (${events.length} total)`);
+            // showDebug(`Available events for ${selectedSport}: ${events.slice(0, 3).join(', ')}... (${events.length} total)`);
             
             events.forEach(event => {
                 const option = document.createElement('option');
@@ -924,7 +995,7 @@
                     .map(item => item.round_type)
             )].filter(round => round && round.trim()).sort();
             
-            showDebug(`Available rounds for ${selectedSport} - ${selectedEvent}: ${rounds.slice(0, 3).join(', ')}... (${rounds.length} total)`);
+            // showDebug(`Available rounds for ${selectedSport} - ${selectedEvent}: ${rounds.slice(0, 3).join(', ')}... (${rounds.length} total)`);
             
             rounds.forEach(round => {
                 const option = document.createElement('option');
