@@ -434,11 +434,31 @@
                 
                 if (prefillValue) {
                     input.value = prefillValue;
-                    input.style.backgroundColor = '#e8f5e8'; // Light green to indicate auto-filled
+                    input.style.backgroundColor = '#e8f5e8';
                     input.style.borderLeft = '4px solid #28a745';
+                    
+                    // Add auto-fill indicator
+                    const indicator = document.createElement('span');
+                    indicator.innerHTML = '🤖';
+                    indicator.title = 'Auto-filled from your selections';
+                    indicator.style.cssText = 'position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 16px; opacity: 0.7;';
+                    fieldDiv.style.position = 'relative';
+                    fieldDiv.appendChild(indicator);
                 }
                 
-                input.addEventListener('input', updatePreview);
+                input.addEventListener('input', function() {
+                    updatePreview();
+                    // Remove auto-fill styling when user modifies
+                    if (this.style.backgroundColor === 'rgb(232, 245, 232)') {
+                        this.style.backgroundColor = '';
+                        this.style.borderLeft = '4px solid #007bff';
+                        const indicator = fieldDiv.querySelector('span');
+                        if (indicator && indicator.innerHTML === '🤖') {
+                            indicator.innerHTML = '✏️';
+                            indicator.title = 'Manually entered';
+                        }
+                    }
+                });
                 
                 fieldDiv.appendChild(label);
                 fieldDiv.appendChild(input);
@@ -448,6 +468,7 @@
             variableInputsDiv.classList.remove('hidden');
             updatePreview();
         }
+
 
         function orderFieldsByTemplateAppearance(fields, template) {
             if (!template || !fields) return fields;
@@ -466,95 +487,6 @@
             
             // Return ordered field names
             return fieldPositions.map(item => item.field);
-        }
-
-        function getAutoFillValue(field, sport, event, round) {
-            const fieldUpper = field.toUpperCase();
-            
-            // Sport field mapping
-            if (fieldUpper.includes('SPORT') && sport) {
-                return sport;
-            }
-            
-            // Event field mapping  
-            if ((fieldUpper.includes('EVENT') || fieldUpper.includes('DISCIPLINE')) && event) {
-                return event;
-            }
-            
-            // Round field mapping
-            if ((fieldUpper.includes('ROUND') || fieldUpper.includes('STAGE') || fieldUpper.includes('PHASE')) && round) {
-                return formatRoundName(round);
-            }
-            
-            // Gender field mapping
-            if (fieldUpper.includes('GENDER')) {
-                // Try to infer from event name
-                if (event && event.toUpperCase().includes('MEN')) {
-                    return event.toUpperCase().includes('WOMEN') ? 'MIXED' : 'MEN';
-                } else if (event && event.toUpperCase().includes('WOMEN')) {
-                    return 'WOMEN';
-                }
-                return 'MIXED'; // Default fallback
-            }
-            
-            // Name field - leave empty for user input
-            if (fieldUpper.includes('NAME')) {
-                return '';
-            }
-            
-            // Result type mapping using sport mappings data
-            if (fieldUpper.includes('RESULT') && sport && event) {
-                const mapping = sportsData.sport_mappings.find(item => 
-                    item.sport === sport && item.value === event
-                );
-                return mapping ? mapping.resultType : '';
-            }
-            
-            // Team field mapping
-            if (fieldUpper.includes('TEAM') && sport && event) {
-                const mapping = sportsData.sport_mappings.find(item => 
-                    item.sport === sport && item.value === event
-                );
-                return mapping ? (mapping.team === 'yes' ? 'Team Event' : 'Individual Event') : '';
-            }
-            
-            return '';
-        }
-
-        function getAutoFillValue(field, sport, event, round) {
-            const fieldUpper = field.toUpperCase();
-            
-            // Sport field mapping
-            if (fieldUpper.includes('SPORT') && sport) {
-                return sport;
-            }
-            
-            // Event field mapping
-            if ((fieldUpper.includes('EVENT') || fieldUpper.includes('DISCIPLINE')) && event) {
-                return event;
-            }
-            
-            // Round field mapping
-            if ((fieldUpper.includes('ROUND') || fieldUpper.includes('STAGE') || fieldUpper.includes('PHASE')) && round) {
-                return formatRoundName(round);
-            }
-            
-            // Additional mappings based on your data structure
-            if (fieldUpper.includes('RESULT_TYPE') && sport && event) {
-                const mapping = sportsData.sport_mappings.find(item => 
-                    item.sport === sport && item.event === event
-                );
-                return mapping ? mapping.resultType : '';
-            }
-            
-            if (fieldUpper.includes('TEAM') && sport && event) {
-                const mapping = sportsData.sport_mappings.find(item => 
-                    item.sport === sport && item.event === event
-                );
-                return mapping ? (mapping.team === 'yes' ? 'Team Event' : 'Individual Event') : '';
-            }
-            
-            return '';
         }
 
         // Add this to your HTML
@@ -651,9 +583,31 @@
         }
 
         function formatRoundName(round) {
-            return round.replace(/_/g, ' ')
-                       .toLowerCase()
-                       .replace(/\b\w/g, l => l.toUpperCase());
+            if (!round) return '';
+            
+            // Handle common round type formatting
+            const roundMappings = {
+                'finals': 'Finals',
+                'semi finals': 'Semi Finals',
+                'quarter finals': 'Quarter Finals',
+                'round of 16': 'Round of 16',
+                'round of 32': 'Round of 32',
+                'round of 64': 'Round of 64',
+                'preliminaries': 'Preliminaries',
+                'qualifying': 'Qualifying',
+                'heats': 'Heats',
+                'group stage': 'Group Stage',
+                'pool stage': 'Pool Stage',
+                'round robin': 'Round Robin',
+                '3rd placing match': '3rd Place Match',
+                '3rd/4th placing match': '3rd/4th Place Match',
+                'bronze medal playoff': 'Bronze Medal Playoff'
+            };
+            
+            const lowerRound = round.toLowerCase();
+            return roundMappings[lowerRound] || round.replace(/_/g, ' ')
+                                                    .toLowerCase()
+                                                    .replace(/\b\w/g, l => l.toUpperCase());
         }
         
         function updatePreview() {
@@ -775,6 +729,74 @@
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getAutoFillValue(field, sport, event, round) {
+            const fieldUpper = field.toUpperCase();
+            
+            // Sport field mapping
+            if (fieldUpper.includes('SPORT') && sport) {
+                return sport;
+            }
+            
+            // Event field mapping  
+            if ((fieldUpper.includes('EVENT') || fieldUpper.includes('DISCIPLINE')) && event) {
+                return event;
+            }
+            
+            // Round field mapping - this handles both ROUND and TYPE fields
+            if ((fieldUpper.includes('ROUND') || fieldUpper.includes('STAGE') || fieldUpper.includes('PHASE')) && round) {
+                return formatRoundName(round);
+            }
+            
+            // TYPE field mapping - maps to the selected Round Type
+            if (fieldUpper.includes('TYPE') && round) {
+                return formatRoundName(round);
+            }
+            
+            // Gender field mapping
+            if (fieldUpper.includes('GENDER')) {
+                // Try to infer from event name
+                if (event && event.toUpperCase().includes('MEN')) {
+                    return event.toUpperCase().includes('WOMEN') ? 'MIXED' : 'MEN';
+                } else if (event && event.toUpperCase().includes('WOMEN')) {
+                    return 'WOMEN';
+                }
+                return 'MIXED'; // Default fallback
+            }
+            
+            // Name field - leave empty for user input
+            if (fieldUpper.includes('NAME')) {
+                return '';
+            }
+            
+            // Result type mapping using sport mappings data
+            if (fieldUpper.includes('RESULT') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.event === event
+                );
+                return mapping ? mapping.resultType : '';
+            }
+            
+            // Team field mapping
+            if (fieldUpper.includes('TEAM') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.event === event
+                );
+                return mapping ? (mapping.team === 'yes' ? 'Team Event' : 'Individual Event') : '';
+            }
+            
+            // Date field - you might want to auto-fill with current date
+            if (fieldUpper.includes('DATE')) {
+                return new Date().toISOString().split('T')[0]; // Current date in YYYY-MM-DD format
+            }
+            
+            // Venue field - leave empty for user input
+            if (fieldUpper.includes('VENUE') || fieldUpper.includes('LOCATION')) {
+                return '';
+            }
+            
+            return '';
         }
 
         
