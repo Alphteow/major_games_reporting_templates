@@ -408,6 +408,142 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .left-panel {
+            flex: 1;
+            min-width: 600px;
+        }
+
+        .right-panel {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            z-index: 100; /* Ensure it stays on top */
+        }
+        #templatePreview {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid #007bff;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #templatePreview h3 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        #previewContent {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #variableInputs {
+            margin-bottom: 30px;
+        }
+
+        .variable-field {
+            margin-bottom: 15px;
+        }
+
+        .variable-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .variable-field input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .variable-field input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        .template-update-section {
+            margin-top: 20px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auto-fill-icon, .manual-fill-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            cursor: help;
+        }
+
+        .variable-field {
+            position: relative;
+        }
+
+        /* Highlight auto-filled fields */
+        input[style*="rgb(232, 245, 232)"] {
+            border-left: 4px solid #28a745;
+        }
+
+        /* Sticky preview enhancements */
+        @media (max-width: 1200px) {
+            .right-panel {
+                position: static;
+                margin-top: 20px;
+            }
+        }
+
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .right-panel {
+                position: static;
+                flex: none;
+                max-height: none;
+            }
+        }
+
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -822,9 +958,7 @@
             
             variableFieldsDiv.innerHTML = '';
             
-            showDebug(`Template fields: ${currentFields.join(', ')}`);
-            
-            // Get current selections for prefilling
+            // Get current selections
             const selectedSport = document.getElementById('sport').value;
             const selectedEvent = document.getElementById('event').value;
             const selectedRound = document.getElementById('roundType').value;
@@ -843,25 +977,12 @@
                 input.name = field;
                 input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
                 
-                // Prefill based on field name and current selections
-                let prefillValue = '';
+                // Enhanced auto-fill logic using your mapping data
+                let prefillValue = getAutoFillValue(field, selectedSport, selectedEvent, selectedRound);
                 
-                // Check for sport-related fields
-                if (field.toUpperCase().includes('SPORT') && selectedSport) {
-                    prefillValue = selectedSport;
-                }
-                // Check for event-related fields
-                else if ((field.toUpperCase().includes('EVENT') || field.toUpperCase().includes('EVENT_NAME')) && selectedEvent) {
-                    prefillValue = selectedEvent;
-                }
-                // Check for round-related fields
-                else if ((field.toUpperCase().includes('ROUND') || field.toUpperCase().includes('TYPE')) && selectedRound) {
-                    prefillValue = formatRoundName(selectedRound);
-                }
-                
-                // Set the prefilled value
                 if (prefillValue) {
                     input.value = prefillValue;
+                    input.style.backgroundColor = '#e8f5e8'; // Light green to indicate auto-filled
                 }
                 
                 input.addEventListener('input', updatePreview);
@@ -874,6 +995,128 @@
             variableInputsDiv.classList.remove('hidden');
             updatePreview();
         }
+
+        function getAutoFillValue(field, sport, event, round) {
+            const fieldUpper = field.toUpperCase();
+            
+            // Sport field mapping
+            if (fieldUpper.includes('SPORT') && sport) {
+                return sport;
+            }
+            
+            // Event field mapping
+            if ((fieldUpper.includes('EVENT') || fieldUpper.includes('DISCIPLINE')) && event) {
+                return event;
+            }
+            
+            // Round field mapping
+            if ((fieldUpper.includes('ROUND') || fieldUpper.includes('STAGE') || fieldUpper.includes('PHASE')) && round) {
+                return formatRoundName(round);
+            }
+            
+            // Additional mappings based on your data structure
+            if (fieldUpper.includes('RESULT_TYPE') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.event === event
+                );
+                return mapping ? mapping.resultType : '';
+            }
+            
+            if (fieldUpper.includes('TEAM') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.event === event
+                );
+                return mapping ? (mapping.team === 'yes' ? 'Team Event' : 'Individual Event') : '';
+            }
+            
+            return '';
+        }
+
+        // Add this to your HTML
+        function addUpdateTemplateUI() {
+            const updateSection = document.createElement('div');
+            updateSection.className = 'template-update-section';
+            updateSection.innerHTML = `
+                <div class="form-section" style="border-left-color: #ff9800;">
+                    <h3>Update Template Mapping</h3>
+                    <p>If the auto-filled values are incorrect, you can suggest corrections:</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Suggested Sport:</label>
+                            <input type="text" id="suggestedSport" placeholder="Correct sport name">
+                        </div>
+                        <div class="form-group">
+                            <label>Suggested Event:</label>
+                            <input type="text" id="suggestedEvent" placeholder="Correct event name">
+                        </div>
+                        <div class="form-group">
+                            <label>Suggested Round:</label>
+                            <input type="text" id="suggestedRound" placeholder="Correct round name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Additional Notes:</label>
+                        <textarea id="updateNotes" rows="3" placeholder="Describe the issue or correction needed"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-warning" onclick="submitTemplateUpdate()">
+                        Submit Correction
+                    </button>
+                </div>
+            `;
+            
+            // Insert after the variable inputs section
+            const variableInputs = document.getElementById('variableInputs');
+            variableInputs.parentNode.insertBefore(updateSection, variableInputs.nextSibling);
+        }
+
+        function submitTemplateUpdate() {
+            const updateData = {
+                originalSport: document.getElementById('sport').value,
+                originalEvent: document.getElementById('event').value,
+                originalRound: document.getElementById('roundType').value,
+                suggestedSport: document.getElementById('suggestedSport').value,
+                suggestedEvent: document.getElementById('suggestedEvent').value,
+                suggestedRound: document.getElementById('suggestedRound').value,
+                notes: document.getElementById('updateNotes').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store corrections locally for now (you can implement server-side storage later)
+            let corrections = JSON.parse(localStorage.getItem('templateCorrections') || '[]');
+            corrections.push(updateData);
+            localStorage.setItem('templateCorrections', JSON.stringify(corrections));
+            
+            alert('Thank you for your correction! It has been saved for review.');
+            
+            // Clear the form
+            document.getElementById('suggestedSport').value = '';
+            document.getElementById('suggestedEvent').value = '';
+            document.getElementById('suggestedRound').value = '';
+            document.getElementById('updateNotes').value = '';
+        }
+
+        // Add validation indicators
+        function addValidationIndicators() {
+            currentFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (input && input.value) {
+                    const isAutoFilled = input.style.backgroundColor === 'rgb(232, 245, 232)';
+                    
+                    // Add validation icon
+                    const icon = document.createElement('span');
+                    icon.className = isAutoFilled ? 'auto-fill-icon' : 'manual-fill-icon';
+                    icon.innerHTML = isAutoFilled ? '🤖' : '✏️';
+                    icon.title = isAutoFilled ? 'Auto-filled value' : 'Manually entered';
+                    
+                    input.parentNode.appendChild(icon);
+                }
+            });
+        }
+
+
 
 
         function formatFieldLabel(field) {
