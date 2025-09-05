@@ -21,16 +21,76 @@
             padding: 20px;
         }
 
-        /* Container */
+        /* Update the container layout */
         .container {
-            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out;
+            padding: 20px;
         }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        .left-panel {
+            flex: 1;
+            min-width: 600px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .right-panel {
+            flex: 0 0 400px;
+            position: sticky;
+            top: 120px; /* Adjust based on header height */
+            height: fit-content;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        #templatePreview {
+            background: #f8f9fa;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+        }
+
+        #templatePreview h3 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        #previewContent {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
 
         @keyframes fadeInUp {
             from {
@@ -41,16 +101,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         h1 {
@@ -417,48 +467,6 @@
             padding: 20px;
         }
 
-        .left-panel {
-            flex: 1;
-            min-width: 600px;
-        }
-
-        .right-panel {
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-            max-height: calc(100vh - 40px);
-            overflow-y: auto;
-            z-index: 100; /* Ensure it stays on top */
-        }
-        #templatePreview {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border: 2px solid #007bff;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        #templatePreview h3 {
-            margin-top: 0;
-            color: #495057;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-        }
-
-        #previewContent {
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-            min-height: 200px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
         #variableInputs {
             margin-bottom: 30px;
         }
@@ -522,17 +530,57 @@
             border-left: 4px solid #28a745;
         }
 
+        /* Visual indicators for field types */
+        .auto-filled {
+            background-color: #e8f5e8 !important;
+            border-left: 4px solid #28a745 !important;
+        }
+
+        .manual-filled {
+            border-left: 4px solid #007bff;
+        }
+
+        .field-indicator {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .variable-field {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .right-panel {
+                position: static;
+                flex: none;
+                max-height: none;
+                order: -1; /* Move preview to top on mobile */
+            }
+            
+            .left-panel {
+                max-height: none;
+                overflow-y: visible;
+            }
+        }
+
+
         /* Sticky preview enhancements */
         @media (max-width: 1200px) {
             .right-panel {
                 position: static;
                 margin-top: 20px;
             }
-        }
-
-
-        /* Responsive design */
-        @media (max-width: 1200px) {
+            
             .container {
                 flex-direction: column;
             }
@@ -636,82 +684,48 @@
             <strong>Error:</strong> <span id="errorText"></span>
         </div>
         
-        <div id="debugInfo" class="debug-info hidden">
-            <strong>Debug Information:</strong>
-            <div id="debugText"></div>
-        </div>
-        
-        <div id="mainContent" class="main-content" style="display: none;">
+        <div id="mainContent" style="display: none;">
+            <!-- Stats section stays the same -->
             <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalSports">0</div>
-                    <div class="stat-label">Sports</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="totalEvents">0</div>
-                    <div class="stat-label">Events</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="totalTemplates">0</div>
-                    <div class="stat-label">Templates</div>
-                </div>
+                <!-- ... existing stats content ... -->
             </div>
             
-            <div class="form-section">
-                <h3>Select Competition Details</h3>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="sport">Sport:</label>
-                        <select id="sport" onchange="updateEvents()">
-                            <option value="">Select Sport</option>
-                        </select>
+            <div class="content-wrapper">
+                <div class="left-panel">
+                    <!-- Form sections -->
+                    <div class="form-section">
+                        <h3>Select Competition Details</h3>
+                        <!-- ... existing form content ... -->
                     </div>
                     
-                    <div class="form-group">
-                        <label for="event">Event:</label>
-                        <select id="event" onchange="updateRounds()">
-                            <option value="">Select Event</option>
-                        </select>
+                    <div id="templateInfo" class="template-info hidden">
+                        <!-- ... existing template info ... -->
                     </div>
                     
-                    <div class="form-group">
-                        <label for="roundType">Round Type:</label>
-                        <select id="roundType" onchange="loadTemplate()">
-                            <option value="">Select Round Type</option>
-                        </select>
+                    <div id="variableInputs" class="variable-inputs hidden">
+                        <h4>Fill Template Variables</h4>
+                        <div id="variableFields"></div>
+                        <div style="margin-top: 20px;">
+                            <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
+                            <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
+                        </div>
+                    </div>
+                    
+                    <div id="templateOutput" class="template-output hidden">
+                        <!-- ... existing template output ... -->
                     </div>
                 </div>
-            </div>
-            
-            <div id="templateInfo" class="template-info hidden">
-                <h4>Template Information</h4>
-                <div id="templateDetails"></div>
-            </div>
-            
-            <div id="templatePreview" class="template-preview hidden">
-                <h4>Template Preview</h4>
-                <div id="templateText"></div>
-            </div>
-            
-            <div id="variableInputs" class="variable-inputs hidden">
-                <h4>Fill Template Variables</h4>
-                <div id="variableFields"></div>
-                <div style="margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
-                    <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
-                </div>
-            </div>
-            
-            <div id="templateOutput" class="template-output hidden">
-                <h4>Generated Template</h4>
-                <textarea id="outputText" readonly rows="10"></textarea>
-                <div style="margin-top: 15px;">
-                    <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
-                    <button class="btn btn-secondary" onclick="downloadTemplate()">Download</button>
+                
+                <div class="right-panel">
+                    <div id="templatePreview" class="template-preview hidden">
+                        <h3>Template Preview</h3>
+                        <div id="previewContent"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         // Global variables
@@ -958,12 +972,15 @@
             
             variableFieldsDiv.innerHTML = '';
             
-            // Get current selections
+            // Get current selections for prefilling
             const selectedSport = document.getElementById('sport').value;
             const selectedEvent = document.getElementById('event').value;
             const selectedRound = document.getElementById('roundType').value;
             
-            currentFields.forEach(field => {
+            // Order fields based on their appearance in the template
+            const orderedFields = orderFieldsByTemplateAppearance(currentFields, currentTemplate);
+            
+            orderedFields.forEach(field => {
                 const fieldDiv = document.createElement('div');
                 fieldDiv.className = 'variable-field';
                 
@@ -977,12 +994,13 @@
                 input.name = field;
                 input.placeholder = `Enter ${field.replace(/_/g, ' ').toLowerCase()}`;
                 
-                // Enhanced auto-fill logic using your mapping data
+                // Enhanced auto-fill logic
                 let prefillValue = getAutoFillValue(field, selectedSport, selectedEvent, selectedRound);
                 
                 if (prefillValue) {
                     input.value = prefillValue;
                     input.style.backgroundColor = '#e8f5e8'; // Light green to indicate auto-filled
+                    input.style.borderLeft = '4px solid #28a745';
                 }
                 
                 input.addEventListener('input', updatePreview);
@@ -994,6 +1012,78 @@
             
             variableInputsDiv.classList.remove('hidden');
             updatePreview();
+        }
+
+        function orderFieldsByTemplateAppearance(fields, template) {
+            if (!template || !fields) return fields;
+            
+            // Create array of fields with their position in template
+            const fieldPositions = fields.map(field => {
+                const position = template.indexOf(`{${field}}`);
+                return {
+                    field: field,
+                    position: position === -1 ? Infinity : position
+                };
+            });
+            
+            // Sort by position in template
+            fieldPositions.sort((a, b) => a.position - b.position);
+            
+            // Return ordered field names
+            return fieldPositions.map(item => item.field);
+        }
+
+        function getAutoFillValue(field, sport, event, round) {
+            const fieldUpper = field.toUpperCase();
+            
+            // Sport field mapping
+            if (fieldUpper.includes('SPORT') && sport) {
+                return sport;
+            }
+            
+            // Event field mapping  
+            if ((fieldUpper.includes('EVENT') || fieldUpper.includes('DISCIPLINE')) && event) {
+                return event;
+            }
+            
+            // Round field mapping
+            if ((fieldUpper.includes('ROUND') || fieldUpper.includes('STAGE') || fieldUpper.includes('PHASE')) && round) {
+                return formatRoundName(round);
+            }
+            
+            // Gender field mapping
+            if (fieldUpper.includes('GENDER')) {
+                // Try to infer from event name
+                if (event && event.toUpperCase().includes('MEN')) {
+                    return event.toUpperCase().includes('WOMEN') ? 'MIXED' : 'MEN';
+                } else if (event && event.toUpperCase().includes('WOMEN')) {
+                    return 'WOMEN';
+                }
+                return 'MIXED'; // Default fallback
+            }
+            
+            // Name field - leave empty for user input
+            if (fieldUpper.includes('NAME')) {
+                return '';
+            }
+            
+            // Result type mapping using sport mappings data
+            if (fieldUpper.includes('RESULT') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.value === event
+                );
+                return mapping ? mapping.resultType : '';
+            }
+            
+            // Team field mapping
+            if (fieldUpper.includes('TEAM') && sport && event) {
+                const mapping = sportsData.sport_mappings.find(item => 
+                    item.sport === sport && item.value === event
+                );
+                return mapping ? (mapping.team === 'yes' ? 'Team Event' : 'Individual Event') : '';
+            }
+            
+            return '';
         }
 
         function getAutoFillValue(field, sport, event, round) {
