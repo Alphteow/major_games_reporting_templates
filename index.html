@@ -684,22 +684,56 @@
             <strong>Error:</strong> <span id="errorText"></span>
         </div>
         
+        <div id="debugInfo" class="debug-info hidden">
+            <h4>Debug Information</h4>
+            <div id="debugText"></div>
+        </div>
+        
         <div id="mainContent" style="display: none;">
-            <!-- Stats section stays the same -->
             <div class="stats">
-                <!-- ... existing stats content ... -->
+                <div class="stat-item">
+                    <span class="stat-number" id="totalSports">0</span>
+                    <span class="stat-label">Sports</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalEvents">0</span>
+                    <span class="stat-label">Events</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTemplates">0</span>
+                    <span class="stat-label">Templates</span>
+                </div>
             </div>
             
             <div class="content-wrapper">
                 <div class="left-panel">
-                    <!-- Form sections -->
                     <div class="form-section">
                         <h3>Select Competition Details</h3>
-                        <!-- ... existing form content ... -->
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="sport">Sport:</label>
+                                <select id="sport" onchange="updateEvents()">
+                                    <option value="">Select Sport</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="event">Event:</label>
+                                <select id="event" onchange="updateRounds()">
+                                    <option value="">Select Event</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="roundType">Round Type:</label>
+                                <select id="roundType" onchange="loadTemplate()">
+                                    <option value="">Select Round</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     
                     <div id="templateInfo" class="template-info hidden">
-                        <!-- ... existing template info ... -->
+                        <h4>Template Information</h4>
+                        <div id="templateDetails" class="template-details"></div>
                     </div>
                     
                     <div id="variableInputs" class="variable-inputs hidden">
@@ -712,7 +746,12 @@
                     </div>
                     
                     <div id="templateOutput" class="template-output hidden">
-                        <!-- ... existing template output ... -->
+                        <h4>Generated Template</h4>
+                        <textarea id="outputText" readonly></textarea>
+                        <div style="margin-top: 15px;">
+                            <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
+                            <button class="btn btn-secondary" onclick="downloadTemplate()">Download Template</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -960,11 +999,14 @@
 
         function showTemplatePreview() {
             const previewDiv = document.getElementById('templatePreview');
-            const templateTextDiv = document.getElementById('templateText');
+            const previewContent = document.getElementById('previewContent');
             
-            templateTextDiv.textContent = currentTemplate;
+            if (previewContent) {
+                previewContent.textContent = currentTemplate;
+            }
             previewDiv.classList.remove('hidden');
         }
+
 
         function generateVariableInputs() {
             const variableFieldsDiv = document.getElementById('variableFields');
@@ -1231,8 +1273,13 @@
                 previewTemplate = previewTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), placeholder);
             });
             
-            document.getElementById('templateText').textContent = previewTemplate;
+            // Use previewContent instead of templateText
+            const previewContent = document.getElementById('previewContent');
+            if (previewContent) {
+                previewContent.textContent = previewTemplate;
+            }
         }
+
         
         function generateOutput() {
             let outputTemplate = currentTemplate;
