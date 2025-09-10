@@ -709,8 +709,11 @@
         }
         
         function updatePreview() {
+            if (!currentTemplate) return;
+            
             let previewTemplate = currentTemplate;
             
+            // Process regular fields
             currentFields.forEach(field => {
                 const input = document.getElementById(field);
                 const value = input ? input.value : '';
@@ -735,6 +738,9 @@
             const recordAchievements = getRecordAchievements();
             if (recordAchievements.length > 0) {
                 previewTemplate = previewTemplate.replace(/\{RECORD_ACHIEVEMENTS\}/g, recordAchievements.join(', '));
+            } else {
+                // Remove record achievements placeholder if no achievements selected
+                previewTemplate = previewTemplate.replace(/\s*\{RECORD_ACHIEVEMENTS\}/g, '');
             }
             
             // Use previewContent instead of templateText
@@ -763,9 +769,12 @@
 
         
         function generateOutput() {
+            if (!currentTemplate) return;
+            
             let outputTemplate = currentTemplate;
             let missingFields = [];
             
+            // Process regular fields
             currentFields.forEach(field => {
                 const input = document.getElementById(field);
                 const value = input ? input.value.trim() : '';
@@ -794,6 +803,9 @@
             const recordAchievements = getRecordAchievements();
             if (recordAchievements.length > 0) {
                 outputTemplate = outputTemplate.replace(/\{RECORD_ACHIEVEMENTS\}/g, recordAchievements.join(', '));
+            } else {
+                // Remove record achievements placeholder if no achievements selected
+                outputTemplate = outputTemplate.replace(/\s*\{RECORD_ACHIEVEMENTS\}/g, '');
             }
             
             if (missingFields.length > 0) {
