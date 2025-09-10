@@ -719,9 +719,11 @@
             });
             
             // Add advancement status if selected
+            const advancementToggle = document.getElementById('advancementToggle');
             const advancementStatus = document.getElementById('advancementStatus');
-            if (advancementStatus && advancementStatus.value) {
-                previewTemplate = previewTemplate.replace(/\{NEXT_ROUND\}/g, formatRoundName(advancementStatus.value));
+            if (advancementToggle && advancementToggle.checked && advancementStatus && advancementStatus.value) {
+                const nextRound = formatRoundName(advancementStatus.value);
+                previewTemplate = previewTemplate.replace(/\{NEXT_ROUND\}/g, `Qualified for ${nextRound}`);
             }
             
             // Add record achievements
@@ -771,9 +773,11 @@
             });
             
             // Add advancement status if selected
+            const advancementToggle = document.getElementById('advancementToggle');
             const advancementStatus = document.getElementById('advancementStatus');
-            if (advancementStatus && advancementStatus.value) {
-                outputTemplate = outputTemplate.replace(/\{NEXT_ROUND\}/g, formatRoundName(advancementStatus.value));
+            if (advancementToggle && advancementToggle.checked && advancementStatus && advancementStatus.value) {
+                const nextRound = formatRoundName(advancementStatus.value);
+                outputTemplate = outputTemplate.replace(/\{NEXT_ROUND\}/g, `Qualified for ${nextRound}`);
             }
             
             // Add record achievements
@@ -800,9 +804,18 @@
             });
             
             // Clear advancement status
+            const advancementToggle = document.getElementById('advancementToggle');
             const advancementStatus = document.getElementById('advancementStatus');
+            if (advancementToggle) {
+                advancementToggle.checked = false;
+            }
             if (advancementStatus) {
                 advancementStatus.value = '';
+            }
+            // Hide the dropdown
+            const advancementDropdown = document.getElementById('advancementDropdown');
+            if (advancementDropdown) {
+                advancementDropdown.classList.add('hidden');
             }
             
             // Clear record achievements
@@ -894,12 +907,21 @@
             advancementDiv.className = 'special-field-section advancement-section';
             advancementDiv.innerHTML = `
                 <h4>Advancement Status</h4>
-                <div class="form-group">
-                    <label for="advancementStatus">Qualified for Next Round:</label>
-                    <select id="advancementStatus" onchange="updateAdvancementStatus()">
-                        <option value="">Select next round...</option>
-                    </select>
-                    <small class="field-help">Based on current round: ${document.getElementById('roundType').value || 'Not selected'}</small>
+                <div class="advancement-toggle-group">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="advancementToggle" onchange="toggleAdvancementStatus()">
+                        <span class="toggle-slider"></span>
+                        Athlete qualified for next round
+                    </label>
+                </div>
+                <div id="advancementDropdown" class="advancement-dropdown hidden">
+                    <div class="form-group">
+                        <label for="advancementStatus">Qualified for Next Round:</label>
+                        <select id="advancementStatus" onchange="updateAdvancementStatus()">
+                            <option value="">Select next round...</option>
+                        </select>
+                        <small class="field-help">Based on current round: ${document.getElementById('roundType').value || 'Not selected'}</small>
+                    </div>
                 </div>
             `;
             
@@ -989,6 +1011,25 @@
                 option.textContent = formatRoundName(round);
                 advancementSelect.appendChild(option);
             });
+        }
+        
+        // Toggle advancement status
+        function toggleAdvancementStatus() {
+            const toggle = document.getElementById('advancementToggle');
+            const dropdown = document.getElementById('advancementDropdown');
+            
+            if (toggle.checked) {
+                dropdown.classList.remove('hidden');
+                populateAdvancementOptions();
+            } else {
+                dropdown.classList.add('hidden');
+                // Clear the selection
+                const select = document.getElementById('advancementStatus');
+                if (select) {
+                    select.value = '';
+                }
+            }
+            updatePreview();
         }
         
         // Update advancement status

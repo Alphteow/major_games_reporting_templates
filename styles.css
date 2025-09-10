@@ -67,13 +67,13 @@ body {
     flex: 0 0 450px;
     position: sticky;
     top: 120px;
-    height: fit-content;
-    max-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
     overflow-y: auto;
     z-index: 100;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-right: 10px;
 }
 
 /* Template Preview */
@@ -633,6 +633,18 @@ select:hover, input:hover, textarea:hover {
 .advancement-section h4 {
     color: #0d47a1;
     border-bottom-color: #17a2b8;
+}
+
+.advancement-toggle-group {
+    margin-bottom: 15px;
+}
+
+.advancement-dropdown {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border: 1px solid #17a2b8;
 }
 
 .record-section {
