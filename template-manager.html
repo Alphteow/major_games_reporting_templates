@@ -168,6 +168,118 @@
             outline: none;
             border-color: #007bff;
         }
+
+        /* Mapping Management Styles */
+        .mapping-management {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 2px solid #17a2b8;
+        }
+
+        .mapping-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #17a2b8;
+        }
+
+        .mapping-header h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .mapping-controls {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .mappings-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .mapping-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mapping-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-color: #17a2b8;
+        }
+
+        .mapping-card h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #17a2b8;
+            padding-bottom: 8px;
+        }
+
+        .mapping-info {
+            margin-bottom: 15px;
+        }
+
+        .mapping-info div {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #17a2b8;
+        }
+
+        .mapping-info strong {
+            color: #17a2b8;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        .mapping-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .mapping-actions .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .template-selector {
+            margin-top: 10px;
+        }
+
+        .template-selector select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            color: white;
+            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+        }
+
+        .btn-info:hover {
+            background: linear-gradient(135deg, #138496, #117a8b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -178,6 +290,7 @@
             <div style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
                 <a href="index.html" class="btn btn-secondary" style="text-decoration: none;">← Back to Generator</a>
                 <button class="btn btn-primary" onclick="showAddTemplateForm()">Add New Template</button>
+                <button class="btn btn-info" onclick="showMappingManagement()">Manage Mappings</button>
                 <button class="btn btn-warning" onclick="exportTemplates()">Export Templates</button>
             </div>
         </div>
@@ -221,6 +334,35 @@
             
             <div id="templateList" class="template-list">
                 <!-- Templates will be loaded here -->
+            </div>
+            
+            <!-- Mapping Management Section -->
+            <div id="mappingManagement" class="mapping-management hidden">
+                <div class="mapping-header">
+                    <h2>Template Mappings Management</h2>
+                    <p>View and edit which sports/events are mapped to which templates</p>
+                    <button class="btn btn-secondary" onclick="hideMappingManagement()">Back to Templates</button>
+                </div>
+                
+                <div class="mapping-controls">
+                    <div class="search-box">
+                        <input type="text" id="mappingSearchInput" placeholder="Search mappings by sport, event, or template..." onkeyup="filterMappings()">
+                        <button class="btn btn-secondary" onclick="clearMappingSearch()">Clear</button>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="mappingSportFilter" onchange="filterMappings()">
+                            <option value="">All Sports</option>
+                        </select>
+                        <select id="mappingTemplateFilter" onchange="filterMappings()">
+                            <option value="">All Templates</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="showAddMappingForm()">Add New Mapping</button>
+                    </div>
+                </div>
+                
+                <div id="mappingsList" class="mappings-list">
+                    <!-- Mappings will be loaded here -->
+                </div>
             </div>
             
             <div id="editForm" class="edit-form">
@@ -352,6 +494,7 @@
                         <button class="btn btn-primary" onclick="editTemplate('${id}')">Edit</button>
                         <button class="btn btn-secondary" onclick="duplicateTemplate('${id}')">Duplicate</button>
                         <button class="btn btn-warning" onclick="testTemplate('${id}')">Test</button>
+                        <button class="btn btn-info" onclick="quickReassign('${id}')">Quick Reassign</button>
                         <button class="btn btn-danger" onclick="confirmDelete('${id}')">Delete</button>
                     </div>
                 `;
@@ -646,6 +789,364 @@
                 option.textContent = event;
                 eventFilter.appendChild(option);
             });
+        }
+
+        // Mapping Management Functions
+        function showMappingManagement() {
+            document.getElementById('mappingManagement').classList.remove('hidden');
+            document.getElementById('templateList').style.display = 'none';
+            document.getElementById('editForm').classList.remove('show');
+            populateMappingFilters();
+            displayMappings();
+        }
+        
+        function hideMappingManagement() {
+            document.getElementById('mappingManagement').classList.add('hidden');
+            document.getElementById('templateList').style.display = 'grid';
+        }
+        
+        function populateMappingFilters() {
+            if (!templatesData) return;
+            
+            const sportFilter = document.getElementById('mappingSportFilter');
+            const templateFilter = document.getElementById('mappingTemplateFilter');
+            
+            // Clear existing options
+            sportFilter.innerHTML = '<option value="">All Sports</option>';
+            templateFilter.innerHTML = '<option value="">All Templates</option>';
+            
+            // Populate sports
+            const sports = [...new Set(templatesData.round_mappings?.map(m => m.sport) || [])].sort();
+            sports.forEach(sport => {
+                const option = document.createElement('option');
+                option.value = sport;
+                option.textContent = sport;
+                sportFilter.appendChild(option);
+            });
+            
+            // Populate templates
+            if (templatesData.templates) {
+                Object.entries(templatesData.templates).forEach(([id, template]) => {
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.textContent = `Template ${id} - ${template.name || 'Unnamed'}`;
+                    templateFilter.appendChild(option);
+                });
+            }
+        }
+        
+        function displayMappings() {
+            const mappingsList = document.getElementById('mappingsList');
+            mappingsList.innerHTML = '';
+            
+            if (!templatesData || !templatesData.round_mappings) {
+                mappingsList.innerHTML = '<p>No mappings found.</p>';
+                return;
+            }
+            
+            templatesData.round_mappings.forEach((mapping, index) => {
+                const card = document.createElement('div');
+                card.className = 'mapping-card';
+                card.setAttribute('data-index', index);
+                
+                const template = templatesData.templates[mapping.template_id];
+                const templateName = template ? `Template ${mapping.template_id} - ${template.name || 'Unnamed'}` : `Template ${mapping.template_id}`;
+                
+                card.innerHTML = `
+                    <h4>${mapping.sport} - ${mapping.event}</h4>
+                    <div class="mapping-info">
+                        <div><strong>Sport:</strong> ${mapping.sport}</div>
+                        <div><strong>Event:</strong> ${mapping.event}</div>
+                        <div><strong>Round:</strong> ${mapping.round_type}</div>
+                        <div><strong>Result Type:</strong> ${mapping.result_type || 'time'}</div>
+                        <div><strong>Team Event:</strong> ${mapping.is_team === 'yes' ? 'Yes' : 'No'}</div>
+                        <div><strong>Current Template:</strong> ${templateName}</div>
+                    </div>
+                    <div class="template-selector">
+                        <label>Reassign to Template:</label>
+                        <select onchange="updateMappingTemplate(${index}, this.value)">
+                            <option value="">Select new template...</option>
+                        </select>
+                    </div>
+                    <div class="mapping-actions">
+                        <button class="btn btn-primary" onclick="editMapping(${index})">Edit Details</button>
+                        <button class="btn btn-danger" onclick="deleteMapping(${index})">Delete</button>
+                        <button class="btn btn-secondary" onclick="previewMapping(${index})">Preview</button>
+                    </div>
+                `;
+                
+                // Populate template selector
+                const select = card.querySelector('select');
+                if (templatesData.templates) {
+                    Object.entries(templatesData.templates).forEach(([id, template]) => {
+                        const option = document.createElement('option');
+                        option.value = id;
+                        option.textContent = `Template ${id} - ${template.name || 'Unnamed'}`;
+                        if (id == mapping.template_id) {
+                            option.selected = true;
+                        }
+                        select.appendChild(option);
+                    });
+                }
+                
+                mappingsList.appendChild(card);
+            });
+        }
+        
+        function updateMappingTemplate(mappingIndex, newTemplateId) {
+            if (!newTemplateId) return;
+            
+            const mapping = templatesData.round_mappings[mappingIndex];
+            const oldTemplateId = mapping.template_id;
+            
+            if (confirm(`Are you sure you want to reassign "${mapping.sport} - ${mapping.event} (${mapping.round_type})" from Template ${oldTemplateId} to Template ${newTemplateId}?`)) {
+                mapping.template_id = newTemplateId;
+                
+                // Save to localStorage
+                localStorage.setItem('updatedTemplates', JSON.stringify(templatesData));
+                
+                // Update display
+                displayMappings();
+                updateStats();
+                
+                alert('Mapping updated successfully!');
+            } else {
+                // Reset the select to original value
+                const card = document.querySelector(`[data-index="${mappingIndex}"]`);
+                const select = card.querySelector('select');
+                select.value = oldTemplateId;
+            }
+        }
+        
+        function editMapping(mappingIndex) {
+            const mapping = templatesData.round_mappings[mappingIndex];
+            
+            const newSport = prompt('Edit Sport:', mapping.sport);
+            if (newSport === null) return;
+            
+            const newEvent = prompt('Edit Event:', mapping.event);
+            if (newEvent === null) return;
+            
+            const newRound = prompt('Edit Round Type:', mapping.round_type);
+            if (newRound === null) return;
+            
+            const newResultType = prompt('Edit Result Type (time/score/distance/points):', mapping.result_type || 'time');
+            if (newResultType === null) return;
+            
+            const newTeam = confirm('Is this a team event?') ? 'yes' : 'no';
+            
+            // Check for duplicates
+            const duplicate = templatesData.round_mappings.find((m, index) => 
+                index !== mappingIndex && 
+                m.sport === newSport && 
+                m.event === newEvent && 
+                m.round_type === newRound
+            );
+            
+            if (duplicate) {
+                alert('A mapping for this combination already exists!');
+                return;
+            }
+            
+            // Update mapping
+            mapping.sport = newSport;
+            mapping.event = newEvent;
+            mapping.round_type = newRound;
+            mapping.result_type = newResultType;
+            mapping.is_team = newTeam;
+            
+            // Save to localStorage
+            localStorage.setItem('updatedTemplates', JSON.stringify(templatesData));
+            
+            // Update display
+            displayMappings();
+            updateStats();
+            
+            alert('Mapping updated successfully!');
+        }
+        
+        function deleteMapping(mappingIndex) {
+            const mapping = templatesData.round_mappings[mappingIndex];
+            
+            if (confirm(`Are you sure you want to delete the mapping for "${mapping.sport} - ${mapping.event} (${mapping.round_type})"?`)) {
+                templatesData.round_mappings.splice(mappingIndex, 1);
+                
+                // Save to localStorage
+                localStorage.setItem('updatedTemplates', JSON.stringify(templatesData));
+                
+                // Update display
+                displayMappings();
+                updateStats();
+                
+                alert('Mapping deleted successfully!');
+            }
+        }
+        
+        function previewMapping(mappingIndex) {
+            const mapping = templatesData.round_mappings[mappingIndex];
+            const template = templatesData.templates[mapping.template_id];
+            
+            if (!template) {
+                alert('Template not found!');
+                return;
+            }
+            
+            // Create preview with sample data
+            let preview = template.template;
+            const fields = Array.isArray(template.fields) ? template.fields : [];
+            
+            fields.forEach(field => {
+                const sampleValue = getSampleValue(field, mapping.sport, mapping.event, mapping.round_type);
+                preview = preview.replace(new RegExp(`\\{${field}\\}`, 'g'), sampleValue);
+            });
+            
+            // Create preview modal
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
+                align-items: center; justify-content: center; padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 12px; padding: 30px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto;">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50;">Mapping Preview</h3>
+                    <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 20px; font-family: monospace; white-space: pre-wrap; line-height: 1.5;">
+                        ${preview}
+                    </div>
+                    <div style="margin-top: 20px; text-align: right;">
+                        <button onclick="this.closest('div').parentElement.remove()" class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+        }
+        
+        function filterMappings() {
+            const searchTerm = document.getElementById('mappingSearchInput').value.toLowerCase();
+            const sportFilter = document.getElementById('mappingSportFilter').value;
+            const templateFilter = document.getElementById('mappingTemplateFilter').value;
+            
+            const cards = document.querySelectorAll('.mapping-card');
+            
+            cards.forEach(card => {
+                const mappingIndex = parseInt(card.getAttribute('data-index'));
+                const mapping = templatesData.round_mappings[mappingIndex];
+                const template = templatesData.templates[mapping.template_id];
+                const templateName = template ? `Template ${mapping.template_id} - ${template.name || 'Unnamed'}` : `Template ${mapping.template_id}`;
+                
+                const searchText = `${mapping.sport} ${mapping.event} ${mapping.round_type} ${templateName}`.toLowerCase();
+                
+                const matchesSearch = searchTerm === '' || searchText.includes(searchTerm);
+                const matchesSport = sportFilter === '' || mapping.sport === sportFilter;
+                const matchesTemplate = templateFilter === '' || mapping.template_id === templateFilter;
+                
+                if (matchesSearch && matchesSport && matchesTemplate) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function clearMappingSearch() {
+            document.getElementById('mappingSearchInput').value = '';
+            document.getElementById('mappingSportFilter').value = '';
+            document.getElementById('mappingTemplateFilter').value = '';
+            filterMappings();
+        }
+        
+        function showAddMappingForm() {
+            // Redirect to main page mapping interface
+            window.location.href = 'index.html#mapping';
+        }
+        
+        function quickReassign(templateId) {
+            // Find all mappings that use this template
+            const mappings = templatesData.round_mappings?.filter(m => m.template_id == templateId) || [];
+            
+            if (mappings.length === 0) {
+                alert('No mappings found for this template.');
+                return;
+            }
+            
+            // Create a simple reassignment interface
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
+                align-items: center; justify-content: center; padding: 20px;
+            `;
+            
+            let mappingsHtml = '';
+            mappings.forEach((mapping, index) => {
+                mappingsHtml += `
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                        <span style="flex: 1;">${mapping.sport} - ${mapping.event} (${mapping.round_type})</span>
+                        <select onchange="reassignMapping('${mapping.sport}', '${mapping.event}', '${mapping.round_type}', this.value)" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="">Select new template...</option>
+                        </select>
+                    </div>
+                `;
+            });
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 12px; padding: 30px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto;">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50;">Quick Reassign Mappings</h3>
+                    <p style="margin-bottom: 20px; color: #666;">Reassign mappings from Template ${templateId} to other templates:</p>
+                    <div style="margin-bottom: 20px;">
+                        ${mappingsHtml}
+                    </div>
+                    <div style="text-align: right;">
+                        <button onclick="this.closest('div').parentElement.remove()" class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
+            `;
+            
+            // Populate template selectors
+            modal.querySelectorAll('select').forEach(select => {
+                if (templatesData.templates) {
+                    Object.entries(templatesData.templates).forEach(([id, template]) => {
+                        if (id != templateId) { // Don't show current template
+                            const option = document.createElement('option');
+                            option.value = id;
+                            option.textContent = `Template ${id} - ${template.name || 'Unnamed'}`;
+                            select.appendChild(option);
+                        }
+                    });
+                }
+            });
+            
+            document.body.appendChild(modal);
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+        }
+        
+        function reassignMapping(sport, event, round, newTemplateId) {
+            if (!newTemplateId) return;
+            
+            const mapping = templatesData.round_mappings.find(m => 
+                m.sport === sport && m.event === event && m.round_type === round
+            );
+            
+            if (mapping) {
+                const oldTemplateId = mapping.template_id;
+                mapping.template_id = newTemplateId;
+                
+                // Save to localStorage
+                localStorage.setItem('updatedTemplates', JSON.stringify(templatesData));
+                
+                // Update display
+                displayTemplates();
+                updateStats();
+                
+                alert(`Reassigned "${sport} - ${event} (${round})" from Template ${oldTemplateId} to Template ${newTemplateId}`);
+            }
         }
 
         // Initialize on page load
