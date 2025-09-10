@@ -11,8 +11,9 @@
         <div class="header">
             <h1>Sports Template Generator</h1>
             <p class="subtitle">Generate professional sports result templates</p>
-            <div style="margin-top: 15px;">
+            <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
                 <a href="template-manager.html" class="btn btn-secondary">Manage Templates</a>
+                <button class="btn btn-primary" onclick="showMappingInterface()">Create Custom Mapping</button>
             </div>
         </div>
         
@@ -41,32 +42,31 @@
             </div>
             
             <div class="content-wrapper">
-                <!-- Top section with form and fixed preview -->
-                <div class="top-section">
-                    <div class="left-panel">
-                        <div class="form-section">
-                            <h3>Select Competition Details</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="sport">Sport:</label>
-                                    <select id="sport" onchange="updateEvents()">
-                                        <option value="">Select Sport</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="event">Event:</label>
-                                    <select id="event" onchange="updateRounds()">
-                                        <option value="">Select Event</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="roundType">Round Type:</label>
-                                    <select id="roundType" onchange="loadTemplate()">
-                                        <option value="">Select Round</option>
-                                    </select>
-                                </div>
+                <!-- Left panel with form and controls -->
+                <div class="left-panel">
+                    <div class="form-section">
+                        <h3>Competition Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="sport">Sport:</label>
+                                <select id="sport" onchange="updateEvents()">
+                                    <option value="">Select Sport</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="event">Event:</label>
+                                <select id="event" onchange="updateRounds()">
+                                    <option value="">Select Event</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="roundType">Round Type:</label>
+                                <select id="roundType" onchange="loadTemplate()">
+                                    <option value="">Select Round</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
                         
                         <div id="templateInfo" class="template-info hidden">
                             <h4>Template Information</h4>
@@ -74,14 +74,19 @@
                         </div>
                         
                         <div id="variableInputs" class="variable-inputs hidden">
-                            <h4>Fill Template Variables</h4>
-                            <p style="color: #7b1fa2; margin-bottom: 20px; font-size: 14px;">
-                                Fields are ordered by their appearance in the template. 
-                                <span style="color: #28a745;">🤖 Auto-filled</span> | 
-                                <span style="color: #007bff;">✏️ Manual entry</span>
-                            </p>
+                            <h4>Template Variables</h4>
+                            <div class="field-legend">
+                                <span class="legend-item auto-filled-legend">
+                                    <span class="legend-indicator"></span>
+                                    Auto-filled from selections
+                                </span>
+                                <span class="legend-item manual-entry-legend">
+                                    <span class="legend-indicator"></span>
+                                    Manual entry required
+                                </span>
+                            </div>
                             <div id="variableFields"></div>
-                            <div style="margin-top: 20px;">
+                            <div class="form-actions">
                                 <button class="btn btn-primary" onclick="generateOutput()">Generate Template</button>
                                 <button class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
                             </div>
@@ -89,9 +94,9 @@
                         
                         <!-- Template correction section -->
                         <div id="templateUpdateSection" class="template-update-section hidden">
-                            <div class="form-section" style="border-left-color: #ff9800; background: linear-gradient(135deg, #fff8e1, #ffecb3);">
-                                <h3>🔧 Suggest Template Corrections</h3>
-                                <p style="margin-bottom: 20px; color: #f57c00;">
+                            <div class="form-section correction-section">
+                                <h3>Suggest Template Corrections</h3>
+                                <p class="correction-description">
                                     If the auto-filled values are incorrect, help us improve by suggesting corrections:
                                 </p>
                                 
@@ -124,32 +129,118 @@
                     
                     <div class="right-panel">
                         <div id="templatePreview" class="template-preview hidden">
-                            <h3>📋 Template Preview</h3>
-                            <div id="previewContent" style="background: white; border: 1px solid #e9ecef; border-radius: 4px; padding: 15px; font-family: 'Courier New', monospace; white-space: pre-wrap; min-height: 200px; max-height: 400px; overflow-y: auto; font-size: 13px; line-height: 1.5;"></div>
-                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 4px; font-size: 12px; color: #1976d2;">
-                                <strong>💡 Tip:</strong> This preview updates in real-time as you fill in the fields.
+                            <h3>Template Preview</h3>
+                            <div id="previewContent" class="preview-content"></div>
+                            <div class="preview-tip">
+                                <strong>Tip:</strong> This preview updates in real-time as you fill in the fields.
                             </div>
                         </div>
                         
-                        <!-- Generated template moved directly below preview -->
-                        <div id="templateOutput" class="template-output hidden" style="margin-top: 20px;">
-                            <h4>✅ Generated Template</h4>
-                            <p style="color: #2e7d32; margin-bottom: 15px; font-size: 14px;">
+                        <!-- Generated template -->
+                        <div id="templateOutput" class="template-output hidden">
+                            <h4>Generated Template</h4>
+                            <p class="output-description">
                                 Your completed template is ready! Copy it or download it for use.
                             </p>
-                            <textarea id="outputText" readonly style="background: white; border: 2px solid #4caf50; border-radius: 8px; padding: 20px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 14px; line-height: 1.6; resize: vertical; min-height: 200px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);"></textarea>
-                            <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <textarea id="outputText" readonly class="output-textarea"></textarea>
+                            <div class="output-actions">
                                 <button class="btn btn-success" onclick="copyToClipboard()">
-                                    📋 Copy to Clipboard
+                                    Copy to Clipboard
                                 </button>
                                 <button class="btn btn-secondary" onclick="downloadTemplate()">
-                                    💾 Download Template
+                                    Download Template
                                 </button>
-                                <button class="btn" onclick="generateNewTemplate()" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white;">
-                                    🔄 Generate Another
+                                <button class="btn btn-purple" onclick="generateNewTemplate()">
+                                    Generate Another
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom Mapping Interface -->
+            <div id="mappingInterface" class="mapping-interface hidden">
+                <div class="mapping-header">
+                    <h2>Create Custom Template Mapping</h2>
+                    <p>Map a sport, event, and round combination to an existing template or create a new one.</p>
+                </div>
+                
+                <div class="mapping-content">
+                    <div class="mapping-form">
+                        <div class="form-section">
+                            <h3>Sport & Event Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="mappingSport">Sport:</label>
+                                    <input type="text" id="mappingSport" placeholder="e.g., ATHLETICS, SWIMMING">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mappingEvent">Event:</label>
+                                    <input type="text" id="mappingEvent" placeholder="e.g., 100M, FREESTYLE">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mappingRound">Round Type:</label>
+                                    <input type="text" id="mappingRound" placeholder="e.g., finals, semi finals">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mappingResultType">Result Type:</label>
+                                    <select id="mappingResultType">
+                                        <option value="time">Time</option>
+                                        <option value="score">Score</option>
+                                        <option value="distance">Distance</option>
+                                        <option value="points">Points</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mappingTeam">Team Event:</label>
+                                    <select id="mappingTeam">
+                                        <option value="no">Individual</option>
+                                        <option value="yes">Team</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Template Selection</h3>
+                            <div class="template-selection">
+                                <div class="form-group">
+                                    <label>Choose Template:</label>
+                                    <select id="templateSelect" onchange="loadSelectedTemplate()">
+                                        <option value="">Select existing template or create new</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="createNewTemplate" onchange="toggleNewTemplate()">
+                                        Create new template
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div id="newTemplateForm" class="new-template-form hidden">
+                                <div class="form-group">
+                                    <label for="newTemplateContent">Template Content:</label>
+                                    <textarea id="newTemplateContent" class="template-editor" placeholder="Enter your template with variables like {SPORT}, {EVENT}, {ROUND}, etc."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newTemplateFields">Fields (comma-separated):</label>
+                                    <input type="text" id="newTemplateFields" placeholder="SPORT, EVENT, ROUND, ATHLETE_NAME, RESULT, etc.">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mapping-actions">
+                            <button class="btn btn-success" onclick="saveMapping()">Save Mapping</button>
+                            <button class="btn btn-secondary" onclick="hideMappingInterface()">Cancel</button>
+                            <button class="btn btn-primary" onclick="previewMapping()">Preview</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mapping-preview">
+                        <h3>Mapping Preview</h3>
+                        <div id="mappingPreviewContent" class="preview-content"></div>
                     </div>
                 </div>
             </div>
@@ -434,14 +525,12 @@
                 
                 if (prefillValue) {
                     input.value = prefillValue;
-                    input.style.backgroundColor = '#e8f5e8';
-                    input.style.borderLeft = '4px solid #28a745';
+                    input.classList.add('auto-filled');
                     
                     // Add auto-fill indicator
                     const indicator = document.createElement('span');
-                    indicator.innerHTML = '🤖';
+                    indicator.className = 'field-indicator auto-fill-indicator';
                     indicator.title = 'Auto-filled from your selections';
-                    indicator.style.cssText = 'position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 16px; opacity: 0.7;';
                     fieldDiv.style.position = 'relative';
                     fieldDiv.appendChild(indicator);
                 }
@@ -449,12 +538,12 @@
                 input.addEventListener('input', function() {
                     updatePreview();
                     // Remove auto-fill styling when user modifies
-                    if (this.style.backgroundColor === 'rgb(232, 245, 232)') {
-                        this.style.backgroundColor = '';
-                        this.style.borderLeft = '4px solid #007bff';
-                        const indicator = fieldDiv.querySelector('span');
-                        if (indicator && indicator.innerHTML === '🤖') {
-                            indicator.innerHTML = '✏️';
+                    if (this.classList.contains('auto-filled')) {
+                        this.classList.remove('auto-filled');
+                        this.classList.add('manual-filled');
+                        const indicator = fieldDiv.querySelector('.field-indicator');
+                        if (indicator) {
+                            indicator.className = 'field-indicator manual-fill-indicator';
                             indicator.title = 'Manually entered';
                         }
                     }
@@ -800,6 +889,208 @@
         }
 
         
+        // Mapping Interface Functions
+        function showMappingInterface() {
+            document.getElementById('mappingInterface').classList.remove('hidden');
+            populateTemplateSelect();
+            document.getElementById('mappingInterface').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function hideMappingInterface() {
+            document.getElementById('mappingInterface').classList.add('hidden');
+            clearMappingForm();
+        }
+        
+        function populateTemplateSelect() {
+            const select = document.getElementById('templateSelect');
+            select.innerHTML = '<option value="">Select existing template or create new</option>';
+            
+            if (sportsData && sportsData.templates) {
+                Object.entries(sportsData.templates).forEach(([id, template]) => {
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.textContent = `Template ${id} - ${template.name || 'Unnamed'}`;
+                    select.appendChild(option);
+                });
+            }
+        }
+        
+        function loadSelectedTemplate() {
+            const templateId = document.getElementById('templateSelect').value;
+            if (!templateId || !sportsData || !sportsData.templates[templateId]) return;
+            
+            const template = sportsData.templates[templateId];
+            document.getElementById('newTemplateContent').value = template.template || '';
+            document.getElementById('newTemplateFields').value = Array.isArray(template.fields) ? 
+                template.fields.join(', ') : (template.fields || '');
+            
+            previewMapping();
+        }
+        
+        function toggleNewTemplate() {
+            const checkbox = document.getElementById('createNewTemplate');
+            const form = document.getElementById('newTemplateForm');
+            
+            if (checkbox.checked) {
+                form.classList.remove('hidden');
+                document.getElementById('templateSelect').disabled = true;
+            } else {
+                form.classList.add('hidden');
+                document.getElementById('templateSelect').disabled = false;
+            }
+        }
+        
+        function previewMapping() {
+            const sport = document.getElementById('mappingSport').value;
+            const event = document.getElementById('mappingEvent').value;
+            const round = document.getElementById('mappingRound').value;
+            
+            let templateContent = '';
+            let fields = [];
+            
+            if (document.getElementById('createNewTemplate').checked) {
+                templateContent = document.getElementById('newTemplateContent').value;
+                const fieldsInput = document.getElementById('newTemplateFields').value;
+                fields = fieldsInput.split(',').map(f => f.trim()).filter(f => f);
+            } else {
+                const templateId = document.getElementById('templateSelect').value;
+                if (templateId && sportsData && sportsData.templates[templateId]) {
+                    const template = sportsData.templates[templateId];
+                    templateContent = template.template || '';
+                    fields = Array.isArray(template.fields) ? template.fields : [];
+                }
+            }
+            
+            if (!templateContent) {
+                document.getElementById('mappingPreviewContent').textContent = 'Please select or create a template to preview.';
+                return;
+            }
+            
+            // Create preview with sample data
+            let preview = templateContent;
+            fields.forEach(field => {
+                const sampleValue = getSampleValue(field, sport, event, round);
+                preview = preview.replace(new RegExp(`\\{${field}\\}`, 'g'), sampleValue);
+            });
+            
+            document.getElementById('mappingPreviewContent').textContent = preview;
+        }
+        
+        function getSampleValue(field, sport, event, round) {
+            const fieldUpper = field.toUpperCase();
+            
+            if (fieldUpper.includes('SPORT')) return sport || 'ATHLETICS';
+            if (fieldUpper.includes('EVENT')) return event || '100M';
+            if (fieldUpper.includes('ROUND')) return round || 'FINALS';
+            if (fieldUpper.includes('NAME')) return 'John Doe';
+            if (fieldUpper.includes('RESULT')) return '9.58';
+            if (fieldUpper.includes('TIME')) return '9.58';
+            if (fieldUpper.includes('SCORE')) return '95.50';
+            if (fieldUpper.includes('RANK') || fieldUpper.includes('POSITION')) return '1';
+            if (fieldUpper.includes('COUNTRY')) return 'SGP';
+            if (fieldUpper.includes('TEAM')) return 'Team Singapore';
+            if (fieldUpper.includes('DATE')) return new Date().toISOString().split('T')[0];
+            if (fieldUpper.includes('VENUE')) return 'Olympic Stadium';
+            
+            return `[${field}]`;
+        }
+        
+        function saveMapping() {
+            const sport = document.getElementById('mappingSport').value.trim();
+            const event = document.getElementById('mappingEvent').value.trim();
+            const round = document.getElementById('mappingRound').value.trim();
+            const resultType = document.getElementById('mappingResultType').value;
+            const team = document.getElementById('mappingTeam').value;
+            
+            if (!sport || !event || !round) {
+                alert('Please fill in Sport, Event, and Round Type fields.');
+                return;
+            }
+            
+            let templateId;
+            let templateContent;
+            let fields = [];
+            
+            if (document.getElementById('createNewTemplate').checked) {
+                templateContent = document.getElementById('newTemplateContent').value.trim();
+                const fieldsInput = document.getElementById('newTemplateFields').value.trim();
+                fields = fieldsInput.split(',').map(f => f.trim()).filter(f => f);
+                
+                if (!templateContent || fields.length === 0) {
+                    alert('Please provide template content and fields for the new template.');
+                    return;
+                }
+                
+                // Generate new template ID
+                templateId = Date.now().toString();
+                
+                // Add to templates data
+                if (!sportsData.templates) {
+                    sportsData.templates = {};
+                }
+                sportsData.templates[templateId] = {
+                    template: templateContent,
+                    fields: fields
+                };
+            } else {
+                templateId = document.getElementById('templateSelect').value;
+                if (!templateId) {
+                    alert('Please select an existing template.');
+                    return;
+                }
+            }
+            
+            // Add to round mappings
+            if (!sportsData.round_mappings) {
+                sportsData.round_mappings = [];
+            }
+            
+            // Check if mapping already exists
+            const existingMapping = sportsData.round_mappings.find(m => 
+                m.sport === sport && m.event === event && m.round_type === round
+            );
+            
+            if (existingMapping) {
+                if (confirm('A mapping for this combination already exists. Do you want to update it?')) {
+                    existingMapping.template_id = templateId;
+                    existingMapping.result_type = resultType;
+                    existingMapping.is_team = team;
+                } else {
+                    return;
+                }
+            } else {
+                sportsData.round_mappings.push({
+                    sport: sport,
+                    event: event,
+                    round_type: round,
+                    template_id: templateId,
+                    result_type: resultType,
+                    is_team: team
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('updatedTemplates', JSON.stringify(sportsData));
+            
+            alert('Mapping saved successfully! You can now use this combination in the main generator.');
+            hideMappingInterface();
+            updateStats();
+        }
+        
+        function clearMappingForm() {
+            document.getElementById('mappingSport').value = '';
+            document.getElementById('mappingEvent').value = '';
+            document.getElementById('mappingRound').value = '';
+            document.getElementById('mappingResultType').value = 'time';
+            document.getElementById('mappingTeam').value = 'no';
+            document.getElementById('templateSelect').value = '';
+            document.getElementById('createNewTemplate').checked = false;
+            document.getElementById('newTemplateContent').value = '';
+            document.getElementById('newTemplateFields').value = '';
+            document.getElementById('mappingPreviewContent').textContent = '';
+            toggleNewTemplate();
+        }
+
         // Initialize on page load
         window.addEventListener('load', initializeApp);
     </script>

@@ -118,6 +118,56 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
+        /* Search and Filter Section */
+        .search-filter-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-controls select {
+            padding: 10px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 150px;
+        }
+
+        .filter-controls select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +199,23 @@
                 <div class="stat-item">
                     <span class="stat-number" id="uniqueFields">0</span>
                     <span class="stat-label">Unique Fields</span>
+                </div>
+            </div>
+            
+            <!-- Search and Filter Section -->
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search templates by sport, event, or content..." onkeyup="filterTemplates()">
+                    <button class="btn btn-secondary" onclick="clearSearch()">Clear</button>
+                </div>
+                <div class="filter-controls">
+                    <select id="sportFilter" onchange="filterTemplates()">
+                        <option value="">All Sports</option>
+                    </select>
+                    <select id="eventFilter" onchange="filterTemplates()">
+                        <option value="">All Events</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="showAddTemplateForm()">Add New Template</button>
                 </div>
             </div>
             
@@ -219,6 +286,7 @@
                 const response = await fetch('data/sports_templates.json');
                 templatesData = await response.json();
                 updateStats();
+                populateFilters();
                 displayTemplates();
             } catch (error) {
                 console.error('Failed to load templates:', error);
@@ -518,6 +586,66 @@
             link.href = URL.createObjectURL(dataBlob);
             link.download = `sports_templates_updated_${new Date().toISOString().split('T')[0]}.json`;
             link.click();
+        }
+
+        // Search and filter functionality
+        function filterTemplates() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const sportFilter = document.getElementById('sportFilter').value;
+            const eventFilter = document.getElementById('eventFilter').value;
+            
+            const cards = document.querySelectorAll('.template-card');
+            
+            cards.forEach(card => {
+                const templateId = card.querySelector('h4').textContent;
+                const templateContent = card.querySelector('.template-preview').textContent.toLowerCase();
+                const usageInfo = card.querySelector('.template-info').textContent.toLowerCase();
+                
+                const matchesSearch = searchTerm === '' || 
+                    templateId.toLowerCase().includes(searchTerm) ||
+                    templateContent.includes(searchTerm) ||
+                    usageInfo.includes(searchTerm);
+                
+                const matchesSport = sportFilter === '' || usageInfo.includes(sportFilter.toLowerCase());
+                const matchesEvent = eventFilter === '' || usageInfo.includes(eventFilter.toLowerCase());
+                
+                if (matchesSearch && matchesSport && matchesEvent) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('sportFilter').value = '';
+            document.getElementById('eventFilter').value = '';
+            filterTemplates();
+        }
+        
+        function populateFilters() {
+            if (!templatesData || !templatesData.round_mappings) return;
+            
+            const sports = [...new Set(templatesData.round_mappings.map(m => m.sport))].sort();
+            const events = [...new Set(templatesData.round_mappings.map(m => m.event))].sort();
+            
+            const sportFilter = document.getElementById('sportFilter');
+            const eventFilter = document.getElementById('eventFilter');
+            
+            sports.forEach(sport => {
+                const option = document.createElement('option');
+                option.value = sport;
+                option.textContent = sport;
+                sportFilter.appendChild(option);
+            });
+            
+            events.forEach(event => {
+                const option = document.createElement('option');
+                option.value = event;
+                option.textContent = event;
+                eventFilter.appendChild(option);
+            });
         }
 
         // Initialize on page load
