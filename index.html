@@ -416,6 +416,11 @@
                 option.textContent = formatRoundName(round);
                 roundSelect.appendChild(option);
             });
+            
+            // Update advancement options when round changes
+            if (document.getElementById('advancementStatus')) {
+                populateAdvancementOptions();
+            }
         }
 
         function loadTemplate() {
@@ -553,6 +558,10 @@
                 fieldDiv.appendChild(input);
                 variableFieldsDiv.appendChild(fieldDiv);
             });
+            
+            // Add advancement status and record achievement sections
+            addAdvancementStatusSection();
+            addRecordAchievementSection();
             
             variableInputsDiv.classList.remove('hidden');
             updatePreview();
@@ -709,11 +718,40 @@
                 previewTemplate = previewTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), placeholder);
             });
             
+            // Add advancement status if selected
+            const advancementStatus = document.getElementById('advancementStatus');
+            if (advancementStatus && advancementStatus.value) {
+                previewTemplate = previewTemplate.replace(/\{NEXT_ROUND\}/g, formatRoundName(advancementStatus.value));
+            }
+            
+            // Add record achievements
+            const recordAchievements = getRecordAchievements();
+            if (recordAchievements.length > 0) {
+                previewTemplate = previewTemplate.replace(/\{RECORD_ACHIEVEMENTS\}/g, recordAchievements.join(', '));
+            }
+            
             // Use previewContent instead of templateText
             const previewContent = document.getElementById('previewContent');
             if (previewContent) {
                 previewContent.textContent = previewTemplate;
             }
+        }
+        
+        // Get record achievements as array
+        function getRecordAchievements() {
+            const achievements = [];
+            
+            if (document.getElementById('nationalRecord')?.checked) {
+                achievements.push('New National Record');
+            }
+            if (document.getElementById('seasonBest')?.checked) {
+                achievements.push('New Season Best');
+            }
+            if (document.getElementById('personalBest')?.checked) {
+                achievements.push('New Personal Best');
+            }
+            
+            return achievements;
         }
 
         
@@ -732,6 +770,18 @@
                 outputTemplate = outputTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), value);
             });
             
+            // Add advancement status if selected
+            const advancementStatus = document.getElementById('advancementStatus');
+            if (advancementStatus && advancementStatus.value) {
+                outputTemplate = outputTemplate.replace(/\{NEXT_ROUND\}/g, formatRoundName(advancementStatus.value));
+            }
+            
+            // Add record achievements
+            const recordAchievements = getRecordAchievements();
+            if (recordAchievements.length > 0) {
+                outputTemplate = outputTemplate.replace(/\{RECORD_ACHIEVEMENTS\}/g, recordAchievements.join(', '));
+            }
+            
             if (missingFields.length > 0) {
                 alert('Please fill in the following fields: ' + missingFields.join(', '));
                 return;
@@ -748,6 +798,22 @@
                     input.value = '';
                 }
             });
+            
+            // Clear advancement status
+            const advancementStatus = document.getElementById('advancementStatus');
+            if (advancementStatus) {
+                advancementStatus.value = '';
+            }
+            
+            // Clear record achievements
+            const recordCheckboxes = ['nationalRecord', 'seasonBest', 'personalBest'];
+            recordCheckboxes.forEach(id => {
+                const checkbox = document.getElementById(id);
+                if (checkbox) {
+                    checkbox.checked = false;
+                }
+            });
+            
             updatePreview();
             document.getElementById('templateOutput').classList.add('hidden');
         }
@@ -818,6 +884,121 @@
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add advancement status section
+        function addAdvancementStatusSection() {
+            const variableFieldsDiv = document.getElementById('variableFields');
+            
+            const advancementDiv = document.createElement('div');
+            advancementDiv.className = 'special-field-section advancement-section';
+            advancementDiv.innerHTML = `
+                <h4>Advancement Status</h4>
+                <div class="form-group">
+                    <label for="advancementStatus">Qualified for Next Round:</label>
+                    <select id="advancementStatus" onchange="updateAdvancementStatus()">
+                        <option value="">Select next round...</option>
+                    </select>
+                    <small class="field-help">Based on current round: ${document.getElementById('roundType').value || 'Not selected'}</small>
+                </div>
+            `;
+            
+            variableFieldsDiv.appendChild(advancementDiv);
+            populateAdvancementOptions();
+        }
+        
+        // Add record achievement section
+        function addRecordAchievementSection() {
+            const variableFieldsDiv = document.getElementById('variableFields');
+            
+            const recordDiv = document.createElement('div');
+            recordDiv.className = 'special-field-section record-section';
+            recordDiv.innerHTML = `
+                <h4>Record Achievements</h4>
+                <div class="record-toggles">
+                    <div class="toggle-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="nationalRecord" onchange="updateRecordAchievements()">
+                            <span class="toggle-slider"></span>
+                            New National Record
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="seasonBest" onchange="updateRecordAchievements()">
+                            <span class="toggle-slider"></span>
+                            New Season Best
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="personalBest" onchange="updateRecordAchievements()">
+                            <span class="toggle-slider"></span>
+                            New Personal Best
+                        </label>
+                    </div>
+                </div>
+            `;
+            
+            variableFieldsDiv.appendChild(recordDiv);
+        }
+        
+        // Populate advancement options based on current round
+        function populateAdvancementOptions() {
+            const currentRound = document.getElementById('roundType').value;
+            const advancementSelect = document.getElementById('advancementStatus');
+            
+            // Clear existing options except the first one
+            advancementSelect.innerHTML = '<option value="">Select next round...</option>';
+            
+            if (!currentRound) {
+                advancementSelect.innerHTML += '<option value="" disabled>Please select a current round first</option>';
+                return;
+            }
+            
+            // Define round progression hierarchy
+            const roundProgression = {
+                'heats': ['semi finals', 'finals'],
+                'preliminaries': ['semi finals', 'finals'],
+                'qualifying': ['semi finals', 'finals'],
+                'round of 64': ['round of 32', 'round of 16', 'quarter finals', 'semi finals', 'finals'],
+                'round of 32': ['round of 16', 'quarter finals', 'semi finals', 'finals'],
+                'round of 16': ['quarter finals', 'semi finals', 'finals'],
+                'quarter finals': ['semi finals', 'finals'],
+                'semi finals': ['finals'],
+                'finals': ['champion'],
+                'group stage': ['knockout stage', 'semi finals', 'finals'],
+                'pool stage': ['knockout stage', 'semi finals', 'finals'],
+                'round robin': ['semi finals', 'finals'],
+                '3rd placing match': ['bronze medal'],
+                '3rd/4th placing match': ['bronze medal'],
+                'bronze medal playoff': ['bronze medal']
+            };
+            
+            const currentRoundLower = currentRound.toLowerCase();
+            const nextRounds = roundProgression[currentRoundLower] || [];
+            
+            if (nextRounds.length === 0) {
+                advancementSelect.innerHTML += '<option value="" disabled>No advancement available for this round</option>';
+                return;
+            }
+            
+            nextRounds.forEach(round => {
+                const option = document.createElement('option');
+                option.value = round;
+                option.textContent = formatRoundName(round);
+                advancementSelect.appendChild(option);
+            });
+        }
+        
+        // Update advancement status
+        function updateAdvancementStatus() {
+            updatePreview();
+        }
+        
+        // Update record achievements
+        function updateRecordAchievements() {
+            updatePreview();
         }
 
         function getAutoFillValue(field, sport, event, round) {
