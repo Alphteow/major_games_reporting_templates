@@ -718,12 +718,17 @@
                 previewTemplate = previewTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), placeholder);
             });
             
-            // Add advancement status if selected
+            // Handle advancement status - if toggle is off, remove the last word and end sentence
             const advancementToggle = document.getElementById('advancementToggle');
             const advancementStatus = document.getElementById('advancementStatus');
             if (advancementToggle && advancementToggle.checked && advancementStatus && advancementStatus.value) {
                 const nextRound = formatRoundName(advancementStatus.value);
                 previewTemplate = previewTemplate.replace(/\{NEXT_ROUND\}/g, `Qualified for ${nextRound}`);
+            } else {
+                // If advancement toggle is off, remove the last word and end the sentence
+                previewTemplate = previewTemplate.replace(/\s+\{NEXT_ROUND\}/g, '');
+                // Also handle cases where NEXT_ROUND might be at the end of a sentence
+                previewTemplate = previewTemplate.replace(/\{NEXT_ROUND\}\s*\.?/g, '.');
             }
             
             // Add record achievements
@@ -772,12 +777,17 @@
                 outputTemplate = outputTemplate.replace(new RegExp(`\\{${field}\\}`, 'g'), value);
             });
             
-            // Add advancement status if selected
+            // Handle advancement status - if toggle is off, remove the last word and end sentence
             const advancementToggle = document.getElementById('advancementToggle');
             const advancementStatus = document.getElementById('advancementStatus');
             if (advancementToggle && advancementToggle.checked && advancementStatus && advancementStatus.value) {
                 const nextRound = formatRoundName(advancementStatus.value);
                 outputTemplate = outputTemplate.replace(/\{NEXT_ROUND\}/g, `Qualified for ${nextRound}`);
+            } else {
+                // If advancement toggle is off, remove the last word and end the sentence
+                outputTemplate = outputTemplate.replace(/\s+\{NEXT_ROUND\}/g, '');
+                // Also handle cases where NEXT_ROUND might be at the end of a sentence
+                outputTemplate = outputTemplate.replace(/\{NEXT_ROUND\}\s*\.?/g, '.');
             }
             
             // Add record achievements
@@ -909,7 +919,7 @@
                 <h4>Advancement Status</h4>
                 <div class="advancement-toggle-group">
                     <label class="toggle-label">
-                        <input type="checkbox" id="advancementToggle" onchange="toggleAdvancementStatus()">
+                        <input type="checkbox" id="advancementToggle" onchange="toggleAdvancementStatus(); forcePreviewUpdate();">
                         <span class="toggle-slider"></span>
                         Athlete qualified for next round
                     </label>
@@ -917,7 +927,7 @@
                 <div id="advancementDropdown" class="advancement-dropdown hidden">
                     <div class="form-group">
                         <label for="advancementStatus">Qualified for Next Round:</label>
-                        <select id="advancementStatus" onchange="updateAdvancementStatus()">
+                        <select id="advancementStatus" onchange="forcePreviewUpdate()">
                             <option value="">Select next round...</option>
                         </select>
                         <small class="field-help">Based on current round: ${document.getElementById('roundType').value || 'Not selected'}</small>
@@ -940,21 +950,21 @@
                 <div class="record-toggles">
                     <div class="toggle-group">
                         <label class="toggle-label">
-                            <input type="checkbox" id="nationalRecord" onchange="updateRecordAchievements()">
+                            <input type="checkbox" id="nationalRecord" onchange="forcePreviewUpdate()">
                             <span class="toggle-slider"></span>
                             New National Record
                         </label>
                     </div>
                     <div class="toggle-group">
                         <label class="toggle-label">
-                            <input type="checkbox" id="seasonBest" onchange="updateRecordAchievements()">
+                            <input type="checkbox" id="seasonBest" onchange="forcePreviewUpdate()">
                             <span class="toggle-slider"></span>
                             New Season Best
                         </label>
                     </div>
                     <div class="toggle-group">
                         <label class="toggle-label">
-                            <input type="checkbox" id="personalBest" onchange="updateRecordAchievements()">
+                            <input type="checkbox" id="personalBest" onchange="forcePreviewUpdate()">
                             <span class="toggle-slider"></span>
                             New Personal Best
                         </label>
@@ -1039,6 +1049,11 @@
         
         // Update record achievements
         function updateRecordAchievements() {
+            updatePreview();
+        }
+        
+        // Force preview update for all toggle changes
+        function forcePreviewUpdate() {
             updatePreview();
         }
 
